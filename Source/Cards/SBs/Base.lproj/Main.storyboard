@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7U-9J-ZVu" customClass="CardHighlight" customModule="Cards" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7U-9J-ZVu" customClass="CardArticle" customModule="Cards" customModuleProvider="target">
                                 <rect key="frame" x="103.5" y="467" width="167" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.79165035486221313" green="0.77181440591812134" blue="0.45148473978042603" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="height" constant="200" id="9n9-hn-P4H"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="bgImage" value="flBackground"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="bgImage" value="mvBackground"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="icon" value="flappy"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="iconRadius">
                                         <real key="value" value="8"/>
@@ -73,6 +73,11 @@
                             <constraint firstItem="q7U-9J-ZVu" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.65" id="y1d-rJ-0Ff"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="j7A-pJ-vy9"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -81,8 +86,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="flBackground" width="638" height="678"/>
         <image name="flappy" width="175" height="175"/>
+        <image name="mvBackground" width="1920" height="1080"/>
     </resources>
-    <color key="tintColor" red="0.0015786903677508235" green="0.37055540084838867" blue="0.43997174501419067" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <color key="tintColor" red="0.0" green="0.36862745098039218" blue="0.43997174501419067" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

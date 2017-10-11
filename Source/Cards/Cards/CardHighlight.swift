@@ -11,9 +11,9 @@ import UIKit
 @IBDesignable class CardHighlight: Card {
 
     // SB Vars
-    @IBInspectable var title: String = "gioco del giorno"
+    @IBInspectable var title: String = "welcome to cards XI !"
     @IBInspectable var itemTitle: String = "Flappy Bird"
-    @IBInspectable var ItemTitleSize: CGFloat = 14
+    @IBInspectable var itemTitleSize: CGFloat = 14
     @IBInspectable var itemSubtitle: String = "Flap that !"
     @IBInspectable var itemSubtitleSize: CGFloat = 12
     @IBInspectable var icon: UIImage?
@@ -23,20 +23,26 @@ import UIKit
     var delegate: CardDelegate?
     
     //Priv Vars
-    var iconIV = UIImageView()
-    var actionBtn = UIButton()
-    var titleLbl = UILabel ()
-    var itemTitleLbl = UILabel()
-    var itemSubtitleLbl = UILabel()
-    var lightColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
-    var bgIconIV = UIImageView()
+    internal var iconIV = UIImageView()
+    internal var actionBtn = UIButton()
+    internal var titleLbl = UILabel ()
+    internal var itemTitleLbl = UILabel()
+    internal var itemSubtitleLbl = UILabel()
+    internal var lightColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
+    internal var bgIconIV = UIImageView()
     
     // View Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        initialize()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initialize()
+    }
+    
+    override func initialize() {
+        super.initialize()
         
         backgroundIV.addSubview(iconIV)
         backgroundIV.addSubview(titleLbl)
@@ -87,7 +93,7 @@ import UIKit
         itemTitleLbl.frame = CGRect(x: X(insets), y: RevY(17, height: Y(8)) + X(insets), width: X(80) - btnWidth, height: Y(8))
         itemTitleLbl.textColor = textColor
         itemTitleLbl.text = itemTitle
-        itemTitleLbl.font = UIFont.boldSystemFont(ofSize: ItemTitleSize)
+        itemTitleLbl.font = UIFont.boldSystemFont(ofSize: itemTitleSize)
         itemTitleLbl.adjustsFontSizeToFitWidth = true
         itemTitleLbl.minimumScaleFactor = 0.1
         itemTitleLbl.lineBreakMode = .byTruncatingTail
@@ -103,7 +109,7 @@ import UIKit
         itemSubtitleLbl.numberOfLines = 2
         itemSubtitleLbl.sizeToFit()
         
-        actionBtn.frame = CGRect(x: RevX(insets, width: btnWidth), y: RevY(insets+2, height: 36), width: btnWidth, height: 28)
+        actionBtn.frame = CGRect(x: RevX(insets, width: btnWidth), y: RevY(insets, height: 32), width: btnWidth, height: 32)
         actionBtn.backgroundColor = UIColor.clear
         actionBtn.layer.backgroundColor = lightColor.cgColor
         actionBtn.layer.cornerRadius = actionBtn.layer.bounds.height/2
@@ -111,8 +117,14 @@ import UIKit
         actionBtn.setAttributedTitle(btnTitle, for: .normal)
         actionBtn.addTarget(self, action: #selector(buttonTapped), for: UIControlEvents.touchUpInside)
         
+        backgroundIV.bringSubview(toFront: titleLbl)
+        
     }
     
+    override func cardTapped() {
+        super.cardTapped()
+        delegate?.cardDidTapInside?(card: self)
+    }
    
     //Actions
     @objc func buttonTapped(){
@@ -124,7 +136,7 @@ import UIKit
                 self.actionBtn.transform = CGAffineTransform.identity
             })
         }
-        delegate?.cardDidTapButton(button: actionBtn)
+        delegate?.cardDidTapButton?(button: actionBtn)
     }
     
 

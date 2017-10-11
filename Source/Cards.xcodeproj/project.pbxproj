@@ -11,12 +11,12 @@
 		524AFF881F86424C00A137F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524AFF871F86424C00A137F7 /* ViewController.swift */; };
 		524AFF8B1F86424C00A137F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524AFF891F86424C00A137F7 /* Main.storyboard */; };
 		524AFF901F86424C00A137F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524AFF8E1F86424C00A137F7 /* LaunchScreen.storyboard */; };
-		525383141F8B54AE0070C567 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525383131F8B54AE0070C567 /* Card.swift */; };
 		5276B28C1F88C35E00A30082 /* CardHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276B28B1F88C35E00A30082 /* CardHighlight.swift */; };
 		5276B28E1F8A564900A30082 /* CardGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276B28D1F8A564900A30082 /* CardGroup.swift */; };
 		5276B2901F8A633400A30082 /* CardArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276B28F1F8A633400A30082 /* CardArticle.swift */; };
 		5276B2931F8A6BB000A30082 /* CardGroupSliding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276B2921F8A6BB000A30082 /* CardGroupSliding.swift */; };
 		52CBD33E1F8D32B6008959A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52CBD33D1F8D32B6008959A0 /* Assets.xcassets */; };
+		52FA8B941F8E87A10000B5A2 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525383131F8B54AE0070C567 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -167,9 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FA8B941F8E87A10000B5A2 /* Card.swift in Sources */,
 				524AFF881F86424C00A137F7 /* ViewController.swift in Sources */,
 				5276B28E1F8A564900A30082 /* CardGroup.swift in Sources */,
-				525383141F8B54AE0070C567 /* Card.swift in Sources */,
 				5276B2931F8A6BB000A30082 /* CardGroupSliding.swift in Sources */,
 				5276B28C1F88C35E00A30082 /* CardHighlight.swift in Sources */,
 				524AFF861F86424C00A137F7 /* AppDelegate.swift in Sources */,
@@ -313,7 +313,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4B98PNC6BV;
 				INFOPLIST_FILE = Cards/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.paolocuscela.Cards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -329,7 +329,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4B98PNC6BV;
 				INFOPLIST_FILE = Cards/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.paolocuscela.Cards;
 				PRODUCT_NAME = "$(TARGET_NAME)";

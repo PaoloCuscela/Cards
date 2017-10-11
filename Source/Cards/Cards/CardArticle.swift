@@ -12,7 +12,9 @@ import UIKit
     
     // SB Vars
     @IBInspectable var title: String = "The Art of the Impossible"
+    @IBInspectable var titleSize: CGFloat = 26
     @IBInspectable var subtitle: String = "Inside the extraordinary world of Monument Valley 2"
+    @IBInspectable var subtitleSize: CGFloat = 17
     @IBInspectable var category: String = "world premiere"
     @IBInspectable var blurEffect: UIBlurEffectStyle = UIBlurEffectStyle.extraLight
     
@@ -20,21 +22,26 @@ import UIKit
     var delegate: CardDelegate?
     
     //Priv Vars
-    var titleLbl = UILabel ()
-    var subtitleLbl = UILabel()
-    var categoryLbl = UILabel()
+    internal var titleLbl = UILabel ()
+    internal var subtitleLbl = UILabel()
+    internal var categoryLbl = UILabel()
     
     // View Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        initialize()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-
+        initialize()
+    }
+    
+    override func initialize() {
+        super.initialize()
+        
         backgroundIV.addSubview(titleLbl)
         backgroundIV.addSubview(subtitleLbl)
         backgroundIV.addSubview(categoryLbl)
-        
     }
     
     
@@ -66,7 +73,7 @@ import UIKit
         titleLbl.frame = CGRect(x: X(insets), y: Y(1, from: categoryLbl), width: X(80), height: Y(17))
         titleLbl.textColor = textColor
         titleLbl.text = title
-        titleLbl.font = UIFont.systemFont(ofSize: self.maxTitleFontSize, weight: .bold)
+        titleLbl.font = UIFont.systemFont(ofSize: titleSize, weight: .bold)
         titleLbl.adjustsFontSizeToFitWidth = true
         titleLbl.minimumScaleFactor = 0.1
         titleLbl.lineBreakMode = .byClipping
@@ -74,10 +81,10 @@ import UIKit
         titleLbl.baselineAdjustment = .none
         titleLbl.sizeToFit()
         
-        subtitleLbl.frame = CGRect(x: X(insets), y: RevY(insets*(frame.width/frame.height), height: Y(7)), width: X(100-(insets*2)), height: Y(10))
+        subtitleLbl.frame = CGRect(x: X(insets), y: RevY(insets*(frame.width/frame.height), height: Y(14)), width: X(100-(insets*2)), height: Y(14))
         subtitleLbl.text = subtitle
         subtitleLbl.textColor = textColor
-        subtitleLbl.font = UIFont.systemFont(ofSize: 100, weight: .medium)
+        subtitleLbl.font = UIFont.systemFont(ofSize: subtitleSize, weight: .medium)
         subtitleLbl.shadowColor = UIColor.black
         subtitleLbl.shadowOffset = CGSize.zero
         subtitleLbl.adjustsFontSizeToFitWidth = true
@@ -90,7 +97,7 @@ import UIKit
     
     override func cardTapped() {
         super.cardTapped()
-        delegate?.cardDidTapInside(card: self)
+        delegate?.cardDidTapInside?(card: self)
     }
     
 }

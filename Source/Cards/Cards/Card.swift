@@ -8,10 +8,10 @@
 
 import UIKit
 
-protocol CardDelegate {
+@objc protocol CardDelegate {
     
-    func cardDidTapButton(button: UIButton)
-    func cardDidTapInside(card: Card)
+    @objc optional func cardDidTapButton(button: UIButton)
+    @objc optional func cardDidTapInside(card: Card)
 }
 
 @IBDesignable class Card: UIView {
@@ -25,23 +25,25 @@ protocol CardDelegate {
     @IBInspectable var textColor: UIColor = UIColor.white
     @IBInspectable var insets: CGFloat = 6
     @IBInspectable var cardRadius: CGFloat = 20
-    @IBInspectable var maxTitleFontSize: CGFloat = 26
     
     
     //Priv Vars
-    var backgroundIV = UIImageView()
+    internal var backgroundIV = UIImageView()
     
     // View Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        initialize()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initialize()
+    }
+    
+    func initialize() {
         self.backgroundColor = UIColor.clear
-        
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.cardTapped)))
-        
-        addSubview(backgroundIV)
+        self.addSubview(backgroundIV)
     }
     
     
@@ -73,7 +75,6 @@ protocol CardDelegate {
     
     //Actions
     @objc func cardTapped(){
-        print("card tapped")
         UIView.animate(withDuration: 0.2, animations: {
             self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         }) { (true) in
@@ -82,8 +83,6 @@ protocol CardDelegate {
             })
         }
     }
-    
-    
 }
 
 

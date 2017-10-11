@@ -10,21 +10,29 @@ import UIKit
 
 @IBDesignable class CardGroupSliding: CardGroup {
 
+    // SB Vars
     @IBInspectable var iconsSize: CGFloat = 80
     @IBInspectable var iconsRadius: CGFloat = 40
     
     var icons: [UIImage]?
     
-    final let CellID = "SlidingCVCell"
-    var slidingCV: UICollectionView!
-    var timer = Timer()
-    var w: CGFloat = 0
+    // Priv vars
+    private final let CellID = "SlidingCVCell"
+    internal var slidingCV: UICollectionView!
+    internal var timer = Timer()
+    internal var w: CGFloat = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        initialize()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initialize()
+    }
+    
+    override func initialize() {
+        super.initialize()
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -35,8 +43,8 @@ import UIKit
         slidingCV.backgroundColor = UIColor.clear
         slidingCV.isUserInteractionEnabled = false
         
-        backgroundIV.addSubview(titleLbl)
         backgroundIV.addSubview(subtitleLbl)
+        backgroundIV.addSubview(titleLbl)
         backgroundIV.addSubview(slidingCV)
         blurV.removeFromSuperview()
         
@@ -54,10 +62,9 @@ import UIKit
         func RevY(_ percentage: CGFloat, height: CGFloat) -> CGFloat { return (rect.height - percentage*rect.height/100) - height }
         super.draw(rect)
         
-        //subtitleLbl.frame = CGRect(x: X(insets), y: Y(1, from: titleLbl), width: X(100 - (2 * insets)), height: Y(10))
-        titleLbl.textColor = textColor.withAlphaComponent(0.3)
+        subtitleLbl.textColor = textColor.withAlphaComponent(0.4)
         
-        slidingCV.frame = CGRect(x: 0, y: Y(8, from: subtitleLbl), width: rect.width, height: Y(65))
+        slidingCV.frame = CGRect(x: 0, y: RevY(insets*(rect.width/rect.height), height: Y(60)), width: rect.width, height: Y(60))
         
     }
     
@@ -149,11 +156,6 @@ extension CardGroupSliding: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize { return CGSize(width: iconsSize, height: iconsSize ) }
     
-}
-
-extension CardGroupSliding: UICollectionViewDelegate {
-    
-
 }
 
 
