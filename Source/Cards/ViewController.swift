@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let icons = [
+        _ = [
         
             UIImage(named: "background")!,
             UIImage(named: "Icon")!,

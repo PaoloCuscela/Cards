@@ -42,7 +42,7 @@ import UIKit
         backgroundIV.addSubview(titleLbl)
         backgroundIV.addSubview(itemTitleLbl)
         backgroundIV.addSubview(itemSubtitleLbl)
-        backgroundIV.addSubview(actionBtn)
+        self.addSubview(actionBtn)
         
         if bgImage == nil {  backgroundIV.addSubview(bgIconIV); }
         else { bgIconIV.alpha = 0 }
@@ -103,15 +103,14 @@ import UIKit
         itemSubtitleLbl.numberOfLines = 2
         itemSubtitleLbl.sizeToFit()
         
-        actionBtn.frame = CGRect(x: RevX(insets, width: btnWidth), y: RevY(insets+2, height: 28), width: btnWidth, height: 28)
+        actionBtn.frame = CGRect(x: RevX(insets, width: btnWidth), y: RevY(insets+2, height: 36), width: btnWidth, height: 28)
         actionBtn.backgroundColor = UIColor.clear
         actionBtn.layer.backgroundColor = lightColor.cgColor
         actionBtn.layer.cornerRadius = actionBtn.layer.bounds.height/2
-        let btnTitle = NSAttributedString(string: buttonText.uppercased(), attributes: [ NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14, weight: .black), NSAttributedStringKey.foregroundColor : self.tintColor])
+        let btnTitle = NSAttributedString(string: buttonText.uppercased(), attributes: [ NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16, weight: .black), NSAttributedStringKey.foregroundColor : self.tintColor])
         actionBtn.setAttributedTitle(btnTitle, for: .normal)
         actionBtn.addTarget(self, action: #selector(buttonTapped), for: UIControlEvents.touchUpInside)
         
-        bringSubview(toFront: titleLbl)
     }
     
    
