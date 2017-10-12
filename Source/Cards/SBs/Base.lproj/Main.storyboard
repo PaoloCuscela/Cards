@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,65 +17,8 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7U-9J-ZVu" customClass="CardArticle" customModule="Cards" customModuleProvider="target">
-                                <rect key="frame" x="103.5" y="467" width="167" height="200"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.79165035486221313" green="0.77181440591812134" blue="0.45148473978042603" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="q7U-9J-ZVu" secondAttribute="height" multiplier="5:6" id="7Uq-p4-rnq"/>
-                                    <constraint firstAttribute="height" constant="200" id="9n9-hn-P4H"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="bgImage" value="mvBackground"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="icon" value="flappy"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="iconRadius">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="ItemTitleSize">
-                                        <real key="value" value="14"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="itemSubtitleSize">
-                                        <real key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7A-pJ-vy9" customClass="CardHighlight" customModule="Cards" customModuleProvider="target">
-                                <rect key="frame" x="21" y="41" width="333" height="400.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="j7A-pJ-vy9" secondAttribute="height" multiplier="5:6" id="68m-ey-g3x"/>
-                                    <constraint firstAttribute="height" constant="400" id="IJf-7b-1Oi"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="icon" value="flappy"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
-                                        <color key="value" red="0.0015786903677508235" green="0.37055540084838867" blue="0.43997174501419067" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="ItemTitleSize">
-                                        <real key="value" value="22"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="itemSubtitleSize">
-                                        <real key="value" value="19"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="j7A-pJ-vy9" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.7" id="agD-NX-ajf"/>
-                            <constraint firstItem="j7A-pJ-vy9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bd9-Ne-76K"/>
-                            <constraint firstItem="q7U-9J-ZVu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="nSe-Pw-LRy"/>
-                            <constraint firstItem="q7U-9J-ZVu" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.65" id="y1d-rJ-0Ff"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="j7A-pJ-vy9"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -85,9 +26,5 @@
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="flappy" width="175" height="175"/>
-        <image name="mvBackground" width="1920" height="1080"/>
-    </resources>
     <color key="tintColor" red="0.0" green="0.36862745098039218" blue="0.43997174501419067" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

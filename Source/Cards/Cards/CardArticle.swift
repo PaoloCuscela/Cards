@@ -61,7 +61,7 @@ import UIKit
         
         categoryLbl.frame = CGRect(x: X(insets), y: X(insets), width: X(100-(insets*2)), height: Y(5))
         categoryLbl.text = category.uppercased()
-        categoryLbl.textColor = textColor.withAlphaComponent(0.9)
+        categoryLbl.textColor = textColor.withAlphaComponent(0.3)
         categoryLbl.font = UIFont.systemFont(ofSize: 100, weight: .bold)
         categoryLbl.shadowColor = UIColor.black
         categoryLbl.shadowOffset = CGSize.zero

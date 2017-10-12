@@ -10,8 +10,10 @@ import UIKit
 
 @objc protocol CardDelegate {
     
-    @objc optional func cardDidTapButton(button: UIButton)
     @objc optional func cardDidTapInside(card: Card)
+    @objc optional func cardHighlightDidTapButton(card: CardHighlight, button: UIButton)
+    @objc optional func cardPlayerDidPlay(card: CardPlayer)
+    @objc optional func cardPlayerDidPause(card: CardPlayer)
 }
 
 @IBDesignable class Card: UIView {
@@ -20,12 +22,17 @@ import UIKit
     @IBInspectable var shadowBlur: CGFloat = 14
     @IBInspectable var shadowOpacity: Float = 0.6
     @IBInspectable var shadowColor: UIColor = UIColor.gray
-    @IBInspectable var bgImage: UIImage?
-    @IBInspectable var bgColor: UIColor = UIColor.darkGray
-    @IBInspectable var textColor: UIColor = UIColor.white
+    @IBInspectable var backgroundImage: UIImage?
+    @IBInspectable var textColor: UIColor = UIColor.black
     @IBInspectable var insets: CGFloat = 6
     @IBInspectable var cardRadius: CGFloat = 20
     
+    override var backgroundColor: UIColor? {
+        didSet(new) {
+            if let color = new { self.layer.backgroundColor = color.cgColor }
+            if backgroundColor != UIColor.clear { backgroundColor = UIColor.clear }
+        }
+    }
     
     //Priv Vars
     internal var backgroundIV = UIImageView()
@@ -41,9 +48,9 @@ import UIKit
     }
     
     func initialize() {
-        self.backgroundColor = UIColor.clear
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.cardTapped)))
         self.addSubview(backgroundIV)
+        self.backgroundColor = UIColor.white
     }
     
     
@@ -62,11 +69,10 @@ import UIKit
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = shadowBlur
         self.layer.cornerRadius = cardRadius
-        self.layer.backgroundColor = bgColor.cgColor
         
         //Draw
         backgroundIV.frame = rect
-        backgroundIV.image = bgImage
+        backgroundIV.image = backgroundImage
         backgroundIV.layer.cornerRadius = self.layer.cornerRadius
         backgroundIV.clipsToBounds = true
         backgroundIV.contentMode = .scaleAspectFill

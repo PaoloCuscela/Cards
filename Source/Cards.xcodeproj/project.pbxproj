@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5248FA7C1F8FA79A00D0EA58 /* CardPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248FA7B1F8FA79A00D0EA58 /* CardPlayer.swift */; };
+		5248FA7E1F8FC64600D0EA58 /* Player_by_Patric_Piemonte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248FA7D1F8FC64600D0EA58 /* Player_by_Patric_Piemonte.swift */; };
 		524AFF861F86424C00A137F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524AFF851F86424C00A137F7 /* AppDelegate.swift */; };
 		524AFF881F86424C00A137F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524AFF871F86424C00A137F7 /* ViewController.swift */; };
 		524AFF8B1F86424C00A137F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524AFF891F86424C00A137F7 /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5248FA7B1F8FA79A00D0EA58 /* CardPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPlayer.swift; sourceTree = "<group>"; };
+		5248FA7D1F8FC64600D0EA58 /* Player_by_Patric_Piemonte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player_by_Patric_Piemonte.swift; sourceTree = "<group>"; };
 		524AFF821F86424C00A137F7 /* Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		524AFF851F86424C00A137F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		524AFF871F86424C00A137F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,11 +81,13 @@
 		52CC10131F8CCAB1007A7545 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				5248FA7D1F8FC64600D0EA58 /* Player_by_Patric_Piemonte.swift */,
 				525383131F8B54AE0070C567 /* Card.swift */,
 				5276B28B1F88C35E00A30082 /* CardHighlight.swift */,
 				5276B28F1F8A633400A30082 /* CardArticle.swift */,
 				5276B28D1F8A564900A30082 /* CardGroup.swift */,
 				5276B2921F8A6BB000A30082 /* CardGroupSliding.swift */,
+				5248FA7B1F8FA79A00D0EA58 /* CardPlayer.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -169,10 +175,12 @@
 			files = (
 				52FA8B941F8E87A10000B5A2 /* Card.swift in Sources */,
 				524AFF881F86424C00A137F7 /* ViewController.swift in Sources */,
+				5248FA7C1F8FA79A00D0EA58 /* CardPlayer.swift in Sources */,
 				5276B28E1F8A564900A30082 /* CardGroup.swift in Sources */,
 				5276B2931F8A6BB000A30082 /* CardGroupSliding.swift in Sources */,
 				5276B28C1F88C35E00A30082 /* CardHighlight.swift in Sources */,
 				524AFF861F86424C00A137F7 /* AppDelegate.swift in Sources */,
+				5248FA7E1F8FC64600D0EA58 /* Player_by_Patric_Piemonte.swift in Sources */,
 				5276B2901F8A633400A30082 /* CardArticle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -50,7 +50,7 @@ import UIKit
         backgroundIV.addSubview(itemSubtitleLbl)
         self.addSubview(actionBtn)
         
-        if bgImage == nil {  backgroundIV.addSubview(bgIconIV); }
+        if backgroundImage == nil {  backgroundIV.addSubview(bgIconIV); }
         else { bgIconIV.alpha = 0 }
     }
     
@@ -71,7 +71,7 @@ import UIKit
         bgIconIV.frame = CGRect(x: RevX(-20, width: X(60)), y: Y(0), width: X(60), height: X(60))
         bgIconIV.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/6))
         bgIconIV.image = icon
-        bgIconIV.alpha = bgImage != nil ? 0 : 0.6
+        bgIconIV.alpha = backgroundImage != nil ? 0 : 0.6
         bgIconIV.layer.cornerRadius = iconRadius * 2
         bgIconIV.clipsToBounds = true
         
@@ -128,7 +128,7 @@ import UIKit
    
     //Actions
     @objc func buttonTapped(){
-        //delegate?.cardDidTapButton(button: actionBtn); print("button tapped")
+
         UIView.animate(withDuration: 0.2, animations: {
             self.actionBtn.transform = CGAffineTransform(scaleX: 0.90, y: 0.90)
         }) { (true) in
@@ -136,7 +136,7 @@ import UIKit
                 self.actionBtn.transform = CGAffineTransform.identity
             })
         }
-        delegate?.cardDidTapButton?(button: actionBtn)
+        delegate?.cardHighlightDidTapButton?(card: self, button: actionBtn)
     }
     
 
