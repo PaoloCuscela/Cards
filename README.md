@@ -1,7 +1,5 @@
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/Cards.svg?style=flat)](http://cocoadocs.org/docsets/Cards)
 [![Platform](https://img.shields.io/cocoapods/p/Cards.svg?style=flat)](http://cocoadocs.org/docsets/Cards)
-
-
 ![Cards](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Logo.png)
 
 Cards brings to XCode the card views you can see in the new iOS XI Appstore.
@@ -117,6 +115,10 @@ view.addSubview(card)
 
     view.addSubview(card)
 ```
+
+## Thanksto
+
+- **Patrick Piemonte** - providing [Player](https://github.com/piemonte/Player) framework used in [CardPlayer.swift](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Cards/CardPlayer.swift)
 
 ## License
 
