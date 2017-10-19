@@ -17,10 +17,11 @@ import UIKit
     var icons: [UIImage]?
     
     // Priv vars
-    private final let CellID = "SlidingCVCell"
-    internal var slidingCV: UICollectionView!
-    internal var timer = Timer()
-    internal var w: CGFloat = 0
+    fileprivate final let CellID = "SlidingCVCell"
+    fileprivate var slidingCV: UICollectionView!
+    fileprivate var timer = Timer()
+    fileprivate var w: CGFloat = 0
+    fileprivate var layout = UICollectionViewFlowLayout()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +35,8 @@ import UIKit
     override func initialize() {
         super.initialize()
         
-        let layout = UICollectionViewFlowLayout()
+        self.delegate = self
+        
         layout.scrollDirection = .horizontal
         slidingCV = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         slidingCV.register(SlidingCVCell.self, forCellWithReuseIdentifier: CellID)
@@ -51,30 +53,31 @@ import UIKit
         backgroundIV.backgroundColor = UIColor.white
     }
     
-    override func draw(_ rect: CGRect) {
-        
-        // Helpers func
-        func X(_ percentage: CGFloat ) -> CGFloat { return percentage*rect.width/100 }
-        func Y(_ percentage: CGFloat ) -> CGFloat { return percentage*rect.height/100 }
-        func X(_ percentage: CGFloat, from: UIView ) -> CGFloat { return percentage*rect.width/100 + from.frame.maxX }
-        func Y(_ percentage: CGFloat, from: UIView ) -> CGFloat { return percentage*rect.height/100 + from.frame.maxY }
-        func RevX(_ percentage: CGFloat, width: CGFloat ) -> CGFloat { return (rect.width - percentage*rect.width/100) - width }
-        func RevY(_ percentage: CGFloat, height: CGFloat) -> CGFloat { return (rect.height - percentage*rect.height/100) - height }
-        super.draw(rect)
-        
-        subtitleLbl.textColor = textColor.withAlphaComponent(0.4)
-        
-        slidingCV.frame = CGRect(x: 0, y: RevY(insets*(rect.width/rect.height), height: Y(60)), width: rect.width, height: Y(60))
-        
-    }
-    
     override func didMoveToWindow() {
         
         slidingCV.reloadData()
         startSlide()
-        
     }
     
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        subtitleLbl.textColor = textColor.withAlphaComponent(0.4)
+        layout(backgroundIV.bounds)
+    }
+    
+    fileprivate func layout(_ rect: CGRect, animated: Bool = false, showingDetail: Bool = false) {
+        
+        let gimme = LayoutHelper(rect: rect)
+        
+        slidingCV.frame = CGRect(x: 0,
+                                 y: gimme.Y(5, from: titleLbl),
+                                 width: backgroundIV.frame.width,
+                                 height: rect.height - blurV.frame.height - insets )
+    }
+    
+    override func cardIsShowingDetail(card: Card) { super.cardIsShowingDetail(card: card);  self.layout(backgroundIV.bounds, animated: true, showingDetail: true) }
+    func cardDidCloseDetailView(card: Card) { self.layout(backgroundIV.bounds, animated: true, showingDetail: false) }
     
     
     //Sliding Logic
@@ -96,11 +99,40 @@ import UIKit
             slidingCV.contentOffset = CGPoint(x: w, y: 0)
         }
         else { w = slidingCV.contentOffset.x }
+    }
+}
+
+//MARK: - Collection View Delegates
+
+extension CardGroupSliding: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if icons?.count != nil { return 10000 }
+        else { return 0 }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        
+        let icon = icons?[indexPath.row % icons!.count]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellID, for: indexPath) as! SlidingCVCell
+        cell.radius = cell.frame.height/2
+        cell.icon = icon
+        return cell
         
     }
     
-    
 }
+
+extension CardGroupSliding: UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        iconsSize = collectionView.bounds.height/3 - layout.minimumLineSpacing
+        return CGSize(width: iconsSize, height: iconsSize )
+    }
+}
+
 
 class SlidingCVCell: UICollectionViewCell {
     
@@ -132,31 +164,7 @@ class SlidingCVCell: UICollectionViewCell {
     }
 }
 
-extension CardGroupSliding: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if icons?.count != nil { return 100 }
-        else { return 0 }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-    
-        let icon = icons?[indexPath.row % icons!.count]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellID, for: indexPath) as! SlidingCVCell
-        cell.radius = iconsRadius
-        cell.icon = icon
-        return cell
-        
-    }
-    
-}
 
-extension CardGroupSliding: UICollectionViewDelegateFlowLayout{
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize { return CGSize(width: iconsSize, height: iconsSize ) }
-    
-}
 
 
 

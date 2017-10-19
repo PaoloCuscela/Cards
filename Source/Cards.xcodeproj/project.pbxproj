@@ -18,6 +18,7 @@
 		5276B2901F8A633400A30082 /* CardArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276B28F1F8A633400A30082 /* CardArticle.swift */; };
 		5276B2931F8A6BB000A30082 /* CardGroupSliding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276B2921F8A6BB000A30082 /* CardGroupSliding.swift */; };
 		52CBD33E1F8D32B6008959A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52CBD33D1F8D32B6008959A0 /* Assets.xcassets */; };
+		52EAF3B01F93972B0059870A /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EAF3AF1F93972B0059870A /* LayoutHelper.swift */; };
 		52FA8B941F8E87A10000B5A2 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525383131F8B54AE0070C567 /* Card.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		5276B28F1F8A633400A30082 /* CardArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardArticle.swift; sourceTree = "<group>"; };
 		5276B2921F8A6BB000A30082 /* CardGroupSliding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGroupSliding.swift; sourceTree = "<group>"; };
 		52CBD33D1F8D32B6008959A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		52EAF3AF1F93972B0059870A /* LayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				5276B28D1F8A564900A30082 /* CardGroup.swift */,
 				5276B2921F8A6BB000A30082 /* CardGroupSliding.swift */,
 				5248FA7B1F8FA79A00D0EA58 /* CardPlayer.swift */,
+				52EAF3AF1F93972B0059870A /* LayoutHelper.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				5276B28C1F88C35E00A30082 /* CardHighlight.swift in Sources */,
 				524AFF861F86424C00A137F7 /* AppDelegate.swift in Sources */,
 				5248FA7E1F8FC64600D0EA58 /* Player_by_Patric_Piemonte.swift in Sources */,
+				52EAF3B01F93972B0059870A /* LayoutHelper.swift in Sources */,
 				5276B2901F8A633400A30082 /* CardArticle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

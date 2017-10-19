@@ -1,6 +1,8 @@
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/Cards.svg?style=flat)](http://cocoadocs.org/docsets/Cards)
 [![Platform](https://img.shields.io/cocoapods/p/Cards.svg?style=flat)](http://cocoadocs.org/docsets/Cards)
+
 ![Cards](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Logo.png)
+
 
 Cards brings to XCode the card views you can see in the new iOS XI Appstore.
 
@@ -11,16 +13,29 @@ Cards brings to XCode the card views you can see in the new iOS XI Appstore.
 - Open the **Identity Inspector** and type '**CardHighligth**' the '**class**' field
 - Switch to the **Attributes Inspector** and **configure** it as you like. 
 
+![CardViewStoryboard](https://raw.githubusercontent.com/PaoloCuscela/Cards/Images/CardViewStoryboard.png)
+
+* Drag a blank **UIViewController** and design its view as you like
+* Move to the **Identity inspector** 
+* Type '**CardContent**' in the **StoryboardID** field
+
+![DetailViewStoryboard](https://raw.githubusercontent.com/PaoloCuscela/Cards/Images/DetailViewStoryboard.png)
+
 ### Code
 ```swift
 // Aspect Ratio of 5:6 is preferred
-let card = CardHighlight(frame: CGRect(x: 100, y: 100, width: 200, height: 240))
+let card = CardHighlight(frame: CGRect(x: 10, y: 30, width: 200 , height: 240))
 card.backgroundColor = UIColor(red: 0, green: 94/255, blue: 112/255, alpha: 1)
-card.backgroundImage = UIImage(named: "flBackground")   // Comment this for the first view
 card.icon = UIImage(named: "flappy")
-card.title = "Welcome to XI Cards !"
+card.title = "Welcome \nto \nCards !"
 card.itemTitle = "Flappy Bird"
 card.itemSubtitle = "Flap That !"
+card.textColor = UIColor.white
+    
+let detailVC = storyboard?.instantiateViewController(withIdentifier: "CardContent")
+// Or init a new one and programmatically design its view 
+card.detailView = detailVC?.view
+    
 view.addSubview(card)
 ```
 
@@ -49,7 +64,7 @@ pod 'Cards'
 ![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Overview.png)
 ![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardPlayer.gif)
 ![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardGroupSliding.gif)
-
+![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/Images/DetailView.gif)
 
 ## Customization
 

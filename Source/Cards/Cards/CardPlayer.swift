@@ -23,10 +23,7 @@ import UIKit
     @IBInspectable var isAutoplayEnabled: Bool = false
     @IBInspectable var shouldRestartVideoWhenPlaybackEnds: Bool = true
     @IBInspectable var videoSource: URL? = URL(string: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
-    
-    // Delegate
-    var delegate: CardDelegate?
-    var player: Player! // Player provided by Patrik Piemonte
+    open var player = Player() // Player provided by Patrik Piemonte
     
     //Priv Vars
     internal var titleLbl = UILabel ()
@@ -36,7 +33,7 @@ import UIKit
     internal var playerCoverIV = UIImageView()
     internal var categoryLbl = UILabel()
     
-    
+   
     // View Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,6 +46,7 @@ import UIKit
     
     override func initialize() {
         super.initialize()
+        self.delegate = self
         
         backgroundIV.addSubview(categoryLbl)
         backgroundIV.addSubview(titleLbl)
@@ -56,7 +54,6 @@ import UIKit
         backgroundIV.addSubview(playerCoverIV)
         
         // Player Init
-        self.player = Player()
         player.playerDelegate = self
         player.playbackDelegate = self
         player.fillMode = PlayerFillMode.resizeAspectFill.avFoundationType
@@ -64,7 +61,7 @@ import UIKit
         else { print("CARDS: Something wrong with the video source URL") }
        
         backgroundIV.addSubview(self.player.view)
-        //player.view.addSubview(playPauseV)
+        backgroundIV.backgroundColor = UIColor.yellow
         playPauseV.contentView.addSubview(playIV)
         playPauseV.contentView.bringSubview(toFront: playIV)
         
@@ -80,38 +77,18 @@ import UIKit
     
     
     override func draw(_ rect: CGRect) {
-        
-        // Helpers func
-        func X(_ percentage: CGFloat ) -> CGFloat { return percentage*rect.width/100 }
-        func Y(_ percentage: CGFloat ) -> CGFloat { return percentage*rect.height/100 }
-        func X(_ percentage: CGFloat, from: UIView ) -> CGFloat { return percentage*rect.width/100 + from.frame.maxX }
-        func Y(_ percentage: CGFloat, from: UIView ) -> CGFloat { return percentage*rect.height/100 + from.frame.maxY }
-        func RevX(_ percentage: CGFloat, width: CGFloat ) -> CGFloat { return (rect.width - percentage*rect.width/100) - width }
-        func RevY(_ percentage: CGFloat, height: CGFloat) -> CGFloat { return (rect.height - percentage*rect.height/100) - height }
-        func Size(_ percentage: CGFloat, of view: UIView) -> CGFloat { return percentage*view.frame.width/100 }
-        
-        //Draw
         super.draw(rect)
-        
-        self.player.view.frame = CGRect(x: 0, y: 0, width: rect.width, height: Y(40))
-        playerCoverIV.frame = player.view.bounds
+    
         if let cover = playerCover { playerCoverIV.image = cover }
         
-        playPauseV.frame.size = CGSize(width: playBtnSize, height: playBtnSize)
-        playPauseV.center = player.view.center
-        playPauseV.layer.cornerRadius = playPauseV.frame.height/2
         playPauseV.effect = UIBlurEffect(style: .dark)
         playPauseV.clipsToBounds = true
         
-        playIV.frame.size = CGSize(width: Size(50, of: playPauseV), height: Size(50, of: playPauseV))
-        playIV.center = playPauseV.contentView.center.applying(CGAffineTransform(translationX: Size(5, of: playPauseV), y: 0))
         playIV.contentMode = .scaleAspectFit
         playIV.tintColor = UIColor.white
         if let img = playImage ?? UIImage(named: "CardPlayerPlayIcon") { playIV.image = img.withRenderingMode(.alwaysTemplate) }
         else { print("CARDS: Missing play icon, assign one to 'playImage' or download it from my repo and import it to your assests folder") }
         
-        
-        categoryLbl.frame = CGRect(x: X(insets), y: Y(5, from: player.view), width: X(100-(insets*2)), height: Y(5))
         categoryLbl.text = category.uppercased()
         categoryLbl.textColor = textColor.withAlphaComponent(0.3)
         categoryLbl.font = UIFont.systemFont(ofSize: 100, weight: .bold)
@@ -122,7 +99,6 @@ import UIKit
         categoryLbl.lineBreakMode = .byTruncatingTail
         categoryLbl.numberOfLines = 0
         
-        titleLbl.frame = CGRect(x: X(insets), y: Y(1, from: categoryLbl), width: X(80), height: Y(17))
         titleLbl.textColor = textColor
         titleLbl.text = title
         titleLbl.font = UIFont.systemFont(ofSize: titleSize, weight: .bold)
@@ -131,9 +107,7 @@ import UIKit
         titleLbl.lineBreakMode = .byClipping
         titleLbl.numberOfLines = 2
         titleLbl.baselineAdjustment = .none
-        titleLbl.sizeToFit()
         
-        subtitleLbl.frame = CGRect(x: X(insets), y: RevY(insets*(frame.width/frame.height), height: Y(14)), width: X(100-(insets*2)), height: Y(14))
         subtitleLbl.text = subtitle
         subtitleLbl.textColor = textColor
         subtitleLbl.font = UIFont.systemFont(ofSize: subtitleSize, weight: .medium)
@@ -145,8 +119,57 @@ import UIKit
         subtitleLbl.numberOfLines = 0
         subtitleLbl.textAlignment = .left
         
+        layout(rect, animated: false, showingDetail: false)
     }
     
+    fileprivate func layout(_ rect: CGRect, animated: Bool = false, showingDetail: Bool = false) {
+        let gimme = LayoutHelper(rect: rect)
+        
+        let aspect916 = rect.width *  (9/16)
+        let aspect921 = rect.width *  (9/21)
+        let move = ( aspect916 - aspect921 ) * 2
+        
+        subtitleLbl.transform = showingDetail ? CGAffineTransform(translationX: 0, y: move) : CGAffineTransform.identity
+        backgroundIV.frame.size.height = originalFrame.height + ( showingDetail ? move : 0 )
+        
+        player.view.frame.origin = CGPoint.zero
+        player.view.frame.size = CGSize(width: rect.width, height: showingDetail ? aspect916 : aspect921 )
+        playerCoverIV.frame = player.view.bounds
+        
+        playPauseV.frame.size = CGSize(width: playBtnSize, height: playBtnSize)
+        playPauseV.center = player.view.center
+        playPauseV.layer.cornerRadius = playPauseV.frame.height/2
+        
+        playIV.center = playPauseV.contentView.center.applying(CGAffineTransform(translationX: gimme.Width(5, of: playPauseV), y: 0))
+        playIV.frame.size = CGSize(width: gimme.Width(50, of: playPauseV),
+                                   height: gimme.Width(50, of: playPauseV))
+        
+        categoryLbl.frame.origin.y = gimme.Y(3, from: player.view)
+        titleLbl.frame.origin.y = gimme.Y(0, from: categoryLbl)
+        titleLbl.sizeToFit()
+        
+        guard !animated else { return }
+            
+        categoryLbl.frame = CGRect(x: insets,
+                                   y: gimme.Y(3, from: player.view),
+                                   width: gimme.X(80),
+                                   height: gimme.Y(7))
+        
+        titleLbl.frame = CGRect(x: insets,
+                                y: gimme.Y(0, from: categoryLbl),
+                                width: gimme.X(70),
+                                height: gimme.Y(12))
+        titleLbl.sizeToFit()
+        
+        subtitleLbl.frame = CGRect(x: insets,
+                                   y: gimme.RevY(0, height: gimme.Y(14)) - insets,
+                                   width: gimme.X(80),
+                                   height: gimme.Y(12))
+            
+        
+    }
+    
+    // Actions
     override func cardTapped() {
         super.cardTapped()
         delegate?.cardDidTapInside?(card: self)
@@ -173,6 +196,8 @@ import UIKit
             
         })
     }
+    
+    
 }
 
 
@@ -188,6 +213,8 @@ extension CardPlayer: PlayerDelegate {
             self.playPauseV.alpha = 0
         }
         else { player.pause() }
+        
+       
     }
     
     func playerPlaybackStateDidChange(_ player: Player) { }
@@ -207,6 +234,14 @@ extension CardPlayer: PlayerPlaybackDelegate {
     func playerPlaybackWillLoop(_ player: Player) { }
     func playerCurrentTimeDidChange(_ player: Player) { }
     func playerPlaybackWillStartFromBeginning(_ player: Player) { }
+}
+
+extension CardPlayer: CardDelegate {
+    
+    func cardIsHidingDetail(card: Card) { layout(backgroundIV.frame, animated: true, showingDetail: false) }
+    func cardIsShowingDetail(card: Card) { layout(backgroundIV.frame, animated: true, showingDetail: true) }
+    
+   
 }
 
 

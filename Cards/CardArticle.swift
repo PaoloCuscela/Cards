@@ -17,14 +17,12 @@ import UIKit
     @IBInspectable var subtitleSize: CGFloat = 17
     @IBInspectable var category: String = "world premiere"
     @IBInspectable var blurEffect: UIBlurEffectStyle = UIBlurEffectStyle.extraLight
-    
-    // Delegate
-    var delegate: CardDelegate?
-    
+
     //Priv Vars
     internal var titleLbl = UILabel ()
     internal var subtitleLbl = UILabel()
     internal var categoryLbl = UILabel()
+    
     
     // View Life Cycle
     override init(frame: CGRect) {
@@ -39,6 +37,7 @@ import UIKit
     override func initialize() {
         super.initialize()
         
+        self.delegate = self
         backgroundIV.addSubview(titleLbl)
         backgroundIV.addSubview(subtitleLbl)
         backgroundIV.addSubview(categoryLbl)
@@ -47,19 +46,9 @@ import UIKit
     
     override func draw(_ rect: CGRect) {
         
-        // Helpers func
-        func X(_ percentage: CGFloat ) -> CGFloat { return percentage*rect.width/100 }
-        func Y(_ percentage: CGFloat ) -> CGFloat { return percentage*rect.height/100 }
-        func X(_ percentage: CGFloat, from: UIView ) -> CGFloat { return percentage*rect.width/100 + from.frame.maxX }
-        func Y(_ percentage: CGFloat, from: UIView ) -> CGFloat { return percentage*rect.height/100 + from.frame.maxY }
-        func RevX(_ percentage: CGFloat, width: CGFloat ) -> CGFloat { return (rect.width - percentage*rect.width/100) - width }
-        func RevY(_ percentage: CGFloat, height: CGFloat) -> CGFloat { return (rect.height - percentage*rect.height/100) - height }
-        
-        
         //Draw
         super.draw(rect)
         
-        categoryLbl.frame = CGRect(x: X(insets), y: X(insets), width: X(100-(insets*2)), height: Y(5))
         categoryLbl.text = category.uppercased()
         categoryLbl.textColor = textColor.withAlphaComponent(0.3)
         categoryLbl.font = UIFont.systemFont(ofSize: 100, weight: .bold)
@@ -70,7 +59,6 @@ import UIKit
         categoryLbl.lineBreakMode = .byTruncatingTail
         categoryLbl.numberOfLines = 0
         
-        titleLbl.frame = CGRect(x: X(insets), y: Y(1, from: categoryLbl), width: X(80), height: Y(17))
         titleLbl.textColor = textColor
         titleLbl.text = title
         titleLbl.font = UIFont.systemFont(ofSize: titleSize, weight: .bold)
@@ -79,9 +67,7 @@ import UIKit
         titleLbl.lineBreakMode = .byClipping
         titleLbl.numberOfLines = 2
         titleLbl.baselineAdjustment = .none
-        titleLbl.sizeToFit()
         
-        subtitleLbl.frame = CGRect(x: X(insets), y: RevY(insets*(frame.width/frame.height), height: Y(14)), width: X(100-(insets*2)), height: Y(14))
         subtitleLbl.text = subtitle
         subtitleLbl.textColor = textColor
         subtitleLbl.font = UIFont.systemFont(ofSize: subtitleSize, weight: .medium)
@@ -93,6 +79,8 @@ import UIKit
         subtitleLbl.numberOfLines = 0
         subtitleLbl.textAlignment = .left
      
+        self.layout(backgroundIV.frame)
+        
     }
     
     override func cardTapped() {
@@ -100,6 +88,37 @@ import UIKit
         delegate?.cardDidTapInside?(card: self)
     }
     
+    
+    private func layout(_ rect: CGRect) {
+        
+        
+        let gimme  = LayoutHelper(rect: rect)
+        
+        categoryLbl.frame = CGRect(x: insets,
+                                   y: insets,
+                                   width: gimme.X(80),
+                                   height: gimme.Y(7))
+        
+        titleLbl.frame = CGRect(x: insets,
+                                y: gimme.Y(1, from: categoryLbl),
+                                width: gimme.X(80),
+                                height: gimme.Y(17))
+       
+        subtitleLbl.frame = CGRect(x: insets,
+                                   y: gimme.RevY(0, height: gimme.Y(14)) - insets,
+                                   width: gimme.X(80),
+                                   height: gimme.Y(14))
+        titleLbl.sizeToFit()
+        
+    }
+    
+}
+
+extension CardArticle: CardDelegate {
+    
+    func cardDidShowDetailView(card: Card) { layout(backgroundIV.bounds) }
+    func cardWillCloseDetailView(card: Card) { layout(originalFrame) }
+
 }
 
 
