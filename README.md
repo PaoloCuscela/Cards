@@ -13,13 +13,13 @@ Cards brings to XCode the card views you can see in the new iOS XI Appstore.
 - Open the **Identity Inspector** and type '**CardHighligth**' the '**class**' field
 - Switch to the **Attributes Inspector** and **configure** it as you like. 
 
-![CardViewStoryboard](https://raw.githubusercontent.com/PaoloCuscela/Cards/Images/CardViewStoryboard.png)
+![CardViewStoryboard](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardViewStoryboard.png)
 
 * Drag a blank **UIViewController** and design its view as you like
 * Move to the **Identity inspector** 
 * Type '**CardContent**' in the **StoryboardID** field
 
-![DetailViewStoryboard](https://raw.githubusercontent.com/PaoloCuscela/Cards/Images/DetailViewStoryboard.png)
+![DetailViewStoryboard](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/DetailViewStoryboard.png)
 
 ### Code
 ```swift
@@ -64,7 +64,7 @@ pod 'Cards'
 ![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Overview.png)
 ![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardPlayer.gif)
 ![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardGroupSliding.gif)
-![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/Images/DetailView.gif)
+![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/DetailView.gif)
 
 ## Customization
 
