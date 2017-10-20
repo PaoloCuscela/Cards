@@ -10,7 +10,7 @@ Cards brings to XCode the card views you can see in the new iOS XI Appstore.
 
 ### Storyboard
 - Go to **main.storyboard** and add a **blank UIView**
-- Open the **Identity Inspector** and type '**CardHighligth**' the '**class**' field
+- Open the **Identity Inspector** and type '**CardHighlight**' the '**class**' field
 - Switch to the **Attributes Inspector** and **configure** it as you like. 
 
 ![CardViewStoryboard](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardViewStoryboard.png)
