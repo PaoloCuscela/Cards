@@ -1,0 +1,11 @@
+
+platform :ios, '9.0'
+
+target 'Demo' do
+
+  use_frameworks!
+
+  # Pods for Cards
+  pod 'Cards', :path => '../'
+
+end
