@@ -1,6 +1,5 @@
 
 Pod/
-*.xcworkspacedata
 *.xccheckout
 *.xcuserstate
 Images/\.DS_Store
