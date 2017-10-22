@@ -33,7 +33,9 @@ import UIKit
     @IBInspectable public var backgroundImage: UIImage?
     @IBInspectable public var textColor: UIColor = UIColor.black
     @IBInspectable public var cardRadius: CGFloat = 20
+    @IBInspectable public var shouldPresentDetailView: Bool = true
     open var detailView: UIView?
+    
     @IBInspectable public var contentInset: CGFloat = 6 {
         didSet {
             insets = LayoutHelper(rect: self.backgroundIV.bounds).X(contentInset)
@@ -45,10 +47,6 @@ import UIKit
             if let color = new { self.layer.backgroundColor = color.cgColor }
             if backgroundColor != UIColor.clear { backgroundColor = UIColor.clear }
         }
-    }
-    
-    override open var frame: CGRect {
-        didSet{ layout() }
     }
     
     var delegate: CardDelegate?
@@ -92,19 +90,19 @@ import UIKit
         detailSV.showsVerticalScrollIndicator = false
         detailSV.showsHorizontalScrollIndicator = false
         originalFrame = frame
-        
     }
     
     
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
-
+        layout(true, showingDetail: false)
+        
+        self.contentInset = 6
         self.layer.shadowOpacity = shadowOpacity
         self.layer.shadowColor = shadowColor.cgColor
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = shadowBlur
         self.layer.cornerRadius = cardRadius
-        self.contentInset = 6
         
         backgroundIV.image = backgroundImage
         backgroundIV.layer.cornerRadius = self.layer.cornerRadius
@@ -117,29 +115,49 @@ import UIKit
         detailSV.frame = self.bounds
         backgroundIV.frame = detailSV.bounds
         
+        self.detailFrame.size = CGSize(width: LayoutHelper.XScreen(85), height: LayoutHelper.YScreen(100) - 20)
+        self.detailFrame.origin.x = (LayoutHelper.XScreen(100) - detailFrame.width) / 2
+        self.detailFrame.origin.y = 40
+        
     }
     
     private func layout(_ animated: Bool = false, showingDetail: Bool = false){
         
-        self.backgroundIV.frame.size = CGSize(width: self.frame.width, height: self.backgroundIV.frame.height)
-        
-        guard animated else { return }
-        
-        if showingDetail { self.frame.size = CGSize(width: LayoutHelper.XScreen(85), height: LayoutHelper.YScreen(100) - 20)
-
+        if showingDetail {
+            
+            //self.transform = CGAffineTransform.identity       //Rescale to 100% after tapDownInside
+            self.frame = detailFrame
+            self.blurView.alpha = 1
+            self.layer.shadowOpacity = 0
         } else {
-             // Scale to full screen
+            
             self.frame = self.originalFrame
+            self.blurView.alpha = 0
+            self.layer.shadowOpacity = 1
         }
+        
         detailSV.frame.size = self.frame.size
+        backgroundIV.frame.size = CGSize(width: self.frame.width, height: self.backgroundIV.frame.height)
+        backgroundIV.frame.origin = self.bounds.origin
     }
     
     
     //Actions
     @objc  func cardTapped(){
+        
+        guard shouldPresentDetailView else {
+            resetAnimated {
+                self.delegate?.cardDidTapInside?(card: self)
+            }
+            return
+        }
+        
         if !isDetailPresented {
             superview?.bringSubview(toFront: self)
-            showDetailAnimated()
+            
+            resetAnimated {
+                self.showDetailAnimated()
+            }
         }
     }
 
@@ -167,7 +185,6 @@ import UIKit
         detailSV.frame = self.bounds
         detailView!.frame = CGRect(x: 0, y: backgroundIV.bounds.maxY, width: self.bounds.width, height: detailView!.frame.height)
         detailSV.contentSize = CGSize(width: self.bounds.width, height: backgroundIV.bounds.height + detailView!.bounds.height)
-        self.isDetailPresented = true
     }
     
     private func prepareToDiscardDetailView() {
@@ -182,12 +199,12 @@ import UIKit
 //MARK: - ANIMATION things
 extension Card {
     
-    private func bounceTransform() -> CGAffineTransform {
+    private var bounceTransform: CGAffineTransform {
         
-        let absoluteCenter = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
-        let originalCenter = CGPoint(x: originalFrame.minX + originalFrame.width/2, y: originalFrame.minY + originalFrame.height/2)
-        let theOneToMove = isDetailPresented ? absoluteCenter  : originalCenter
-        let theOneToMoveTo = isDetailPresented ? originalCenter  : absoluteCenter
+        let detailCenter = CGPoint(x: detailFrame.width/2, y: detailFrame.height/2)
+        let originalCenter = CGPoint(x: originalFrame.minX + originalFrame.width/2, y: originalFrame.minY + originalFrame.height/3)
+        let theOneToMove = isDetailPresented ? detailCenter  : originalCenter
+        let theOneToMoveTo = isDetailPresented ? originalCenter  : detailCenter
         
         let xMove = (theOneToMove.x < theOneToMoveTo.x ) ? LayoutHelper.XScreen(bounceIntensity) : -LayoutHelper.XScreen(bounceIntensity)
         let yMove = (theOneToMove.y < theOneToMoveTo.y ) ? LayoutHelper.YScreen(bounceIntensity) : -LayoutHelper.YScreen(bounceIntensity)
@@ -197,31 +214,28 @@ extension Card {
     
     private func showDetailAnimated(){
         
-        delegate?.cardWillShowDetailView?(card: self)
         superview?.insertSubview(blurView, belowSubview: self)
-        self.bounceIntensity = 4
+        self.bounceIntensity = 7
+        delegate?.cardWillShowDetailView?(card: self)
         
-        // SCALE
-        UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseOut, animations: {
-            self.blurView.alpha = 1
-            self.transform = CGAffineTransform.identity       //Rescale to 100% after tapDownInside
-            self.layer.shadowOpacity = 0
+        // Layout
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+           
             self.layout(true, showingDetail: true)
             self.delegate?.cardIsShowingDetail?(card: self)
-        }){ (true) in
+        }){ _ in
+            
             self.prepareDetailView()
+            self.isDetailPresented = true
             self.delegate?.cardDidShowDetailView?(card: self)
-            self.detailFrame = self.frame
         }
         
-        // BOUNCE
-        UIView.animate(withDuration: 0.2, delay: 0.1, options: .curveEaseOut, animations: {
+        // Bounce
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             
-            self.center = UIApplication.shared.keyWindow?.center ?? self.superview!.center  // Center the view
-            self.center.y += 40
-            self.transform = self.bounceTransform()
+            self.transform = self.bounceTransform
             
-        }) { (true) in UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+        }) { _ in UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                             
             self.transform = CGAffineTransform.identity
             })
@@ -233,10 +247,9 @@ extension Card {
         self.prepareToDiscardDetailView()
         delegate?.cardWillCloseDetailView?(card: self)
         
-        // SCALE
+        // Layout
         UIView.animate(withDuration: velocity, delay: 0, options: .curveEaseOut, animations: {
-            self.blurView.alpha = 0
-            self.layer.shadowOpacity = 1
+            
             self.layout(true, showingDetail: false)
             self.delegate?.cardIsHidingDetail?(card: self)
             
@@ -244,14 +257,14 @@ extension Card {
             
             self.blurView.removeFromSuperview()
             self.clipsToBounds = false
-            self.delegate?.cardDidCloseDetailView?(card: self)
             self.isDetailPresented = false
+            self.delegate?.cardDidCloseDetailView?(card: self)
         }
         
-        // BOUNCE
+        // Bounce
         UIView.animate(withDuration: velocity, delay: 0, options: .curveEaseOut, animations: {
             
-            self.transform = self.bounceTransform()
+            self.transform = self.bounceTransform
             
         }) { (true) in UIView.animate(withDuration: velocity, delay: 0, options: .curveEaseOut, animations: {
             
@@ -261,8 +274,14 @@ extension Card {
         }
     }
     
+    // Card Tapped Animations
     private func pushBackAnimated() {
         UIView.animate(withDuration: 0.2, animations: { self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95) })
+    }
+    private func resetAnimated(completion: @escaping () -> ()) {
+        UIView.animate(withDuration: 0.2, animations: { self.transform = CGAffineTransform.identity }) { _ in
+            completion()
+        }
     }
     
 }
@@ -281,8 +300,8 @@ extension Card: UIGestureRecognizerDelegate {
 }
 
 extension Card: UIScrollViewDelegate {
-
-    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) { }
+    
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {}
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
