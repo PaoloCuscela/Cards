@@ -131,11 +131,10 @@ view.addSubview(card)
     view.addSubview(card)
 ```
 
-## Thanksto
+## Thanks to
 
 - **Patrick Piemonte** - providing [Player](https://github.com/piemonte/Player) framework used in [CardPlayer.swift](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Cards/CardPlayer.swift)
 - **Mac Bellingrath** 
-
 ## License
 
 Cards is released under the [MIT License](LICENSE).
