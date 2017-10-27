@@ -1,4 +1,4 @@
-![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Overview.png)
+![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/OverviewLogo.png)
 
 <p align="center">
     <a href="https://github.com/PaoloCuscela/Cards/stargazers">
