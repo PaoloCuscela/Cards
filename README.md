@@ -1,5 +1,3 @@
-![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/OverviewLogo.png)
-
 <p align="center">
     <a href="https://github.com/PaoloCuscela/Cards/stargazers">
         <img src="https://img.shields.io/github/stars/PaoloCuscela/Cards.svg"
@@ -13,10 +11,12 @@
     <a href="https://github.com/PaoloCuscela/Cards/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/PaoloCuscela/Cards.svg"
             alt="License"></a>
-</p> 
+</p>
+
+![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Header.png)
 
 <p align="center"> <b>Cards brings to XCode the card views you can see in the new iOS XI Appstore. </b></p> 
- 
+
 ## Getting Started
 
 ### Storyboard
