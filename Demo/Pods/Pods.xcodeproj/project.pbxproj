@@ -3,115 +3,115 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D65BF3C8A424CA6372178E1A4536B5C /* CardHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786B51B303EA81328EC4386CFC4E6AEE /* CardHighlight.swift */; };
 		0FAD0264B641963078C8001B11966755 /* Pods-Demo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 03EA1E60232BFA05817BC26ACB8E68BA /* Pods-Demo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		10BF22232C3B18C84FA518079DCAA6B1 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6140FB62AEF047F4830C284F09C48176 /* Card.swift */; };
+		1B986A693E7FE824FF4E794DC1BD3408 /* Player.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B103F9BD1797D12E616891DC9F484A /* Player.framework */; };
 		2427FDCA9E6805C5C2052E4189A0D28F /* Pods-Demo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BC86D40B890A7B0844F888209CA06F /* Pods-Demo-dummy.m */; };
-		30F0779EA636ABAFD6D8E3D3010B9A1D /* Cards-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F88C9D5E797D5019BF59C51DE2E3BA9F /* Cards-dummy.m */; };
-		31B6B69A24982C288E27452037D3B008 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332541BBEF41BBF48267C26DA879EA65 /* Card.swift */; };
-		35D4B5B4996012813B63CA1EB822F5A7 /* CardGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ECBE08396AC422EB7CFD1889DFD0B5 /* CardGroup.swift */; };
-		4C9CC422A0D7C2CE3BD29EFCB165F899 /* Cards-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BFA4DC2C07CFB0CA71B1E85FB8A26ED8 /* Cards-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4F4E5151CA3EB41CCDD12AFB89B9CB54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5571A7EC0AF8CFEFED1CBBBED12D1C /* UIKit.framework */; };
-		6D7EF8441F9E1DEF0057419A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7EF8431F9E1DEF0057419A /* DetailViewController.swift */; };
-		6D7EF8461F9E2DC90057419A /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7EF8451F9E2DC90057419A /* Animator.swift */; };
-		76532D26E025EB0304F69B96AA700A96 /* Player.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B103F9BD1797D12E616891DC9F484A /* Player.framework */; };
-		8B624C5A65233DA21DDBD12A46A44F5C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE024B0E8E41B5A5FD761132E386C2C /* Player.swift */; };
+		26C955BEFFBF7ECF417AF2C06FFA0137 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD83DF5A259F0F936A0DE4D2D5DA /* Animator.swift */; };
+		3284A2BD878171F8B7313D650E6AD9EA /* Player-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 819FB1DA8BA4D7953173D7F9ECADD6CA /* Player-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36E247D7A9EE80DEB668C5603C240BBC /* Cards-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CDAFEAE93448A7F464CBEFFB18CF3852 /* Cards-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		475AA9AF2FF4716E49524183CFAD2C11 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4C90A1F63235D3A398740571479CC5 /* DetailViewController.swift */; };
+		589B9B3C0AEC97CF184B2B5E686F9EEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D758F3A9FEEBFE8D6F76E774F427C8A /* Foundation.framework */; };
+		74B415AD2AD7FB39F0FE00E8AF93EF6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5571A7EC0AF8CFEFED1CBBBED12D1C /* UIKit.framework */; };
+		8D584D0D2542869C8048A7E91889A213 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D758F3A9FEEBFE8D6F76E774F427C8A /* Foundation.framework */; };
 		9DA0F7ED74D419265BB3C744C50B889E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D758F3A9FEEBFE8D6F76E774F427C8A /* Foundation.framework */; };
-		9FC661A5F4EA790951C89F2FD12E9D38 /* CardArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC089C3DBE41891DFEB58E8F97A9F3C5 /* CardArticle.swift */; };
-		A1C04410E4C796786415FD29560A6946 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D758F3A9FEEBFE8D6F76E774F427C8A /* Foundation.framework */; };
-		A65998A12AE524B88C6E2B9B028EE944 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D758F3A9FEEBFE8D6F76E774F427C8A /* Foundation.framework */; };
-		A8AE63C63FB2B5B8033566E5938B6596 /* CardHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484B4966D400AF31856CA8EC36ECDF9 /* CardHighlight.swift */; };
-		AE7B22FDBC7ADF8F01095EC7074FC23B /* Player-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B684370FC4DF1B9953E3F86FE669EF9 /* Player-dummy.m */; };
-		CD986010254B1BB67A6D5F4EA72CC9FD /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAD241AA599CE6BDDB22937ECFD80E5 /* LayoutHelper.swift */; };
-		E3C93AF579B04A95B3CEB394A224B864 /* CardGroupSliding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEEC5C5CB14F1D6FED701C331D8DDED /* CardGroupSliding.swift */; };
-		ECF60C4F80ACF2A6CE8D233B895EEF6A /* Player-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 819FB1DA8BA4D7953173D7F9ECADD6CA /* Player-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F274CA356096045B4DCA96D433B32269 /* CardPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC440544EDB08E90C5F3F94611E566 /* CardPlayer.swift */; };
+		A37385A970E34DCE7282407C8D587FC4 /* CardGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659613A76E0C785C55103D861F039BB8 /* CardGroup.swift */; };
+		A6B2FF4A451076C3D638D52E8524E1B4 /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B98C492A416083981B6172F1009B344 /* LayoutHelper.swift */; };
+		BA533C5C71B7966274C9B5D8B93A32C8 /* Cards-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C0ED21AB6CB0B0B801A1401DC0F091 /* Cards-dummy.m */; };
+		C3E8E2D6868BEBC52991226DACE7D8D7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE024B0E8E41B5A5FD761132E386C2C /* Player.swift */; };
+		CEB453502316C50C854ADED28D509117 /* CardGroupSliding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E370AE390CCD80A58B1371B95DFF6AFC /* CardGroupSliding.swift */; };
+		D117FEB676A6494DC58DFCCBA51C4E5D /* CardPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4C9C43EA0DDB2BC4AE4E82C4113EAC /* CardPlayer.swift */; };
+		D2645A701B11E24DF5E0F37F63B0EA96 /* Player-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B684370FC4DF1B9953E3F86FE669EF9 /* Player-dummy.m */; };
+		D79D4AD0EBDF7ADBF57155ACFB918739 /* CardArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DC48FDD34DC6D02BFAED092F4EB20 /* CardArticle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		385BC41EEC6B3BE55B6A15D898DF26C4 /* PBXContainerItemProxy */ = {
+		5A1F0574091B09FAFB97C8F5FD77B907 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 964049909C75EBC6A7F5B7FDCE4D6BF7;
+			remoteGlobalIDString = ECB2C015F27B9BD26FB5FF6F2E54E991;
 			remoteInfo = Player;
 		};
 		85DD90332DA03CB7A4AB8B16CA42323B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 964049909C75EBC6A7F5B7FDCE4D6BF7;
+			remoteGlobalIDString = ECB2C015F27B9BD26FB5FF6F2E54E991;
 			remoteInfo = Player;
 		};
 		F778DC08D3E7F198E6120D93A8C5E8DD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1B91CA4773AECD154171A27CEE93017A;
+			remoteGlobalIDString = A8D456A2BB1D2ABC307C88C81DDAD4FA;
 			remoteInfo = Cards;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		03EA1E60232BFA05817BC26ACB8E68BA /* Pods-Demo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Demo-umbrella.h"; sourceTree = "<group>"; };
+		0B39BD83DF5A259F0F936A0DE4D2D5DA /* Animator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Animator.swift; path = Cards/Sources/Animator.swift; sourceTree = "<group>"; };
 		0BBAE76895584D280B98BDEC5A3A1D42 /* Player.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Player.xcconfig; sourceTree = "<group>"; };
 		0E0FE4E07CDAD7595A95181D2F54521A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1E750EDFFC5F5BCCDE438E4D98F80FDA /* Cards.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Cards.xcconfig; sourceTree = "<group>"; };
+		1E4C9C43EA0DDB2BC4AE4E82C4113EAC /* CardPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardPlayer.swift; path = Cards/Sources/CardPlayer.swift; sourceTree = "<group>"; };
 		2B684370FC4DF1B9953E3F86FE669EF9 /* Player-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Player-dummy.m"; sourceTree = "<group>"; };
-		322419E99883B306EE7EC77959FCC8DF /* Pods-Demo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Demo.modulemap"; sourceTree = "<group>"; };
-		332541BBEF41BBF48267C26DA879EA65 /* Card.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Cards/Sources/Card.swift; sourceTree = "<group>"; };
+		322419E99883B306EE7EC77959FCC8DF /* Pods-Demo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Demo.modulemap"; sourceTree = "<group>"; };
+		33008D816904DAAA1386287366CD8B13 /* Cards.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Cards.modulemap; sourceTree = "<group>"; };
 		3A236CB574B096799E26F7433E965451 /* Player-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Player-prefix.pch"; sourceTree = "<group>"; };
 		3CD5A30239C90F1B549B4AB9299ECF16 /* Pods-Demo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Demo-frameworks.sh"; sourceTree = "<group>"; };
 		3D653C9DA16200D75AD14323AA830C6B /* Pods-Demo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Demo-resources.sh"; sourceTree = "<group>"; };
-		44234FC12992825EE7B37B474D27CE05 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A74F3BFF0C0AC7F1383AAA7CB63FD06 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5065BF22E638A5182DBBB3FA1A3A003E /* Cards-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cards-prefix.pch"; sourceTree = "<group>"; };
-		63BC440544EDB08E90C5F3F94611E566 /* CardPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardPlayer.swift; path = Cards/Sources/CardPlayer.swift; sourceTree = "<group>"; };
+		44234FC12992825EE7B37B474D27CE05 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Demo.framework; path = "Pods-Demo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B98C492A416083981B6172F1009B344 /* LayoutHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutHelper.swift; path = Cards/Sources/LayoutHelper.swift; sourceTree = "<group>"; };
+		503DC48FDD34DC6D02BFAED092F4EB20 /* CardArticle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardArticle.swift; path = Cards/Sources/CardArticle.swift; sourceTree = "<group>"; };
+		6140FB62AEF047F4830C284F09C48176 /* Card.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Cards/Sources/Card.swift; sourceTree = "<group>"; };
 		64B103F9BD1797D12E616891DC9F484A /* Player.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Player.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		675BF885B5E014EC48E31C56950DB3B3 /* Cards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D7EF8431F9E1DEF0057419A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		6D7EF8451F9E2DC90057419A /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		659613A76E0C785C55103D861F039BB8 /* CardGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardGroup.swift; path = Cards/Sources/CardGroup.swift; sourceTree = "<group>"; };
+		675BF885B5E014EC48E31C56950DB3B3 /* Cards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Cards.framework; path = Cards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71940C1CEB7995DC34CFE54CAF1AEF88 /* Pods-Demo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Demo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7E02B4E210625223B10D69B1903004C0 /* Cards.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Cards.modulemap; sourceTree = "<group>"; };
+		786B51B303EA81328EC4386CFC4E6AEE /* CardHighlight.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardHighlight.swift; path = Cards/Sources/CardHighlight.swift; sourceTree = "<group>"; };
 		819FB1DA8BA4D7953173D7F9ECADD6CA /* Player-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Player-umbrella.h"; sourceTree = "<group>"; };
-		8484B4966D400AF31856CA8EC36ECDF9 /* CardHighlight.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardHighlight.swift; path = Cards/Sources/CardHighlight.swift; sourceTree = "<group>"; };
 		8C5571A7EC0AF8CFEFED1CBBBED12D1C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		8D758F3A9FEEBFE8D6F76E774F427C8A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9EE024B0E8E41B5A5FD761132E386C2C /* Player.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Sources/Player.swift; sourceTree = "<group>"; };
-		A3686ABF16280BC61EEF8EAB333EFE95 /* Player.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Player.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC089C3DBE41891DFEB58E8F97A9F3C5 /* CardArticle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardArticle.swift; path = Cards/Sources/CardArticle.swift; sourceTree = "<group>"; };
-		BBEEC5C5CB14F1D6FED701C331D8DDED /* CardGroupSliding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardGroupSliding.swift; path = Cards/Sources/CardGroupSliding.swift; sourceTree = "<group>"; };
-		BFA4DC2C07CFB0CA71B1E85FB8A26ED8 /* Cards-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cards-umbrella.h"; sourceTree = "<group>"; };
+		9F7DC68D6DC5329457ABB78C5BDF7503 /* Cards-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cards-prefix.pch"; sourceTree = "<group>"; };
+		A3686ABF16280BC61EEF8EAB333EFE95 /* Player.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Player.framework; path = Player.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6C0ED21AB6CB0B0B801A1401DC0F091 /* Cards-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Cards-dummy.m"; sourceTree = "<group>"; };
+		A945C5D22E18C978E060B6A027146CD3 /* Cards.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Cards.xcconfig; sourceTree = "<group>"; };
+		BE4C90A1F63235D3A398740571479CC5 /* DetailViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = Cards/Sources/DetailViewController.swift; sourceTree = "<group>"; };
 		C5BC86D40B890A7B0844F888209CA06F /* Pods-Demo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Demo-dummy.m"; sourceTree = "<group>"; };
 		CA19694C0AC41D598DE4ABFEB300E619 /* Pods-Demo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Demo-acknowledgements.plist"; sourceTree = "<group>"; };
 		CC6A59B0ADA6CB2F51DAE6508E437829 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		CDAFEAE93448A7F464CBEFFB18CF3852 /* Cards-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cards-umbrella.h"; sourceTree = "<group>"; };
 		DAB0701F8F25395B1ED46510ED4B9797 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		E370AE390CCD80A58B1371B95DFF6AFC /* CardGroupSliding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardGroupSliding.swift; path = Cards/Sources/CardGroupSliding.swift; sourceTree = "<group>"; };
 		E68F8C86FB3267A3C87983DA9E269889 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F302C08E81C8F2A8A112A798AC800D3D /* Player.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Player.modulemap; sourceTree = "<group>"; };
-		F4ECBE08396AC422EB7CFD1889DFD0B5 /* CardGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardGroup.swift; path = Cards/Sources/CardGroup.swift; sourceTree = "<group>"; };
-		F88C9D5E797D5019BF59C51DE2E3BA9F /* Cards-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Cards-dummy.m"; sourceTree = "<group>"; };
-		FEAD241AA599CE6BDDB22937ECFD80E5 /* LayoutHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutHelper.swift; path = Cards/Sources/LayoutHelper.swift; sourceTree = "<group>"; };
+		E8F90337DE53FE292E3FF9A917741409 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F302C08E81C8F2A8A112A798AC800D3D /* Player.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Player.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		14A63B776736243539398720E223B596 /* Frameworks */ = {
+		0B1F6CDD333E3E7916BFB0C03B65EBA8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A65998A12AE524B88C6E2B9B028EE944 /* Foundation.framework in Frameworks */,
-				76532D26E025EB0304F69B96AA700A96 /* Player.framework in Frameworks */,
-				4F4E5151CA3EB41CCDD12AFB89B9CB54 /* UIKit.framework in Frameworks */,
+				589B9B3C0AEC97CF184B2B5E686F9EEF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2835143667F679853967BCE042FEA4A4 /* Frameworks */ = {
+		2791EEA12BF4EA50E29CAACA97714495 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1C04410E4C796786415FD29560A6946 /* Foundation.framework in Frameworks */,
+				8D584D0D2542869C8048A7E91889A213 /* Foundation.framework in Frameworks */,
+				1B986A693E7FE824FF4E794DC1BD3408 /* Player.framework in Frameworks */,
+				74B415AD2AD7FB39F0FE00E8AF93EF6D /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +144,28 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		56274F4C8F0BB27120B046D7AF90CDA5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				33008D816904DAAA1386287366CD8B13 /* Cards.modulemap */,
+				A945C5D22E18C978E060B6A027146CD3 /* Cards.xcconfig */,
+				A6C0ED21AB6CB0B0B801A1401DC0F091 /* Cards-dummy.m */,
+				9F7DC68D6DC5329457ABB78C5BDF7503 /* Cards-prefix.pch */,
+				CDAFEAE93448A7F464CBEFFB18CF3852 /* Cards-umbrella.h */,
+				E8F90337DE53FE292E3FF9A917741409 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "Demo/Pods/Target Support Files/Cards";
+			sourceTree = "<group>";
+		};
+		65AA153189CE66B5ECB18EE9C189ACDF /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A0D7FC6912FA689BE124AA91E2EC329B /* Cards */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		68C177906E37AE7DD5E12831EFDB3331 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,38 +183,16 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		73C5BB308CC4872BC7F1633621C3B505 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B620A183AE0A4D372679FE70FE898B67 /* Cards */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				73C5BB308CC4872BC7F1633621C3B505 /* Development Pods */,
+				65AA153189CE66B5ECB18EE9C189ACDF /* Development Pods */,
 				68C177906E37AE7DD5E12831EFDB3331 /* Frameworks */,
 				389088026D929F1A9549FB310D81538A /* Pods */,
 				4A2A3C771B4FA91C9E9AD4CDD76E4EA8 /* Products */,
 				6F2351C272926D3E0225FEFC2F9C5D1F /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		82212CEA12AC2F1054DFAAEBADAF095E /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7E02B4E210625223B10D69B1903004C0 /* Cards.modulemap */,
-				1E750EDFFC5F5BCCDE438E4D98F80FDA /* Cards.xcconfig */,
-				F88C9D5E797D5019BF59C51DE2E3BA9F /* Cards-dummy.m */,
-				5065BF22E638A5182DBBB3FA1A3A003E /* Cards-prefix.pch */,
-				BFA4DC2C07CFB0CA71B1E85FB8A26ED8 /* Cards-umbrella.h */,
-				4A74F3BFF0C0AC7F1383AAA7CB63FD06 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "Demo/Pods/Target Support Files/Cards";
 			sourceTree = "<group>";
 		};
 		9A82AD7D081D87CBAAB1455E96A8AF6A /* iOS */ = {
@@ -204,19 +204,19 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		B620A183AE0A4D372679FE70FE898B67 /* Cards */ = {
+		A0D7FC6912FA689BE124AA91E2EC329B /* Cards */ = {
 			isa = PBXGroup;
 			children = (
-				332541BBEF41BBF48267C26DA879EA65 /* Card.swift */,
-				AC089C3DBE41891DFEB58E8F97A9F3C5 /* CardArticle.swift */,
-				F4ECBE08396AC422EB7CFD1889DFD0B5 /* CardGroup.swift */,
-				BBEEC5C5CB14F1D6FED701C331D8DDED /* CardGroupSliding.swift */,
-				8484B4966D400AF31856CA8EC36ECDF9 /* CardHighlight.swift */,
-				63BC440544EDB08E90C5F3F94611E566 /* CardPlayer.swift */,
-				FEAD241AA599CE6BDDB22937ECFD80E5 /* LayoutHelper.swift */,
-				6D7EF8431F9E1DEF0057419A /* DetailViewController.swift */,
-				6D7EF8451F9E2DC90057419A /* Animator.swift */,
-				82212CEA12AC2F1054DFAAEBADAF095E /* Support Files */,
+				0B39BD83DF5A259F0F936A0DE4D2D5DA /* Animator.swift */,
+				6140FB62AEF047F4830C284F09C48176 /* Card.swift */,
+				503DC48FDD34DC6D02BFAED092F4EB20 /* CardArticle.swift */,
+				659613A76E0C785C55103D861F039BB8 /* CardGroup.swift */,
+				E370AE390CCD80A58B1371B95DFF6AFC /* CardGroupSliding.swift */,
+				786B51B303EA81328EC4386CFC4E6AEE /* CardHighlight.swift */,
+				1E4C9C43EA0DDB2BC4AE4E82C4113EAC /* CardPlayer.swift */,
+				BE4C90A1F63235D3A398740571479CC5 /* DetailViewController.swift */,
+				4B98C492A416083981B6172F1009B344 /* LayoutHelper.swift */,
+				56274F4C8F0BB27120B046D7AF90CDA5 /* Support Files */,
 			);
 			name = Cards;
 			path = ../..;
@@ -242,6 +242,7 @@
 				9EE024B0E8E41B5A5FD761132E386C2C /* Player.swift */,
 				B7B934E2E96598CF1D9CCBCFA49D1141 /* Support Files */,
 			);
+			name = Player;
 			path = Player;
 			sourceTree = "<group>";
 		};
@@ -266,11 +267,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		603A82C5EB80D41C31274431D5CD0E71 /* Headers */ = {
+		012FCCA0FD50368E2A68048F21C1E36B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C9CC422A0D7C2CE3BD29EFCB165F899 /* Cards-umbrella.h in Headers */,
+				3284A2BD878171F8B7313D650E6AD9EA /* Player-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		845344DDE03F92821373524EAA4E5A4A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36E247D7A9EE80DEB668C5603C240BBC /* Cards-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,35 +291,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EB1D8B82EC0EAA3BDBCA3F6B3E16E3C7 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ECF60C4F80ACF2A6CE8D233B895EEF6A /* Player-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1B91CA4773AECD154171A27CEE93017A /* Cards */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32790BB1A54C146C6E7FB02139D2FD41 /* Build configuration list for PBXNativeTarget "Cards" */;
-			buildPhases = (
-				DFD1E5D09AB15EB7CE53F0BCDE2B458D /* Sources */,
-				14A63B776736243539398720E223B596 /* Frameworks */,
-				603A82C5EB80D41C31274431D5CD0E71 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				251F7BE324EDEC6C96384A82888B76B8 /* PBXTargetDependency */,
-			);
-			name = Cards;
-			productName = Cards;
-			productReference = 675BF885B5E014EC48E31C56950DB3B3 /* Cards.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		1C46D7612474F330DEC657B3D3A37B16 /* Pods-Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CB9335F66D575268BE6AD7FA51D48542 /* Build configuration list for PBXNativeTarget "Pods-Demo" */;
@@ -330,13 +313,31 @@
 			productReference = 44234FC12992825EE7B37B474D27CE05 /* Pods_Demo.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		964049909C75EBC6A7F5B7FDCE4D6BF7 /* Player */ = {
+		A8D456A2BB1D2ABC307C88C81DDAD4FA /* Cards */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BE991C295A246F13372B748BB523C4FE /* Build configuration list for PBXNativeTarget "Player" */;
+			buildConfigurationList = E2765776DDA4DC4452E18D350A4AAB88 /* Build configuration list for PBXNativeTarget "Cards" */;
 			buildPhases = (
-				76AA4B2AB95AD9B24F2DAE1BDBBECCB5 /* Sources */,
-				2835143667F679853967BCE042FEA4A4 /* Frameworks */,
-				EB1D8B82EC0EAA3BDBCA3F6B3E16E3C7 /* Headers */,
+				A49AF794C4E7258A200E20E3AD2EAD3E /* Sources */,
+				2791EEA12BF4EA50E29CAACA97714495 /* Frameworks */,
+				845344DDE03F92821373524EAA4E5A4A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0393AB2FD7D6BBC94E02A4CE39DA8F8 /* PBXTargetDependency */,
+			);
+			name = Cards;
+			productName = Cards;
+			productReference = 675BF885B5E014EC48E31C56950DB3B3 /* Cards.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		ECB2C015F27B9BD26FB5FF6F2E54E991 /* Player */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A578B92AC856DB40A3641C3E2C2B47C1 /* Build configuration list for PBXNativeTarget "Player" */;
+			buildPhases = (
+				24BDF89C42FA5EE3F3B45B6DDDE44815 /* Sources */,
+				0B1F6CDD333E3E7916BFB0C03B65EBA8 /* Frameworks */,
+				012FCCA0FD50368E2A68048F21C1E36B /* Headers */,
 			);
 			buildRules = (
 			);
@@ -368,20 +369,20 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1B91CA4773AECD154171A27CEE93017A /* Cards */,
-				964049909C75EBC6A7F5B7FDCE4D6BF7 /* Player */,
+				A8D456A2BB1D2ABC307C88C81DDAD4FA /* Cards */,
+				ECB2C015F27B9BD26FB5FF6F2E54E991 /* Player */,
 				1C46D7612474F330DEC657B3D3A37B16 /* Pods-Demo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		76AA4B2AB95AD9B24F2DAE1BDBBECCB5 /* Sources */ = {
+		24BDF89C42FA5EE3F3B45B6DDDE44815 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE7B22FDBC7ADF8F01095EC7074FC23B /* Player-dummy.m in Sources */,
-				8B624C5A65233DA21DDBD12A46A44F5C /* Player.swift in Sources */,
+				D2645A701B11E24DF5E0F37F63B0EA96 /* Player-dummy.m in Sources */,
+				C3E8E2D6868BEBC52991226DACE7D8D7 /* Player.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,48 +394,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DFD1E5D09AB15EB7CE53F0BCDE2B458D /* Sources */ = {
+		A49AF794C4E7258A200E20E3AD2EAD3E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D7EF8461F9E2DC90057419A /* Animator.swift in Sources */,
-				6D7EF8441F9E1DEF0057419A /* DetailViewController.swift in Sources */,
-				31B6B69A24982C288E27452037D3B008 /* Card.swift in Sources */,
-				9FC661A5F4EA790951C89F2FD12E9D38 /* CardArticle.swift in Sources */,
-				35D4B5B4996012813B63CA1EB822F5A7 /* CardGroup.swift in Sources */,
-				E3C93AF579B04A95B3CEB394A224B864 /* CardGroupSliding.swift in Sources */,
-				A8AE63C63FB2B5B8033566E5938B6596 /* CardHighlight.swift in Sources */,
-				F274CA356096045B4DCA96D433B32269 /* CardPlayer.swift in Sources */,
-				30F0779EA636ABAFD6D8E3D3010B9A1D /* Cards-dummy.m in Sources */,
-				CD986010254B1BB67A6D5F4EA72CC9FD /* LayoutHelper.swift in Sources */,
+				26C955BEFFBF7ECF417AF2C06FFA0137 /* Animator.swift in Sources */,
+				10BF22232C3B18C84FA518079DCAA6B1 /* Card.swift in Sources */,
+				D79D4AD0EBDF7ADBF57155ACFB918739 /* CardArticle.swift in Sources */,
+				A37385A970E34DCE7282407C8D587FC4 /* CardGroup.swift in Sources */,
+				CEB453502316C50C854ADED28D509117 /* CardGroupSliding.swift in Sources */,
+				0D65BF3C8A424CA6372178E1A4536B5C /* CardHighlight.swift in Sources */,
+				D117FEB676A6494DC58DFCCBA51C4E5D /* CardPlayer.swift in Sources */,
+				BA533C5C71B7966274C9B5D8B93A32C8 /* Cards-dummy.m in Sources */,
+				475AA9AF2FF4716E49524183CFAD2C11 /* DetailViewController.swift in Sources */,
+				A6B2FF4A451076C3D638D52E8524E1B4 /* LayoutHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		251F7BE324EDEC6C96384A82888B76B8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Player;
-			target = 964049909C75EBC6A7F5B7FDCE4D6BF7 /* Player */;
-			targetProxy = 385BC41EEC6B3BE55B6A15D898DF26C4 /* PBXContainerItemProxy */;
-		};
 		4A9CFB590897F27DBBC398CC76BE1777 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Player;
-			target = 964049909C75EBC6A7F5B7FDCE4D6BF7 /* Player */;
+			target = ECB2C015F27B9BD26FB5FF6F2E54E991 /* Player */;
 			targetProxy = 85DD90332DA03CB7A4AB8B16CA42323B /* PBXContainerItemProxy */;
+		};
+		A0393AB2FD7D6BBC94E02A4CE39DA8F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Player;
+			target = ECB2C015F27B9BD26FB5FF6F2E54E991 /* Player */;
+			targetProxy = 5A1F0574091B09FAFB97C8F5FD77B907 /* PBXContainerItemProxy */;
 		};
 		DAC563C4C097D64E4413A79B61B51EEC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Cards;
-			target = 1B91CA4773AECD154171A27CEE93017A /* Cards */;
+			target = A8D456A2BB1D2ABC307C88C81DDAD4FA /* Cards */;
 			targetProxy = F778DC08D3E7F198E6120D93A8C5E8DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		384BA307EE7DAFE3384FE8A77919F37F /* Debug */ = {
+		192223E6374642E363268AF2D7938A3E /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0BBAE76895584D280B98BDEC5A3A1D42 /* Player.xcconfig */;
 			buildSettings = {
@@ -454,6 +455,70 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Player/Player.modulemap";
 				PRODUCT_NAME = Player;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		248BC9E0ED010989F10FF9E7F3E589B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A945C5D22E18C978E060B6A027146CD3 /* Cards.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Cards/Cards-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Cards/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Cards/Cards.modulemap";
+				PRODUCT_NAME = Cards;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		354080A51BF330A4F89B148B305C9EE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A945C5D22E18C978E060B6A027146CD3 /* Cards.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Cards/Cards-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Cards/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Cards/Cards.modulemap";
+				PRODUCT_NAME = Cards;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -554,69 +619,6 @@
 			};
 			name = Release;
 		};
-		88A1FD53F3620F9192CDF54BBBCD5084 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BBAE76895584D280B98BDEC5A3A1D42 /* Player.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Player/Player-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Player/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Player/Player.modulemap";
-				PRODUCT_NAME = Player;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A5604AE081A9ACD82E58894F32B0B4DE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E750EDFFC5F5BCCDE438E4D98F80FDA /* Cards.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Cards/Cards-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Cards/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Cards/Cards.modulemap";
-				PRODUCT_NAME = Cards;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		B57951D085A1B98A97F8A1062A5E5C5B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -711,9 +713,9 @@
 			};
 			name = Debug;
 		};
-		EA6AE00F86237767901C4AC843AC0BD2 /* Release */ = {
+		E8B258C7E7992FBC408D35030D686AF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E750EDFFC5F5BCCDE438E4D98F80FDA /* Cards.xcconfig */;
+			baseConfigurationReference = 0BBAE76895584D280B98BDEC5A3A1D42 /* Player.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -724,24 +726,23 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Cards/Cards-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Cards/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Player/Player-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Player/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Cards/Cards.modulemap";
-				PRODUCT_NAME = Cards;
+				MODULEMAP_FILE = "Target Support Files/Player/Player.modulemap";
+				PRODUCT_NAME = Player;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -755,20 +756,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		32790BB1A54C146C6E7FB02139D2FD41 /* Build configuration list for PBXNativeTarget "Cards" */ = {
+		A578B92AC856DB40A3641C3E2C2B47C1 /* Build configuration list for PBXNativeTarget "Player" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A5604AE081A9ACD82E58894F32B0B4DE /* Debug */,
-				EA6AE00F86237767901C4AC843AC0BD2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BE991C295A246F13372B748BB523C4FE /* Build configuration list for PBXNativeTarget "Player" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				384BA307EE7DAFE3384FE8A77919F37F /* Debug */,
-				88A1FD53F3620F9192CDF54BBBCD5084 /* Release */,
+				E8B258C7E7992FBC408D35030D686AF4 /* Debug */,
+				192223E6374642E363268AF2D7938A3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -778,6 +770,15 @@
 			buildConfigurations = (
 				D2E168AF545BD6592CFC1FC502902E52 /* Debug */,
 				7BE3277C394228976E74EEFF0FC57176 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2765776DDA4DC4452E18D350A4AAB88 /* Build configuration list for PBXNativeTarget "Cards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				354080A51BF330A4F89B148B305C9EE6 /* Debug */,
+				248BC9E0ED010989F10FF9E7F3E589B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

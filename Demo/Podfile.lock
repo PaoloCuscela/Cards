@@ -1,5 +1,5 @@
 PODS:
-  - Cards (1.2.0):
+  - Cards (1.2.2):
     - Player
   - Player (0.8.3)
 
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Cards: a45a473f1347af6085186ea1090cff95f589f075
+  Cards: d5af09c8e8fa0614f435dbd24fdbb159262fd78c
   Player: ce00516fdce5a44c644697200244bc4de7e50a24
 
 PODFILE CHECKSUM: 1c52c57701e5a2124294248068eef20a103c5b0e
