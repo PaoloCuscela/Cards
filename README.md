@@ -1,8 +1,21 @@
-[![CocoaPods Version](https://img.shields.io/cocoapods/v/Cards.svg?style=flat)](http://cocoadocs.org/docsets/Cards)
-[![Platform](https://img.shields.io/cocoapods/p/Cards.svg?style=flat)](http://cocoadocs.org/docsets/Cards)
-
-![Cards](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Logo.png)
-
+<p align="center">
+    <img src="https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Logo.png"
+        height="250">
+</p>
+<p align="center">
+    <a href="https://github.com/PaoloCuscela/Cards/stargazers">
+        <img src="https://img.shields.io/github/stars/PaoloCuscela/Cards.svg"
+            alt="GitHub Stars"></a>
+    <a href="http://cocoadocs.org/docsets/Cards/">
+        <img src="https://img.shields.io/cocoapods/v/Cards.svg?style=flat"
+            alt="Pod Version"></a>
+    <a href="http://cocoadocs.org/docsets/Cards">
+        <img src="https://img.shields.io/cocoapods/p/Cards.svg?style=flat"
+            alt="Platform"></a>
+    <a href="https://github.com/PaoloCuscela/Cards/blob/master/LICENSE">
+        <img src="https://img.shields.io/github/license/PaoloCuscela/Cards.svg"
+            alt="License"></a>
+</p>
 
 Cards brings to XCode the card views you can see in the new iOS XI Appstore.
 
