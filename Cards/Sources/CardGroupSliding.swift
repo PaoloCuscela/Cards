@@ -51,11 +51,7 @@ import UIKit
         blurV.removeFromSuperview()
         
         backgroundIV.backgroundColor = UIColor.white
-    }
-    
-    override open func didMoveToWindow() {
-        super.didMoveToWindow()
-        slidingCV.reloadData()
+        
         startSlide()
     }
     
@@ -63,30 +59,34 @@ import UIKit
         super.draw(rect)
         
         subtitleLbl.textColor = textColor.withAlphaComponent(0.4)
-        layout(backgroundIV.bounds)
+        layout(backgroundIV.bounds, animationHasEnded: true)
     }
     
-    private func layout(_ rect: CGRect, animated: Bool = false, showingDetail: Bool = false) {
+    func layout(_ rect: CGRect, animationHasEnded: Bool) {
+        super.layout(rect)
+
+        guard animationHasEnded else { return }
         
         let gimme = LayoutHelper(rect: rect)
         
         slidingCV.frame = CGRect(x: 0,
                                  y: gimme.Y(5, from: titleLbl),
                                  width: backgroundIV.frame.width,
-                                 height: rect.height - blurV.frame.height - insets )
-    }
-    
-    override public func cardIsShowingDetail(card: Card) {
-        super.cardIsShowingDetail(card: card)
-        self.layout(backgroundIV.bounds, animated: true, showingDetail: true)
+                                 height: rect.height - (blurV.frame.height - insets ) )
     }
 
     public func cardDidCloseDetailView(card: Card) {
-        self.layout(backgroundIV.bounds, animated: true, showingDetail: false)
+        cardDidCloseDetailView(card: card)
+        self.layout(backgroundIV.bounds, animationHasEnded: true)
+    }
+    
+    public override func cardDidShowDetailView(card: Card) {
+        super.cardDidShowDetailView(card: card)
+        self.layout(backgroundIV.bounds, animationHasEnded: true)
     }
     
     
-    //Sliding Logic
+    //MARK: - Sliding Logic
     
     public func startSlide() {
         timer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(self.slide), userInfo: nil, repeats: true)
@@ -113,7 +113,7 @@ import UIKit
 }
 
 
-//MARK: - Collection View Delegates
+    //MARK: - Collection View Delegates
 
 extension CardGroupSliding: UICollectionViewDataSource {
     
@@ -138,7 +138,7 @@ extension CardGroupSliding: UICollectionViewDelegateFlowLayout{
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        iconsSize = collectionView.bounds.height/3 - layout.minimumLineSpacing
+        iconsSize = collectionView.frame.height/3 - layout.minimumLineSpacing
         return CGSize(width: iconsSize, height: iconsSize )
     }
 }

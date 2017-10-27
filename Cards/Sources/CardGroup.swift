@@ -70,10 +70,11 @@ import UIKit
         let blur = UIBlurEffect(style: blurEffect)
         blurV.effect = blur
         
-        layout(backgroundIV.bounds, animated: false, showingDetail: false)
+        layout(backgroundIV.bounds)
     }
     
-    private func layout(_ rect: CGRect, animated: Bool = false, showingDetail: Bool = false) {
+    override func layout(_ rect: CGRect) {
+        super.layout(rect)
         
         let gimme = LayoutHelper(rect: rect)
         
@@ -84,7 +85,6 @@ import UIKit
         
         vibrancyV.frame = blurV.frame
         
-        guard !animated else { return }
         
         subtitleLbl.frame = CGRect(x: insets,
                                    y: insets,
@@ -106,14 +106,14 @@ import UIKit
     }
 }
 
-extension CardGroup: CardDelegate {
+extension CardGroup {
     
     public func cardIsShowingDetail(card: Card) {
-        layout(backgroundIV.bounds, animated: true, showingDetail: true)
+        layout(backgroundIV.bounds)
     }
 
     public func cardIsHidingDetail(card: Card) {
-        layout(backgroundIV.bounds, animated: true, showingDetail: false)
+        layout(backgroundIV.bounds)
     }
     
     public func cardDidShowDetailView(card: Card) {

@@ -63,7 +63,6 @@ import Player
         else { print("CARDS: Something wrong with the video source URL") }
        
         backgroundIV.addSubview(self.player.view)
-        backgroundIV.backgroundColor = UIColor.yellow
         playPauseV.contentView.addSubview(playIV)
         playPauseV.contentView.bringSubview(toFront: playIV)
         
@@ -126,41 +125,37 @@ import Player
         subtitleLbl.numberOfLines = 0
         subtitleLbl.textAlignment = .left
         
-        layout(rect, animated: false, showingDetail: false)
+        self.layout(rect, showingDetail: false)
     }
     
-    fileprivate func layout(_ rect: CGRect, animated: Bool = false, showingDetail: Bool = false) {
+    func layout(_ rect: CGRect, showingDetail: Bool = false) {
+        super.layout(rect)
+        
         let gimme = LayoutHelper(rect: rect)
         
-        let aspect916 = rect.width *  (9/16)
+        let aspect1016 = rect.width *  (10/16)
         let aspect921 = rect.width *  (9/21)
-        let move = ( aspect916 - aspect921 ) * 2
+        let move = ( aspect1016 - aspect921 ) * 2
         
         subtitleLbl.transform = showingDetail ? CGAffineTransform(translationX: 0, y: move) : CGAffineTransform.identity
-        backgroundIV.frame.size.height = originalFrame.height + ( showingDetail ? move : 0 )
+        //backgroundIV.frame.size.height = originalFrame.height + ( showingDetail ? move : 0 )
         
         player.view.frame.origin = CGPoint.zero
-        player.view.frame.size = CGSize(width: rect.width, height: showingDetail ? aspect916 : aspect921 )
+        player.view.frame.size = CGSize(width: rect.width, height: showingDetail ? aspect1016 : aspect921 )
         playerCoverIV.frame = player.view.bounds
         
-        playPauseV.frame.size = CGSize(width: playBtnSize, height: playBtnSize)
-        playPauseV.center = player.view.center
-        playPauseV.layer.cornerRadius = playPauseV.frame.height/2
         
-        playIV.center = playPauseV.contentView.center.applying(CGAffineTransform(translationX: gimme.Width(5, of: playPauseV), y: 0))
-        playIV.frame.size = CGSize(width: gimme.Width(50, of: playPauseV),
-                                   height: gimme.Width(50, of: playPauseV))
+        playPauseV.center = player.view.center
+        playIV.center = playPauseV.contentView.center.applying(CGAffineTransform(translationX: LayoutHelper.Width(5, of: playPauseV), y: 0))
         
         categoryLbl.frame.origin.y = gimme.Y(3, from: player.view)
         titleLbl.frame.origin.y = gimme.Y(0, from: categoryLbl)
         titleLbl.sizeToFit()
-        
-        guard !animated else { return }
             
         categoryLbl.frame = CGRect(x: insets,
                                    y: gimme.Y(3, from: player.view),
                                    width: gimme.X(80),
-                                   height: gimme.Y(7))
+                                   height: gimme.Y(5))
         
         titleLbl.frame = CGRect(x: insets,
                                 y: gimme.Y(0, from: categoryLbl),
@@ -172,15 +167,9 @@ import Player
                                    y: gimme.RevY(0, height: gimme.Y(14)) - insets,
                                    width: gimme.X(80),
                                    height: gimme.Y(12))
-            
-        
     }
     
-    // Actions
-    override  func cardTapped() {
-        super.cardTapped()
-        delegate?.cardDidTapInside?(card: self)
-    }
+    //MARK: - Actions
     
     @objc  func playTapped() {
         delegate?.cardPlayerDidPlay?(card: self)
@@ -201,6 +190,11 @@ import Player
             self.playPauseV.alpha = 1
         }
     }
+    
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if touches.first?.view == player.view || touches.first?.view == playPauseV.contentView { playerTapped() }
+        else { super.touchesBegan(touches, with: event) }
+    }
 
 }
 
@@ -210,11 +204,16 @@ extension CardPlayer: PlayerDelegate {
     public func playerReady(_ player: Player) {
         
         player.view.addSubview(playPauseV)
+        playPauseV.frame.size = CGSize(width: playBtnSize, height: playBtnSize)
+        playPauseV.layer.cornerRadius = playPauseV.frame.height/2
+        playIV.frame.size = CGSize(width: LayoutHelper.Width(50, of: playPauseV),
+                                   height: LayoutHelper.Width(50, of: playPauseV))
+        playPauseV.center = player.view.center
+        playIV.center = playPauseV.contentView.center.applying(CGAffineTransform(translationX: LayoutHelper.Width(5, of: playPauseV), y: 0))
+        
         if isAutoplayEnabled {
             
-            player.playFromBeginning()
-            self.playPauseV.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-            self.playPauseV.alpha = 0
+            playTapped()
         } else {
             player.pause()
         }
@@ -239,14 +238,14 @@ extension CardPlayer: PlayerPlaybackDelegate {
     public func playerPlaybackWillStartFromBeginning(_ player: Player) { }
 }
 
-extension CardPlayer: CardDelegate {
+extension CardPlayer {
     
     public func cardIsHidingDetail(card: Card) {
-        layout(backgroundIV.frame, animated: true, showingDetail: false)
+        layout(backgroundIV.frame, showingDetail: false)
     }
 
     public func cardIsShowingDetail(card: Card) {
-        layout(backgroundIV.frame, animated: true, showingDetail: true)
+        layout(backgroundIV.frame, showingDetail: true)
     }
    
 }

@@ -6,6 +6,9 @@
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
+//TODO: - Risolvere il problema del layout dopo l' animazione passando il backgroundIV al detailVC
+//TODO: - Trovare il frame originario relativo alla view del VC della card ( in una table )
+
 import UIKit
 
 @objc public protocol CardDelegate {
@@ -17,7 +20,6 @@ import UIKit
     @objc optional func cardDidCloseDetailView(card: Card)
     @objc optional func cardIsShowingDetail(card: Card)
     @objc optional func cardIsHidingDetail(card: Card)
-    
     @objc optional func cardDetailIsScrolling(card: Card)
     
     @objc optional func cardHighlightDidTapButton(card: CardHighlight, button: UIButton)
@@ -25,44 +27,56 @@ import UIKit
     @objc optional func cardPlayerDidPause(card: CardPlayer)
 }
 
-@IBDesignable open class Card: UIView {
+@IBDesignable open class Card: UIView, CardDelegate {
 
+    // Storyboard Inspectable vars
     @IBInspectable public var shadowBlur: CGFloat = 14
     @IBInspectable public var shadowOpacity: Float = 0.6
     @IBInspectable public var shadowColor: UIColor = UIColor.gray
     @IBInspectable public var backgroundImage: UIImage?
     @IBInspectable public var textColor: UIColor = UIColor.black
     @IBInspectable public var cardRadius: CGFloat = 20
-    @IBInspectable public var shouldPresentDetailView: Bool = true
-    open var detailView: UIView?
-    
     @IBInspectable public var contentInset: CGFloat = 6 {
         didSet {
-            insets = LayoutHelper(rect: self.backgroundIV.bounds).X(contentInset)
+            insets = LayoutHelper(rect: originalFrame).X(contentInset)
         }
     }
     
     override open var backgroundColor: UIColor? {
         didSet(new) {
-            if let color = new { self.layer.backgroundColor = color.cgColor }
+            if let color = new { backgroundIV.backgroundColor = color }
             if backgroundColor != UIColor.clear { backgroundColor = UIColor.clear }
+        }
+    }
+    
+    /**
+     detailView -> The view to show after presenting detail; from -> Your current ViewController (self)
+     */
+    public func shouldPresent( _ detailView: UIView? = nil, from superVC: UIViewController? = nil) {
+        self.superVC = superVC
+        self.detailView = detailView
+    }
+    
+    public var hasParallax: Bool = true {
+        didSet {
+            if self.motionEffects.isEmpty && hasParallax { goParallax() }
+            else if !hasParallax && !motionEffects.isEmpty { motionEffects.removeAll() }
         }
     }
     
     var delegate: CardDelegate?
     
-    //Priv Vars
-    fileprivate var isDetailPresented = false
-    fileprivate var blurView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight ))
-    fileprivate var bounceIntensity = CGFloat()
+    //Private Vars
     fileprivate var tap: UITapGestureRecognizer!
+    fileprivate var detailVC: DetailViewController!
+    fileprivate var detailView: UIView?
+    var superVC: UIViewController?
+    var originalFrame = CGRect.zero
     var backgroundIV = UIImageView()
     var insets = CGFloat()
-    var originalFrame = CGRect.zero
-    var detailFrame = CGRect.zero
-    var detailSV = UIScrollView()
     
     //MARK: - View Life Cycle
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -76,28 +90,26 @@ import UIKit
     func initialize() {
         
         // Tap gesture init
-        tap = UITapGestureRecognizer(target: self, action: #selector(self.cardTapped))
-        detailSV.addGestureRecognizer(tap)
+        tap = UITapGestureRecognizer()
+        self.addGestureRecognizer(tap)
         tap.delegate = self
         tap.cancelsTouchesInView = false
+       
+        detailVC = DetailViewController()
+        detailVC.detailView = self.detailView
+        detailVC.transitioningDelegate = self
         
         // Adding Subviews
-        self.addSubview(detailSV)
-        detailSV.addSubview(backgroundIV)
-        detailSV.delegate = self
-        detailSV.alwaysBounceVertical = true
-        detailSV.isUserInteractionEnabled = false
-        detailSV.showsVerticalScrollIndicator = false
-        detailSV.showsHorizontalScrollIndicator = false
-        originalFrame = frame
+        self.addSubview(backgroundIV)
+        
+        delegate = self
+        backgroundIV.isUserInteractionEnabled = true
+        self.backgroundColor = UIColor.white
     }
-    
     
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
-        layout(true, showingDetail: false)
         
-        self.contentInset = 6
         self.layer.shadowOpacity = shadowOpacity
         self.layer.shadowColor = shadowColor.cgColor
         self.layer.shadowOffset = CGSize.zero
@@ -109,244 +121,100 @@ import UIKit
         backgroundIV.clipsToBounds = true
         backgroundIV.contentMode = .scaleAspectFill
         
-        blurView.frame = UIScreen.main.bounds
-        blurView.alpha = 0
+        layout(rect)
         
-        detailSV.frame = self.bounds
-        backgroundIV.frame = detailSV.bounds
-        
-        self.detailFrame.size = CGSize(width: LayoutHelper.XScreen(85), height: LayoutHelper.YScreen(100) - 20)
-        self.detailFrame.origin.x = (LayoutHelper.XScreen(100) - detailFrame.width) / 2
-        self.detailFrame.origin.y = 40
-        
-    }
-    
-    private func layout(_ animated: Bool = false, showingDetail: Bool = false){
-        
-        if showingDetail {
-            
-            //self.transform = CGAffineTransform.identity       //Rescale to 100% after tapDownInside
-            self.frame = detailFrame
-            self.blurView.alpha = 1
-            self.layer.shadowOpacity = 0
-        } else {
-            
-            self.frame = self.originalFrame
-            self.blurView.alpha = 0
-            self.layer.shadowOpacity = 1
-        }
-        
-        detailSV.frame.size = self.frame.size
-        backgroundIV.frame.size = CGSize(width: self.frame.width, height: self.backgroundIV.frame.height)
-        backgroundIV.frame.origin = self.bounds.origin
+        originalFrame = rect
+        contentInset = 6
     }
     
     
-    //Actions
+    //MARK: - Layout
+    
+    func layout(_ rect: CGRect){
+        
+        backgroundIV.frame.origin = rect.origin
+        backgroundIV.frame.size = CGSize(width: rect.width, height: rect.height)
+    }
+    
+    
+    //MARK: - Actions
+    
     @objc  func cardTapped(){
         
-        guard shouldPresentDetailView else {
-            resetAnimated {
-                self.delegate?.cardDidTapInside?(card: self)
-            }
-            return
-        }
-        
-        if !isDetailPresented {
-            superview?.bringSubview(toFront: self)
-            
-            resetAnimated {
-                self.showDetailAnimated()
-            }
-        }
+        guard superVC != nil else { resetAnimated { }; return }
+        detailVC.detailView = detailView
+        self.superVC?.present(self.detailVC, animated: true, completion: nil)
     }
 
-    @objc  func cardTapping(){
-        if !isDetailPresented {
-            pushBackAnimated()
-        }
-    }
     
-    //MARK: - Setup Stuff
-    private func prepareDetailView(){
-        
-        if detailView == nil {
-            
-            detailView = UIView(frame: CGRect(x: 0, y: backgroundIV.frame.maxY, width: self.bounds.width, height: 100))
-            let testLbl = UILabel(frame: detailView!.bounds)
-            testLbl.text = " No content to show."
-            detailView?.addSubview(testLbl)
-        }
-        
-        self.clipsToBounds = true
-        detailSV.addSubview(detailView!)
-        detailView?.autoresizingMask = UIViewAutoresizing.flexibleWidth
-        detailSV.isUserInteractionEnabled = true
-        detailSV.frame = self.bounds
-        detailView!.frame = CGRect(x: 0, y: backgroundIV.bounds.maxY, width: self.bounds.width, height: detailView!.frame.height)
-        detailSV.contentSize = CGSize(width: self.bounds.width, height: backgroundIV.bounds.height + detailView!.bounds.height)
-    }
+    //MARK: - Animations
     
-    private func prepareToDiscardDetailView() {
-        detailView?.removeFromSuperview()
-        detailSV.contentSize = backgroundIV.frame.size
-        detailSV.frame = backgroundIV.bounds
-        detailSV.isUserInteractionEnabled = false
-    }
-}
-
-
-//MARK: - ANIMATION things
-extension Card {
-    
-    private var bounceTransform: CGAffineTransform {
-        
-        let detailCenter = CGPoint(x: detailFrame.width/2, y: detailFrame.height/2)
-        let originalCenter = CGPoint(x: originalFrame.minX + originalFrame.width/2, y: originalFrame.minY + originalFrame.height/3)
-        let theOneToMove = isDetailPresented ? detailCenter  : originalCenter
-        let theOneToMoveTo = isDetailPresented ? originalCenter  : detailCenter
-        
-        let xMove = (theOneToMove.x < theOneToMoveTo.x ) ? LayoutHelper.XScreen(bounceIntensity) : -LayoutHelper.XScreen(bounceIntensity)
-        let yMove = (theOneToMove.y < theOneToMoveTo.y ) ? LayoutHelper.YScreen(bounceIntensity) : -LayoutHelper.YScreen(bounceIntensity)
-        
-        return CGAffineTransform(translationX: xMove, y: yMove)
-    }
-    
-    private func showDetailAnimated(){
-        
-        superview?.insertSubview(blurView, belowSubview: self)
-        self.bounceIntensity = 7
-        delegate?.cardWillShowDetailView?(card: self)
-        
-        // Layout
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-           
-            self.layout(true, showingDetail: true)
-            self.delegate?.cardIsShowingDetail?(card: self)
-        }){ _ in
-            
-            self.prepareDetailView()
-            self.isDetailPresented = true
-            self.delegate?.cardDidShowDetailView?(card: self)
-        }
-        
-        // Bounce
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-            
-            self.transform = self.bounceTransform
-            
-        }) { _ in UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-                            
-            self.transform = CGAffineTransform.identity
-            })
-        }
-    }
-    
-    private func hideDetailAnimated(velocity: Double = 0.4){
-        
-        self.prepareToDiscardDetailView()
-        delegate?.cardWillCloseDetailView?(card: self)
-        
-        // Layout
-        UIView.animate(withDuration: velocity, delay: 0, options: .curveEaseOut, animations: {
-            
-            self.layout(true, showingDetail: false)
-            self.delegate?.cardIsHidingDetail?(card: self)
-            
-        }) { (true) in
-            
-            self.blurView.removeFromSuperview()
-            self.clipsToBounds = false
-            self.isDetailPresented = false
-            self.delegate?.cardDidCloseDetailView?(card: self)
-        }
-        
-        // Bounce
-        UIView.animate(withDuration: velocity, delay: 0, options: .curveEaseOut, animations: {
-            
-            self.transform = self.bounceTransform
-            
-        }) { (true) in UIView.animate(withDuration: velocity, delay: 0, options: .curveEaseOut, animations: {
-            
-            self.transform = CGAffineTransform.identity
-            
-            })
-        }
-    }
-    
-    // Card Tapped Animations
     private func pushBackAnimated() {
+        
         UIView.animate(withDuration: 0.2, animations: { self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95) })
     }
-    private func resetAnimated(completion: @escaping () -> ()) {
+    
+    private func resetAnimated(_ completion: @escaping () -> ()) {
+        
         UIView.animate(withDuration: 0.2, animations: { self.transform = CGAffineTransform.identity }) { _ in
+            self.delegate?.cardDidTapInside?(card: self)
             completion()
         }
     }
     
+    func goParallax() {
+        let amount = 10
+        
+        let horizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+        horizontal.minimumRelativeValue = -amount
+        horizontal.maximumRelativeValue = amount
+        
+        let vertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
+        vertical.minimumRelativeValue = -amount
+        vertical.maximumRelativeValue = amount
+        
+        let group = UIMotionEffectGroup()
+        group.motionEffects = [horizontal, vertical]
+        self.addMotionEffect(group)
+    }
+    
 }
 
 
-//MARK: - DELEGATE Stuff
+    //MARK: - Transition Delegate
+
+extension Card: UIViewControllerTransitioningDelegate {
+    
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return Animator(presenting: true, from: self)
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return Animator(presenting: false, from: self)
+    }
+    
+}
+
+    //MARK: - Gesture Delegate
+
 extension Card: UIGestureRecognizerDelegate {
     
-    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        cardTapping()
-    }
-
-    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         cardTapped()
     }
-}
-
-extension Card: UIScrollViewDelegate {
     
-    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {}
-    
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        guard isDetailPresented else { return }
-        
-        let y = scrollView.contentOffset.y
-        let origin = self.detailFrame.origin.y
-        let currentOrigin = self.frame.origin.y
-
-        if (y<0  || currentOrigin > origin) {
-            self.frame.origin.y -= y/2
-            scrollView.contentOffset.y = 0
+        if let superview = self.superview {
+            originalFrame = superview.convert(self.frame, to: nil)
         }
-        
-        delegate?.cardDetailIsScrolling?(card: self)
+        pushBackAnimated()
     }
-    
-    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        guard isDetailPresented else { return }
-        
-        let origin = self.detailFrame.origin.y
-        let currentOrigin = self.frame.origin.y
-        let max = 4.0
-        let min = 2.0
-        var speed = Double(-velocity.y)
-        
-        if speed > max { speed = max }
-        if speed < min { speed = min }
-        
-        self.bounceIntensity = CGFloat(speed-1)
-        speed = (max/speed*min)/10
-        
-        guard (currentOrigin - origin) < 60 else { hideDetailAnimated(velocity: speed); return }
-        UIView.animate(withDuration: speed) { self.frame.origin.y = self.detailFrame.origin.y }
-    }
-    
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-        UIView.animate(withDuration: 0.1) { self.frame.origin.y = self.detailFrame.origin.y }
-    }
-    
 }
 
-// Label Helpers
+
+	//MARK: - Helpers
+
 extension UILabel {
     
     func lineHeight(_ height: CGFloat) {

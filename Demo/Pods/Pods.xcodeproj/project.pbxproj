@@ -14,6 +14,8 @@
 		35D4B5B4996012813B63CA1EB822F5A7 /* CardGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ECBE08396AC422EB7CFD1889DFD0B5 /* CardGroup.swift */; };
 		4C9CC422A0D7C2CE3BD29EFCB165F899 /* Cards-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BFA4DC2C07CFB0CA71B1E85FB8A26ED8 /* Cards-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F4E5151CA3EB41CCDD12AFB89B9CB54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5571A7EC0AF8CFEFED1CBBBED12D1C /* UIKit.framework */; };
+		6D7EF8441F9E1DEF0057419A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7EF8431F9E1DEF0057419A /* DetailViewController.swift */; };
+		6D7EF8461F9E2DC90057419A /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7EF8451F9E2DC90057419A /* Animator.swift */; };
 		76532D26E025EB0304F69B96AA700A96 /* Player.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B103F9BD1797D12E616891DC9F484A /* Player.framework */; };
 		8B624C5A65233DA21DDBD12A46A44F5C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE024B0E8E41B5A5FD761132E386C2C /* Player.swift */; };
 		9DA0F7ED74D419265BB3C744C50B889E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D758F3A9FEEBFE8D6F76E774F427C8A /* Foundation.framework */; };
@@ -69,6 +71,8 @@
 		63BC440544EDB08E90C5F3F94611E566 /* CardPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardPlayer.swift; path = Cards/Sources/CardPlayer.swift; sourceTree = "<group>"; };
 		64B103F9BD1797D12E616891DC9F484A /* Player.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Player.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		675BF885B5E014EC48E31C56950DB3B3 /* Cards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D7EF8431F9E1DEF0057419A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		6D7EF8451F9E2DC90057419A /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		71940C1CEB7995DC34CFE54CAF1AEF88 /* Pods-Demo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Demo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		7E02B4E210625223B10D69B1903004C0 /* Cards.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Cards.modulemap; sourceTree = "<group>"; };
 		819FB1DA8BA4D7953173D7F9ECADD6CA /* Player-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Player-umbrella.h"; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 				8484B4966D400AF31856CA8EC36ECDF9 /* CardHighlight.swift */,
 				63BC440544EDB08E90C5F3F94611E566 /* CardPlayer.swift */,
 				FEAD241AA599CE6BDDB22937ECFD80E5 /* LayoutHelper.swift */,
+				6D7EF8431F9E1DEF0057419A /* DetailViewController.swift */,
+				6D7EF8451F9E2DC90057419A /* Animator.swift */,
 				82212CEA12AC2F1054DFAAEBADAF095E /* Support Files */,
 			);
 			name = Cards;
@@ -391,6 +397,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D7EF8461F9E2DC90057419A /* Animator.swift in Sources */,
+				6D7EF8441F9E1DEF0057419A /* DetailViewController.swift in Sources */,
 				31B6B69A24982C288E27452037D3B008 /* Card.swift in Sources */,
 				9FC661A5F4EA790951C89F2FD12E9D38 /* CardArticle.swift in Sources */,
 				35D4B5B4996012813B63CA1EB822F5A7 /* CardGroup.swift in Sources */,

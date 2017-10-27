@@ -11,13 +11,14 @@ Cards brings to XCode the card views you can see in the new iOS XI Appstore.
 ### Storyboard
 - Go to **main.storyboard** and add a **blank UIView**
 - Open the **Identity Inspector** and type '**CardHighlight**' the '**class**' field
+- Make sure you have '**Cards**' selected in '**Module**' field
 - Switch to the **Attributes Inspector** and **configure** it as you like. 
 
 ![CardViewStoryboard](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardViewStoryboard.png)
 
 * Drag a blank **UIViewController** and design its view as you like
 * Move to the **Identity inspector** 
-* Type '**CardContent**' in the **StoryboardID** field
+* Type '**CardContent**' in the **StoryboardID** field.
 
 ![DetailViewStoryboard](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/DetailViewStoryboard.png)
 
@@ -25,6 +26,7 @@ Cards brings to XCode the card views you can see in the new iOS XI Appstore.
 ```swift
 // Aspect Ratio of 5:6 is preferred
 let card = CardHighlight(frame: CGRect(x: 10, y: 30, width: 200 , height: 240))
+
 card.backgroundColor = UIColor(red: 0, green: 94/255, blue: 112/255, alpha: 1)
 card.icon = UIImage(named: "flappy")
 card.title = "Welcome \nto \nCards !"
@@ -32,9 +34,10 @@ card.itemTitle = "Flappy Bird"
 card.itemSubtitle = "Flap That !"
 card.textColor = UIColor.white
     
-let detailVC = storyboard?.instantiateViewController(withIdentifier: "CardContent")
-// Or init a new one and programmatically design its view 
-card.detailView = detailVC?.view
+card.hasParallax = true
+    
+let cardContentVC = storyboard!.instantiateViewController(withIdentifier: "CardContent")
+card.shouldPresent(cardContentVC.view, from: self)
     
 view.addSubview(card)
 ```
@@ -130,6 +133,17 @@ view.addSubview(card)
 
     view.addSubview(card)
 ```
+
+## Documentation
+
+See the **Wiki**, to learn in depth infos about Cards.  
+[GO!](https://github.com/PaoloCuscela/Cards/wiki) 
+
+## Issues & Feature requests
+
+If you encounter any problems or have any trouble using Cards, feel free to open an issue. I'll answer you as soon as I see it.
+
+New features, or improvements to the framework are welcome (open an issue).
 
 ## Thanksto
 

@@ -44,13 +44,13 @@ class LayoutHelper {
     func RevY(_ percentage: CGFloat, height: CGFloat, from: UIView) -> CGFloat {
         return from.frame.minY - Y(percentage) - height
     }
-
-    func Width(_ percentage: CGFloat, of view: UIView) -> CGFloat {
-        return percentage * view.frame.width / 100
+    
+    static func Width(_ percentage: CGFloat, of view: UIView) -> CGFloat {
+        return view.frame.width * (percentage / 100)
     }
-
-    func Height(_ percentage: CGFloat, of view: UIView) -> CGFloat {
-        return percentage * view.frame.height / 100
+    
+    static func Height(_ percentage: CGFloat, of view: UIView) -> CGFloat {
+        return view.frame.height * (percentage / 100)
     }
 
     static func XScreen(_ percentage: CGFloat) -> CGFloat {
@@ -61,4 +61,11 @@ class LayoutHelper {
         return percentage * UIScreen.main.bounds.height / 100
     }
 
+}
+
+extension CGRect {
+    
+    var center: CGPoint {
+        return CGPoint(x: width/2 + minX, y: height/2 + minY)
+    }
 }

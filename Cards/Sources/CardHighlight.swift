@@ -52,7 +52,7 @@ import UIKit
         backgroundIV.addSubview(titleLbl)
         backgroundIV.addSubview(itemTitleLbl)
         backgroundIV.addSubview(itemSubtitleLbl)
-        detailSV.addSubview(actionBtn)
+        backgroundIV.addSubview(actionBtn)
         
         if backgroundImage == nil {  backgroundIV.addSubview(bgIconIV); }
         else { bgIconIV.alpha = 0 }
@@ -66,7 +66,6 @@ import UIKit
         bgIconIV.image = icon
         bgIconIV.alpha = backgroundImage != nil ? 0 : 0.6
         bgIconIV.clipsToBounds = true
-        
         
         iconIV.image = icon
         iconIV.clipsToBounds = true
@@ -106,11 +105,12 @@ import UIKit
         
         btnWidth = CGFloat((buttonText.characters.count + 2) * 10)
         
-        layout(backgroundIV.frame, animated: true, showingDetail: false)
+        layout(backgroundIV.frame)
         
     }
     
-    private func layout(_ rect: CGRect, animated: Bool = false, showingDetail: Bool = false) {
+    internal override func layout(_ rect: CGRect) {
+        super.layout(rect)
         
         let gimme = LayoutHelper(rect: rect)
         
@@ -133,12 +133,11 @@ import UIKit
         
         bgIconIV.transform = CGAffineTransform.identity
         
-        guard animated else { return }
         
         iconIV.layer.cornerRadius = iconRadius
         
         bgIconIV.frame.size = CGSize(width: iconIV.bounds.width * 2, height: iconIV.bounds.width * 2)
-        bgIconIV.frame.origin = CGPoint(x: gimme.RevX(0, width: bgIconIV.frame.width) + gimme.Width(40, of: bgIconIV) , y: 0)
+        bgIconIV.frame.origin = CGPoint(x: gimme.RevX(0, width: bgIconIV.frame.width) + LayoutHelper.Width(40, of: bgIconIV) , y: 0)
         
         
         bgIconIV.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/6))
@@ -149,17 +148,10 @@ import UIKit
                                  width: btnWidth,
                                  height: 32)
         actionBtn.layer.cornerRadius = actionBtn.layer.bounds.height/2
-        actionBtn.removeFromSuperview()
-        if showingDetail { detailSV.addSubview(actionBtn) }
-        else { self.addSubview(actionBtn) }
         
     }
    
     //Actions
-    override  func cardTapped() {
-        super.cardTapped()
-        delegate?.cardDidTapInside?(card: self)
-    }
     
     @objc  func buttonTapped(){
         UIView.animate(withDuration: 0.2, animations: {
@@ -173,14 +165,14 @@ import UIKit
     }
 }
 
-extension CardHighlight: CardDelegate {
+extension CardHighlight {
     
     public func cardIsShowingDetail(card: Card) {
-        layout(backgroundIV.frame, animated: true, showingDetail: true)
+        layout(backgroundIV.frame)
     }
 
     public func cardIsHidingDetail(card: Card) {
-        layout(originalFrame, animated: true, showingDetail: false)
+        layout(backgroundIV.frame)
     }
     
 }

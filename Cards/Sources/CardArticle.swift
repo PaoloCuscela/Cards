@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class CardArticle: Card {
+@IBDesignable open class CardArticle: Card {
     
     // SB Vars
     @IBInspectable public var title: String = "The Art of the Impossible"
@@ -88,8 +88,9 @@ import UIKit
     }
     
     
-    private func layout(_ rect: CGRect) {
+    override func layout(_ rect: CGRect) {
         
+        super.layout(rect)
         
         let gimme  = LayoutHelper(rect: rect)
         
@@ -113,7 +114,7 @@ import UIKit
     
 }
 
-extension CardArticle: CardDelegate {
+extension CardArticle {
     
     public func cardDidShowDetailView(card: Card) { layout(backgroundIV.bounds) }
     public func cardWillCloseDetailView(card: Card) { layout(originalFrame) }
