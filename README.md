@@ -1,7 +1,5 @@
-<p align="center">
-    <img src="https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Logo.png"
-        height="250">
-</p>
+![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Overview.png)
+
 <p align="center">
     <a href="https://github.com/PaoloCuscela/Cards/stargazers">
         <img src="https://img.shields.io/github/stars/PaoloCuscela/Cards.svg"
@@ -15,10 +13,10 @@
     <a href="https://github.com/PaoloCuscela/Cards/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/PaoloCuscela/Cards.svg"
             alt="License"></a>
-</p>
+</p> 
 
-Cards brings to XCode the card views you can see in the new iOS XI Appstore.
-
+<p align="center"> <b>Cards brings to XCode the card views you can see in the new iOS XI Appstore. </b></p> 
+ 
 ## Getting Started
 
 ### Storyboard
@@ -37,6 +35,8 @@ Cards brings to XCode the card views you can see in the new iOS XI Appstore.
 
 ### Code
 ```swift
+import Cards
+
 // Aspect Ratio of 5:6 is preferred
 let card = CardHighlight(frame: CGRect(x: 10, y: 30, width: 200 , height: 240))
 
@@ -77,7 +77,7 @@ pod 'Cards'
 
 ## Overview
 
-![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Overview.png)
+
 ![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardPlayer.gif)
 ![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardGroupSliding.gif)
 ![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/DetailView.gif)
