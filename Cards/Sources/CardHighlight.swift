@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable open class CardHighlight: Card {
 
-    @IBInspectable public var title: String = "welcome/n to cards/n XI !"
+    @IBInspectable public var title: String = "welcome \nto \ncards !"
     @IBInspectable public var titleSize:CGFloat = 26
     @IBInspectable public var itemTitle: String = "Flappy Bird"
     @IBInspectable public var itemTitleSize: CGFloat = 16

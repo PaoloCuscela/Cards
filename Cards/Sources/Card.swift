@@ -67,8 +67,8 @@ import UIKit
     var delegate: CardDelegate?
     
     //Private Vars
-    fileprivate var tap: UITapGestureRecognizer!
-    fileprivate var detailVC: DetailViewController!
+    fileprivate var tap = UITapGestureRecognizer()
+    fileprivate var detailVC = DetailViewController()
     fileprivate var detailView: UIView?
     var superVC: UIViewController?
     var originalFrame = CGRect.zero
@@ -90,13 +90,13 @@ import UIKit
     func initialize() {
         
         // Tap gesture init
-        tap = UITapGestureRecognizer()
         self.addGestureRecognizer(tap)
         tap.delegate = self
         tap.cancelsTouchesInView = false
        
-        detailVC = DetailViewController()
-        detailVC.detailView = self.detailView
+        if let detail = detailView {
+             detailVC.detailView = detail
+        }
         detailVC.transitioningDelegate = self
         
         // Adding Subviews
@@ -141,9 +141,14 @@ import UIKit
     
     @objc  func cardTapped(){
         
-        guard superVC != nil else { resetAnimated { }; return }
-        detailVC.detailView = detailView
-        self.superVC?.present(self.detailVC, animated: true, completion: nil)
+        if let vc = superVC {
+            
+            detailVC.detailView = detailView
+            vc.present(self.detailVC, animated: true, completion: nil)
+        } else {
+            
+            resetAnimated { }
+        }
     }
 
     
