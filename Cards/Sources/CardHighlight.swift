@@ -10,15 +10,46 @@ import UIKit
 
 @IBDesignable open class CardHighlight: Card {
 
+    /**
+     Text of the title label.
+     */
     @IBInspectable public var title: String = "welcome \nto \ncards !"
+    /**
+     Max font size the title label.
+     */
     @IBInspectable public var titleSize:CGFloat = 26
+    /**
+     Text of the title label of the item at the bottom.
+     */
     @IBInspectable public var itemTitle: String = "Flappy Bird"
+    /**
+     Max font size the subtitle label of the item at the bottom.
+     */
     @IBInspectable public var itemTitleSize: CGFloat = 16
+    /**
+     Text of the subtitle label of the item at the bottom.
+     */
     @IBInspectable public var itemSubtitle: String = "Flap that !"
+    /**
+     Max font size the subtitle label of the item at the bottom.
+     */
     @IBInspectable public var itemSubtitleSize: CGFloat = 14
+    /**
+     Image displayed in the icon ImageView.
+     */
     @IBInspectable public var icon: UIImage?
+    /**
+     Corner radius for the icon ImageView
+     */
     @IBInspectable public var iconRadius: CGFloat = 16
-    @IBInspectable public var buttonText: String = "view"
+    /**
+     Text for the card's button.
+     */
+    @IBInspectable public var buttonText: String = "view" {
+        didSet{
+            self.setNeedsDisplay()
+        }
+    }
     
     //Priv Vars
     private var iconIV = UIImageView()
@@ -45,7 +76,6 @@ import UIKit
     override  func initialize() {
         super.initialize()
         
-        self.delegate = self
         actionBtn.addTarget(self, action: #selector(buttonTapped), for: UIControlEvents.touchUpInside)
         
         backgroundIV.addSubview(iconIV)
@@ -105,14 +135,14 @@ import UIKit
         
         btnWidth = CGFloat((buttonText.characters.count + 2) * 10)
         
-        layout(backgroundIV.frame)
+        layout()
         
     }
     
-    internal override func layout(_ rect: CGRect) {
-        super.layout(rect)
+    override func layout(animating: Bool = true) {
+        super.layout(animating: animating)
         
-        let gimme = LayoutHelper(rect: rect)
+        let gimme = LayoutHelper(rect: backgroundIV.frame)
         
         iconIV.frame = CGRect(x: insets,
                               y: insets,
@@ -120,7 +150,7 @@ import UIKit
                               height: gimme.Y(25))
         
         titleLbl.frame.origin = CGPoint(x: insets, y: gimme.Y(5, from: iconIV))
-        titleLbl.frame.size.width = (originalFrame.width * 0.65) + ((rect.width - originalFrame.width)/3)
+        titleLbl.frame.size.width = (originalFrame.width * 0.65) + ((backgroundIV.bounds.width - originalFrame.width)/3)
         titleLbl.frame.size.height = gimme.Y(35)
         
         itemSubtitleLbl.sizeToFit()
@@ -148,7 +178,6 @@ import UIKit
                                  width: btnWidth,
                                  height: 32)
         actionBtn.layer.cornerRadius = actionBtn.layer.bounds.height/2
-        
     }
    
     //Actions
@@ -163,18 +192,6 @@ import UIKit
         }
         delegate?.cardHighlightDidTapButton?(card: self, button: actionBtn)
     }
-}
-
-extension CardHighlight {
-    
-    public func cardIsShowingDetail(card: Card) {
-        layout(backgroundIV.frame)
-    }
-
-    public func cardIsHidingDetail(card: Card) {
-        layout(backgroundIV.frame)
-    }
-    
 }
 
 

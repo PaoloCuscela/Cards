@@ -10,9 +10,18 @@ import UIKit
 
 @IBDesignable open class CardGroupSliding: CardGroup {
 
+    /**
+     Size for the collection view items.
+     */
     @IBInspectable public var iconsSize: CGFloat = 80
+    /**
+     Corner radius of the collection view items
+     */
     @IBInspectable public var iconsRadius: CGFloat = 40
     
+    /**
+     Data source for the collection view.
+     */
     public var icons: [UIImage]?
     
     // Priv vars
@@ -59,37 +68,24 @@ import UIKit
         super.draw(rect)
         
         subtitleLbl.textColor = textColor.withAlphaComponent(0.4)
-        layout(backgroundIV.bounds, animationHasEnded: true)
+        layout(animating: false)
     }
     
-    func layout(_ rect: CGRect, animationHasEnded: Bool) {
-        super.layout(rect)
-
-        guard animationHasEnded else { return }
+    override func layout(animating: Bool) {
+        super.layout(animating: animating)
         
-        let gimme = LayoutHelper(rect: rect)
+        let gimme = LayoutHelper(rect: backgroundIV.bounds)
         
         slidingCV.frame = CGRect(x: 0,
                                  y: gimme.Y(5, from: titleLbl),
                                  width: backgroundIV.frame.width,
-                                 height: rect.height - (blurV.frame.height - insets ) )
+                                 height: backgroundIV.bounds.height - blurV.frame.height )
     }
-
-    public func cardDidCloseDetailView(card: Card) {
-        cardDidCloseDetailView(card: card)
-        self.layout(backgroundIV.bounds, animationHasEnded: true)
-    }
-    
-    public override func cardDidShowDetailView(card: Card) {
-        super.cardDidShowDetailView(card: card)
-        self.layout(backgroundIV.bounds, animationHasEnded: true)
-    }
-    
     
     //MARK: - Sliding Logic
     
     public func startSlide() {
-        timer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(self.slide), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(self.slide), userInfo: nil, repeats: true)
     }
 
     public func stopSlide() {

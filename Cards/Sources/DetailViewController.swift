@@ -14,9 +14,9 @@ internal class DetailViewController: UIViewController {
     var scrollView = UIScrollView()
     var originalFrame = CGRect.zero
     var snap = UIView()
-    var cardBackground: UIView! {
+    var card: Card! {
         didSet{
-            scrollView.addSubview(cardBackground)
+            scrollView.addSubview(card.backgroundIV)
         }
     }
     
@@ -32,12 +32,13 @@ internal class DetailViewController: UIViewController {
         if let detail = detailView {
             
             scrollView.addSubview(detail)
+            detail.autoresizingMask = .flexibleWidth
             detail.alpha = 0
         }
         
         blurView.frame = self.view.bounds
         
-        scrollView.layer.backgroundColor = UIColor.white.cgColor
+        scrollView.layer.backgroundColor = detailView?.backgroundColor?.cgColor ?? UIColor.white.cgColor
         scrollView.layer.cornerRadius = 20
         
         scrollView.delegate = self
@@ -54,10 +55,10 @@ internal class DetailViewController: UIViewController {
             
             detail.alpha = 1
             detail.frame = CGRect(x: 0,
-                                  y: cardBackground.bounds.maxY,
+                                  y: card.backgroundIV.bounds.maxY,
                                   width: scrollView.frame.width,
                                   height: detail.frame.height)
-            
+             
             scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: detail.frame.maxY)
         }
         
@@ -70,12 +71,13 @@ internal class DetailViewController: UIViewController {
     
     //MARK: - Layout & Animations for the content ( rect = Scrollview + card + detail )
     
-    func layout(_ rect: CGRect, isPresenting: Bool, transform: CGAffineTransform = CGAffineTransform.identity){
+    func layout(_ rect: CGRect, isPresenting: Bool, isAnimating: Bool = true, transform: CGAffineTransform = CGAffineTransform.identity){
         
         guard isPresenting else {
             
             scrollView.frame = rect.applying(transform)
-            cardBackground.frame = scrollView.bounds
+            card.backgroundIV.frame = scrollView.bounds
+            card.layout(animating: isAnimating)
             return
         }
         
@@ -84,9 +86,11 @@ internal class DetailViewController: UIViewController {
         scrollView.frame.origin.y = 40
         scrollView.frame = scrollView.frame.applying(transform)
         
-        cardBackground.frame.origin = scrollView.bounds.origin
-        cardBackground.frame.size = CGSize( width: scrollView.bounds.width,
-                                            height: cardBackground.bounds.height)
+        card.backgroundIV.frame.origin = scrollView.bounds.origin
+        card.backgroundIV.frame.size = CGSize( width: scrollView.bounds.width,
+                                            height: card.backgroundIV.bounds.height)
+        card.layout(animating: isAnimating)
+    
     }
 }
 

@@ -15,7 +15,7 @@
 
 ![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Header.png)
 
-<p align="center"> <b>Cards brings to XCode the card views you can see in the new iOS XI Appstore. </b></p> 
+<p align="center"> <b>Cards brings to XCode the card views seen in the new iOS XI Appstore. </b></p> 
 
 ## Getting Started
 
@@ -106,7 +106,7 @@ var blurEffect: UIBlurEffectStyle //Blur effect of CardGroup
 let card = CardPlayer(frame: CGRect(x: 40, y: 50, width: 300 , height: 360))
 card.textColor = UIColor.black
 card.videoSource = URL(string: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
-self.addChildViewController(card.player)    /// IMPORTANT: Don't forget this
+card.shouldDisplayPlayer(from: self)    //Required. 
         
 card.playerCover = UIImage(named: "mvBackground")!  // Shows while the player is loading
 card.playImage = UIImage(named: "CardPlayerPlayIcon")!  // Play button icon

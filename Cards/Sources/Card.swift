@@ -30,25 +30,67 @@ import UIKit
 @IBDesignable open class Card: UIView, CardDelegate {
 
     // Storyboard Inspectable vars
-    @IBInspectable public var shadowBlur: CGFloat = 14
-    @IBInspectable public var shadowOpacity: Float = 0.6
-    @IBInspectable public var shadowColor: UIColor = UIColor.gray
-    @IBInspectable public var backgroundImage: UIImage?
+    /**
+     Color for the card's labels.
+     */
     @IBInspectable public var textColor: UIColor = UIColor.black
-    @IBInspectable public var cardRadius: CGFloat = 20
+    /**
+     Amount of blur for the card's shadow.
+     */
+    @IBInspectable public var shadowBlur: CGFloat = 14 {
+        didSet{
+            self.layer.shadowRadius = shadowBlur
+        }
+    }
+    /**
+     Alpha of the card's shadow.
+     */
+    @IBInspectable public var shadowOpacity: Float = 0.6 {
+        didSet{
+            self.layer.shadowOpacity = shadowOpacity
+        }
+    }
+    /**
+     Color of the card's shadow.
+     */
+    @IBInspectable public var shadowColor: UIColor = UIColor.gray {
+        didSet{
+            self.layer.shadowColor = shadowColor.cgColor
+        }
+    }
+    /**
+     The image to display in the background.
+     */
+    @IBInspectable public var backgroundImage: UIImage? {
+        didSet{
+            self.backgroundIV.image = backgroundImage
+        }
+    }
+    /**
+     Corner radius of the card.
+     */
+    @IBInspectable public var cardRadius: CGFloat = 20{
+        didSet{
+            self.layer.cornerRadius = cardRadius
+        }
+    }
+    /**
+     Insets between card's content and edges ( in percentage )
+     */
     @IBInspectable public var contentInset: CGFloat = 6 {
         didSet {
             insets = LayoutHelper(rect: originalFrame).X(contentInset)
         }
     }
-    
+    /**
+     Color of the card's background.
+     */
     override open var backgroundColor: UIColor? {
         didSet(new) {
             if let color = new { backgroundIV.backgroundColor = color }
             if backgroundColor != UIColor.clear { backgroundColor = UIColor.clear }
         }
     }
-    
     /**
      detailView -> The view to show after presenting detail; from -> Your current ViewController (self)
      */
@@ -56,15 +98,19 @@ import UIKit
         self.superVC = superVC
         self.detailView = detailView
     }
-    
+    /**
+     If the card should display parallax effect.
+     */
     public var hasParallax: Bool = true {
         didSet {
             if self.motionEffects.isEmpty && hasParallax { goParallax() }
             else if !hasParallax && !motionEffects.isEmpty { motionEffects.removeAll() }
         }
     }
-    
-    var delegate: CardDelegate?
+    /**
+     Delegate for the card. Should extend your VC with CardDelegate.
+     */
+    public var delegate: CardDelegate?
     
     //Private Vars
     fileprivate var tap = UITapGestureRecognizer()
@@ -74,6 +120,7 @@ import UIKit
     var originalFrame = CGRect.zero
     var backgroundIV = UIImageView()
     var insets = CGFloat()
+    var isPresenting = false
     
     //MARK: - View Life Cycle
     
@@ -102,13 +149,17 @@ import UIKit
         // Adding Subviews
         self.addSubview(backgroundIV)
         
-        delegate = self
         backgroundIV.isUserInteractionEnabled = true
-        self.backgroundColor = UIColor.white
+        
+        if backgroundIV.backgroundColor == nil {
+            backgroundIV.backgroundColor = UIColor.white
+            super.backgroundColor = UIColor.clear
+        }
     }
     
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
+        originalFrame = rect
         
         self.layer.shadowOpacity = shadowOpacity
         self.layer.shadowColor = shadowColor.cgColor
@@ -121,25 +172,21 @@ import UIKit
         backgroundIV.clipsToBounds = true
         backgroundIV.contentMode = .scaleAspectFill
         
-        layout(rect)
-        
-        originalFrame = rect
+        backgroundIV.frame.origin = bounds.origin
+        backgroundIV.frame.size = CGSize(width: bounds.width, height: bounds.height)
         contentInset = 6
     }
     
     
     //MARK: - Layout
     
-    func layout(_ rect: CGRect){
-        
-        backgroundIV.frame.origin = rect.origin
-        backgroundIV.frame.size = CGSize(width: rect.width, height: rect.height)
-    }
+    func layout(animating: Bool = true){ }
     
     
     //MARK: - Actions
     
     @objc  func cardTapped(){
+        self.delegate?.cardDidTapInside?(card: self)
         
         if let vc = superVC {
             
@@ -147,7 +194,7 @@ import UIKit
             vc.present(self.detailVC, animated: true, completion: nil)
         } else {
             
-            resetAnimated { }
+            resetAnimated()
         }
     }
 
@@ -159,12 +206,9 @@ import UIKit
         UIView.animate(withDuration: 0.2, animations: { self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95) })
     }
     
-    private func resetAnimated(_ completion: @escaping () -> ()) {
+    private func resetAnimated() {
         
-        UIView.animate(withDuration: 0.2, animations: { self.transform = CGAffineTransform.identity }) { _ in
-            self.delegate?.cardDidTapInside?(card: self)
-            completion()
-        }
+        UIView.animate(withDuration: 0.2, animations: { self.transform = CGAffineTransform.identity })
     }
     
     func goParallax() {

@@ -12,21 +12,61 @@ import Player
 
 @IBDesignable open class CardPlayer: Card {
 
+    /**
+     Text of the title label.
+     */
     @IBInspectable public var title: String = "Big Buck Bunny"
+    /**
+     Max font size of the title label.
+     */
     @IBInspectable public var titleSize: CGFloat = 26
+    /**
+     Text of the subtitle label.
+     */
     @IBInspectable public var subtitle: String = "Inside the extraordinary world of Buck Bunny"
+    /**
+     Max font size of the subtitle label.
+     */
     @IBInspectable public var subtitleSize: CGFloat = 19
+    /**
+     Text of the category label.
+     */
     @IBInspectable public var category: String = "today's movie"
+    /**
+     Size for the play button in the player.
+     */
     @IBInspectable public var playBtnSize: CGFloat = 56
+    /**
+     Image shown in the play button.
+     */
     @IBInspectable public var playImage: UIImage?
+    /**
+     Image shown before the player is loaded.
+     */
     @IBInspectable public var playerCover: UIImage?
+    /**
+     If the player should start the playback when is ready.
+     */
     @IBInspectable public var isAutoplayEnabled: Bool = false
+    /**
+     If the player should restart the playback when it ends.
+     */
     @IBInspectable public var shouldRestartVideoWhenPlaybackEnds: Bool = true
+    /**
+     Source for the video ( streaming or local ).
+     */
     @IBInspectable public var videoSource: URL?  {
         didSet { player.url = videoSource }
     }
 
-    open var player = Player() // Player provided by Patrik Piemonte
+    /**
+     Required. View controller that should display the player.
+     */
+    public func shouldDisplayPlayer( from vc: UIViewController ) {
+        vc.addChildViewController(player)
+    }
+    
+    private var player = Player() // Player provided by Patrik Piemonte
 
     private var titleLbl = UILabel ()
     private var subtitleLbl = UILabel()
@@ -125,23 +165,23 @@ import Player
         subtitleLbl.numberOfLines = 0
         subtitleLbl.textAlignment = .left
         
-        self.layout(rect, showingDetail: false)
+        self.layout()
     }
     
-    func layout(_ rect: CGRect, showingDetail: Bool = false) {
-        super.layout(rect)
+    override func layout(animating: Bool = true) {
+        super.layout(animating: animating)
         
-        let gimme = LayoutHelper(rect: rect)
+        let gimme = LayoutHelper(rect: backgroundIV.bounds)
         
-        let aspect1016 = rect.width *  (10/16)
-        let aspect921 = rect.width *  (9/21)
+        let aspect1016 = backgroundIV.bounds.width *  (10/16)
+        let aspect921 = backgroundIV.bounds.width *  (9/21)
         let move = ( aspect1016 - aspect921 ) * 2
         
-        subtitleLbl.transform = showingDetail ? CGAffineTransform(translationX: 0, y: move) : CGAffineTransform.identity
-        //backgroundIV.frame.size.height = originalFrame.height + ( showingDetail ? move : 0 )
+        subtitleLbl.transform = isPresenting ? CGAffineTransform(translationX: 0, y: move) : CGAffineTransform.identity
+        backgroundIV.frame.size.height = originalFrame.height + ( isPresenting ? move/2 : 0 )
         
         player.view.frame.origin = CGPoint.zero
-        player.view.frame.size = CGSize(width: rect.width, height: showingDetail ? aspect1016 : aspect921 )
+        player.view.frame.size = CGSize(width: backgroundIV.bounds.width, height: isPresenting ? aspect1016 : aspect921 )
         playerCoverIV.frame = player.view.bounds
         
         
@@ -151,7 +191,7 @@ import Player
         categoryLbl.frame.origin.y = gimme.Y(3, from: player.view)
         titleLbl.frame.origin.y = gimme.Y(0, from: categoryLbl)
         titleLbl.sizeToFit()
-            
+        
         categoryLbl.frame = CGRect(x: insets,
                                    y: gimme.Y(3, from: player.view),
                                    width: gimme.X(80),
@@ -169,26 +209,43 @@ import Player
                                    height: gimme.Y(12))
     }
     
+    
     //MARK: - Actions
     
-    @objc  func playTapped() {
-        delegate?.cardPlayerDidPlay?(card: self)
-        player.playFromCurrentTime()
+    public func play() {
         
+        player.playFromCurrentTime()
         UIView.animate(withDuration: 0.2) {
             self.playPauseV.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             self.playPauseV.alpha = 0
         }
     }
     
-    @objc  func playerTapped() {
-        delegate?.cardPlayerDidPause?(card: self)
-        player.pause()
+    public func pause() {
         
+        player.pause()
         UIView.animate(withDuration: 0.1) {
             self.playPauseV.transform = CGAffineTransform.identity
             self.playPauseV.alpha = 1
         }
+    }
+    
+    public func stop() {
+        
+        pause()
+        player.stop()
+    }
+    
+    @objc  func playTapped() {
+        
+        play()
+        delegate?.cardPlayerDidPlay?(card: self)
+    }
+    
+    @objc  func playerTapped() {
+        
+        pause()
+        delegate?.cardPlayerDidPause?(card: self)
     }
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -213,9 +270,9 @@ extension CardPlayer: PlayerDelegate {
         
         if isAutoplayEnabled {
             
-            playTapped()
+            play()
         } else {
-            player.pause()
+            pause()
         }
     }
     
@@ -236,18 +293,6 @@ extension CardPlayer: PlayerPlaybackDelegate {
     public func playerPlaybackWillLoop(_ player: Player) { }
     public func playerCurrentTimeDidChange(_ player: Player) { }
     public func playerPlaybackWillStartFromBeginning(_ player: Player) { }
-}
-
-extension CardPlayer {
-    
-    public func cardIsHidingDetail(card: Card) {
-        layout(backgroundIV.frame, showingDetail: false)
-    }
-
-    public func cardIsShowingDetail(card: Card) {
-        layout(backgroundIV.frame, showingDetail: true)
-    }
-   
 }
 
 

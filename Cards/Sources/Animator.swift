@@ -12,7 +12,7 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     
     fileprivate var presenting: Bool
     fileprivate var velocity = 0.6
-    var bounceIntensity: CGFloat = 0.1
+    var bounceIntensity: CGFloat = 0.07
     var card: Card
     
     init(presenting: Bool, from card: Card) {
@@ -34,10 +34,11 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         guard presenting else {
             
             // Detail View Controller Dismiss Animations
+            card.isPresenting = false
             
             let superVC = to
             let detailVC = from as! DetailViewController
-            let cardBackgroundFrame = detailVC.scrollView.convert(detailVC.cardBackground.frame, to: nil)
+            let cardBackgroundFrame = detailVC.scrollView.convert(card.backgroundIV.frame, to: nil)
             let bounce = self.bounceTransform(cardBackgroundFrame, to: card.originalFrame)
             
             // Blur and fade with completion
@@ -45,10 +46,12 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
                 
                 detailVC.blurView.alpha = 0
                 detailVC.snap.alpha = 0
+                self.card.backgroundIV.layer.cornerRadius = self.card.cardRadius
                 
             }, completion: { _ in
                 
-                self.card.addSubview(detailVC.cardBackground)
+                detailVC.layout(self.card.originalFrame, isPresenting: false, isAnimating: false)
+                self.card.addSubview(detailVC.card.backgroundIV)
                 transitionContext.completeTransition(true)
             })
             
@@ -69,12 +72,13 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         }
         
         // Detail View Controller Present Animations
+        card.isPresenting = true
         
         let detailVC = to as! DetailViewController
-        let bounce = self.bounceTransform(card.originalFrame, to: UIScreen.main.bounds)
+        let bounce = self.bounceTransform(card.originalFrame, to: card.backgroundIV.frame)
         
         container.bringSubview(toFront: detailVC.view)
-        detailVC.cardBackground = card.backgroundIV
+        detailVC.card = card
         detailVC.layout(card.originalFrame, isPresenting: false)
         
         // Blur and fade with completion
@@ -83,9 +87,11 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
             self.card.transform = CGAffineTransform.identity    // Reset card identity after push back on tap
             detailVC.blurView.alpha = 1
             detailVC.snap.alpha = 1
+            self.card.backgroundIV.layer.cornerRadius = 0
             
         }, completion: { _ in
             
+            detailVC.layout(self.card.originalFrame, isPresenting: true, isAnimating: false, transform: .identity)
             transitionContext.completeTransition(true)
         })
         

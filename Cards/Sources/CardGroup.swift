@@ -11,10 +11,25 @@ import UIKit
 @IBDesignable open class CardGroup: Card {
     
     // SB Vars
+    /**
+     Text of the title label.
+     */
     @IBInspectable public var title: String = "Welcome to XI Cards !"
+    /**
+     Max font size the title label.
+     */
     @IBInspectable public var titleSize: CGFloat = 26
+    /**
+     Text of the subtitle label.
+     */
     @IBInspectable public var subtitle: String = "from the editors"
+    /**
+     Max font size the subtitle label.
+     */
     @IBInspectable public var subtitleSize: CGFloat = 26
+    /**
+     Style for the blur effect.
+     */
     @IBInspectable public var blurEffect: UIBlurEffectStyle = .extraLight
     
     //Priv Vars
@@ -37,7 +52,6 @@ import UIKit
     override  func initialize() {
         super.initialize()
         
-        self.delegate = self
         vibrancyV = UIVisualEffectView(effect: UIVibrancyEffect(blurEffect: UIBlurEffect(style: blurEffect)))
         backgroundIV.addSubview(blurV)
         blurV.contentView.addSubview(titleLbl)
@@ -70,17 +84,17 @@ import UIKit
         let blur = UIBlurEffect(style: blurEffect)
         blurV.effect = blur
         
-        layout(backgroundIV.bounds)
+        layout()
     }
     
-    override func layout(_ rect: CGRect) {
-        super.layout(rect)
+    override func layout(animating: Bool = true) {
+        super.layout(animating: animating)
         
-        let gimme = LayoutHelper(rect: rect)
+        let gimme = LayoutHelper(rect: backgroundIV.bounds)
         
         blurV.frame = CGRect(x: 0,
                              y: 0,
-                             width: rect.width,
+                             width: backgroundIV.bounds.width,
                              height: gimme.Y(42))
         
         vibrancyV.frame = blurV.frame
@@ -104,22 +118,6 @@ import UIKit
         delegate?.cardDidTapInside?(card: self)
         
     }
-}
-
-extension CardGroup {
-    
-    public func cardIsShowingDetail(card: Card) {
-        layout(backgroundIV.bounds)
-    }
-
-    public func cardIsHidingDetail(card: Card) {
-        layout(backgroundIV.bounds)
-    }
-    
-    public func cardDidShowDetailView(card: Card) {
-        layout(backgroundIV.frame)
-    }
-    
 }
 
 
