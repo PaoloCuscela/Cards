@@ -15,7 +15,7 @@
 
 ![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Header.png)
 
-<p align="center"> <b>Cards brings to XCode the card views seen in the new iOS XI Appstore. </b></p> 
+<p align="center"> <b>Cards brings to Xcode the card views seen in the new iOS XI Appstore. </b></p> 
 
 ## Getting Started
 
@@ -59,7 +59,7 @@ view.addSubview(card)
 
 ## Prerequisites
 
-- **XCode 9.0** or newer
+- **Xcode 9.0** or newer
 - **Swift 4.0**
 
 ## Installation
