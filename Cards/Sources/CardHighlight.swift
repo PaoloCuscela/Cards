@@ -13,7 +13,12 @@ import UIKit
     /**
      Text of the title label.
      */
-    @IBInspectable public var title: String = "welcome \nto \ncards !"
+    @IBInspectable public var title: String = "welcome \nto \ncards !" {
+        didSet{
+            titleLbl.text = title.uppercased()
+            titleLbl.lineHeight(0.70)
+        }
+    }
     /**
      Max font size the title label.
      */
@@ -21,7 +26,11 @@ import UIKit
     /**
      Text of the title label of the item at the bottom.
      */
-    @IBInspectable public var itemTitle: String = "Flappy Bird"
+    @IBInspectable public var itemTitle: String = "Flappy Bird" {
+        didSet{
+            itemTitleLbl.text = itemTitle
+        }
+    }
     /**
      Max font size the subtitle label of the item at the bottom.
      */
@@ -29,7 +38,11 @@ import UIKit
     /**
      Text of the subtitle label of the item at the bottom.
      */
-    @IBInspectable public var itemSubtitle: String = "Flap that !"
+    @IBInspectable public var itemSubtitle: String = "Flap that !" {
+        didSet{
+            itemSubtitleLbl.text = itemSubtitle
+        }
+    }
     /**
      Max font size the subtitle label of the item at the bottom.
      */
@@ -37,11 +50,21 @@ import UIKit
     /**
      Image displayed in the icon ImageView.
      */
-    @IBInspectable public var icon: UIImage?
+    @IBInspectable public var icon: UIImage? {
+        didSet{
+            iconIV.image = icon
+            bgIconIV.image = icon
+        }
+    }
     /**
      Corner radius for the icon ImageView
      */
-    @IBInspectable public var iconRadius: CGFloat = 16
+    @IBInspectable public var iconRadius: CGFloat = 16 {
+        didSet{
+            iconIV.layer.cornerRadius = iconRadius
+            bgIconIV.layer.cornerRadius = iconRadius*2
+        }
+    }
     /**
      Text for the card's button.
      */

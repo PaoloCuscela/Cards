@@ -13,11 +13,19 @@ import UIKit
     /**
      Size for the collection view items.
      */
-    @IBInspectable public var iconsSize: CGFloat = 80
+    @IBInspectable public var iconsSize: CGFloat = 80 {
+        didSet{
+            slidingCV.reloadData()
+        }
+    }
     /**
      Corner radius of the collection view items
      */
-    @IBInspectable public var iconsRadius: CGFloat = 40
+    @IBInspectable public var iconsRadius: CGFloat = 40 {
+        didSet{
+            slidingCV.reloadData()
+        }
+    }
     
     /**
      Data source for the collection view.

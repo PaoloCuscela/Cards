@@ -15,7 +15,11 @@ import Player
     /**
      Text of the title label.
      */
-    @IBInspectable public var title: String = "Big Buck Bunny"
+    @IBInspectable public var title: String = "Big Buck Bunny" {
+        didSet{
+            titleLbl.text = title
+        }
+    }
     /**
      Max font size of the title label.
      */
@@ -23,7 +27,11 @@ import Player
     /**
      Text of the subtitle label.
      */
-    @IBInspectable public var subtitle: String = "Inside the extraordinary world of Buck Bunny"
+    @IBInspectable public var subtitle: String = "Inside the extraordinary world of Buck Bunny" {
+        didSet{
+            subtitleLbl.text = subtitle
+        }
+    }
     /**
      Max font size of the subtitle label.
      */
@@ -31,19 +39,35 @@ import Player
     /**
      Text of the category label.
      */
-    @IBInspectable public var category: String = "today's movie"
+    @IBInspectable public var category: String = "today's movie" {
+        didSet{
+            categoryLbl.text = category.uppercased()
+        }
+    }
     /**
      Size for the play button in the player.
      */
-    @IBInspectable public var playBtnSize: CGFloat = 56
+    @IBInspectable public var playBtnSize: CGFloat = 56 {
+        didSet {
+            layout(animating: false)
+        }
+    }
     /**
      Image shown in the play button.
      */
-    @IBInspectable public var playImage: UIImage?
+    @IBInspectable public var playImage: UIImage? {
+        didSet {
+            playIV.image = playImage
+        }
+    }
     /**
      Image shown before the player is loaded.
      */
-    @IBInspectable public var playerCover: UIImage?
+    @IBInspectable public var playerCover: UIImage? {
+        didSet{
+            playerCoverIV.image = playerCover
+        }
+    }
     /**
      If the player should start the playback when is ready.
      */
@@ -56,7 +80,9 @@ import Player
      Source for the video ( streaming or local ).
      */
     @IBInspectable public var videoSource: URL?  {
-        didSet { player.url = videoSource }
+        didSet {
+            player.url = videoSource
+        }
     }
 
     /**

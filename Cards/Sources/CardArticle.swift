@@ -14,7 +14,11 @@ import UIKit
     /**
      Text of the title label.
      */
-    @IBInspectable public var title: String = "The Art of the Impossible"
+    @IBInspectable public var title: String = "The Art of the Impossible" {
+        didSet{
+            titleLbl.text = title
+        }
+    }
     /**
      Max font size the title label.
      */
@@ -22,7 +26,11 @@ import UIKit
     /**
      Text of the subtitle label.
      */
-    @IBInspectable public var subtitle: String = "Inside the extraordinary world of Monument Valley 2"
+    @IBInspectable public var subtitle: String = "Inside the extraordinary world of Monument Valley 2" {
+        didSet{
+            subtitleLbl.text = subtitle
+        }
+    }
     /**
      Max font size the subtitle label.
      */
@@ -30,7 +38,11 @@ import UIKit
     /**
      Text of the category label.
      */
-    @IBInspectable public var category: String = "world premiere"
+    @IBInspectable public var category: String = "world premiere" {
+        didSet{
+            categoryLbl.text = category.uppercased()
+        }
+    }
 
     //Priv Vars
     var titleLbl = UILabel ()

@@ -122,9 +122,6 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         let xMove = -( xDistance * bounceIntensity )
         let yMove = -( yDistance * bounceIntensity )
         
-        //let xMove = (old.x < new.x ) ? LayoutHelper.XScreen(bounceIntensity) : -LayoutHelper.XScreen(bounceIntensity)
-        //let yMove = (old.y < new.y ) ? LayoutHelper.YScreen(bounceIntensity) : -LayoutHelper.YScreen(bounceIntensity)
-        
         return CGAffineTransform(translationX: xMove, y: yMove)
     }
 

@@ -14,7 +14,11 @@ import UIKit
     /**
      Text of the title label.
      */
-    @IBInspectable public var title: String = "Welcome to XI Cards !"
+    @IBInspectable public var title: String = "Welcome to XI Cards !" {
+        didSet{
+            titleLbl.text = title
+        }
+    }
     /**
      Max font size the title label.
      */
@@ -22,7 +26,11 @@ import UIKit
     /**
      Text of the subtitle label.
      */
-    @IBInspectable public var subtitle: String = "from the editors"
+    @IBInspectable public var subtitle: String = "from the editors" {
+        didSet{
+            subtitleLbl.text = subtitle.uppercased()
+        }
+    }
     /**
      Max font size the subtitle label.
      */
@@ -30,7 +38,11 @@ import UIKit
     /**
      Style for the blur effect.
      */
-    @IBInspectable public var blurEffect: UIBlurEffectStyle = .extraLight
+    @IBInspectable public var blurEffect: UIBlurEffectStyle = .extraLight {
+        didSet{
+            blurV.effect = UIBlurEffect(style: blurEffect)
+        }
+    }
     
     //Priv Vars
     var subtitleLbl = UILabel ()
