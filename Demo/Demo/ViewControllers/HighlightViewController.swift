@@ -35,13 +35,15 @@ class HighlightViewController: UIViewController {
         first.hasParallax = true
         
         second.delegate = self
-        let cardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent").view
+        let cardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent")
         second.shouldPresent(cardContent, from: self)
         
         
     }
 
-    
+    func random(min: Int, max:Int) -> Int {
+        return min + Int(arc4random_uniform(UInt32(max - min + 1)))
+    }
 }
 
 
@@ -50,7 +52,8 @@ extension HighlightViewController: CardDelegate {
     func cardDidTapInside(card: Card) {
         
         if card == first {
-            card.shadowColor = colors[Int(arc4random_uniform(UInt32(colors.count)))]
+            card.shadowColor = colors[random(min: 0, max: colors.count-1)]
+            (card as! CardHighlight).title = "everyday \nI'm \nshufflin'"
         } else {
             print("Hey, I'm the second one :)")
         }
@@ -62,3 +65,6 @@ extension HighlightViewController: CardDelegate {
     }
     
 }
+
+
+

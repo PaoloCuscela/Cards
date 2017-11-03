@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VB5-vT-PKk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VB5-vT-PKk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -193,12 +193,12 @@
             </objects>
             <point key="canvasLocation" x="-3985" y="-129"/>
         </scene>
-        <!--View Controller-->
+        <!--Card Content View Controller-->
         <scene sceneID="Pec-lw-cdD">
             <objects>
-                <viewController storyboardIdentifier="CardContent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E9y-vp-odE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardContent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E9y-vp-odE" customClass="CardContentViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="tif-Mz-Tb0">
-                        <rect key="frame" x="0.0" y="0.0" width="325" height="470"/>
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to Demo !!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpR-bQ-f5O">
@@ -227,17 +227,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utd-w6-9A3">
+                                <rect key="frame" x="84" y="465" width="157" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Do some magic ✨✨ "/>
+                                <connections>
+                                    <action selector="doMagic:" destination="E9y-vp-odE" eventType="touchUpInside" id="56l-Dz-k92"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6gC-dO-B8i"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <size key="freeformSize" width="325" height="470"/>
+                    <size key="freeformSize" width="325" height="500"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJ9-HG-hE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5140" y="-474"/>
+            <point key="canvasLocation" x="-5223" y="-584"/>
         </scene>
     </scenes>
     <resources>

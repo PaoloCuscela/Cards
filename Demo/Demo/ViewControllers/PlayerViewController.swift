@@ -29,7 +29,7 @@ class PlayerViewController: UIViewController {
         card.subtitle = "Inside the extraordinary world of Buck Bunny"
         card.category = "today's movie"
 
-        let cardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent").view
+        let cardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent")
         card.shouldPresent(cardContent, from: self)
         
     }

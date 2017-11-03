@@ -28,7 +28,7 @@ import UIKit
 }
 
 @IBDesignable open class Card: UIView, CardDelegate {
-
+    
     // Storyboard Inspectable vars
     /**
      Color for the card's labels.
@@ -92,11 +92,15 @@ import UIKit
         }
     }
     /**
-     detailView -> The view to show after presenting detail; from -> Your current ViewController (self)
+     contentViewController  -> The view controller to present when the card is tapped
+     from                   -> Your current ViewController (self)
      */
-    public func shouldPresent( _ detailView: UIView? = nil, from superVC: UIViewController? = nil) {
-        self.superVC = superVC
-        self.detailView = detailView
+    public func shouldPresent( _ contentViewController: UIViewController? = nil, from superVC: UIViewController? = nil) {
+        if let content = contentViewController {
+            self.superVC = superVC
+            detailVC.addChildViewController(content)
+            self.detailView = content.view
+        }
     }
     /**
      If the card should display parallax effect.

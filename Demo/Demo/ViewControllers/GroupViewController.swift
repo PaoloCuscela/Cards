@@ -30,10 +30,10 @@ class GroupViewController: UIViewController {
         
         sliding.icons = icons
         
-        let groupCardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent").view
+        let groupCardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent")
         group.shouldPresent(groupCardContent, from: self)
         
-        let slidingCardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent").view
+        let slidingCardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent")
         sliding.shouldPresent(slidingCardContent, from: self)
         
         

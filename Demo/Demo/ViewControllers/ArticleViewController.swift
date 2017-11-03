@@ -16,7 +16,7 @@ class ArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent").view
+        let cardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent")
         card.shouldPresent(cardContent, from: self)
         
         
