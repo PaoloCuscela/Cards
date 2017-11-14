@@ -14,11 +14,7 @@ internal class DetailViewController: UIViewController {
     var scrollView = UIScrollView()
     var originalFrame = CGRect.zero
     var snap = UIView()
-    var card: Card! {
-        didSet{
-            scrollView.addSubview(card.backgroundIV)
-        }
-    }
+    var card: Card!
     var delegate: CardDelegate?
     
     
@@ -49,6 +45,7 @@ internal class DetailViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        scrollView.addSubview(card.backgroundIV)
         self.delegate?.cardWillShowDetailView?(card: self.card)
     }
 
