@@ -195,6 +195,7 @@ import UIKit
         if let vc = superVC {
             
             detailVC.detailView = detailView
+            detailVC.card = self
             vc.present(self.detailVC, animated: true, completion: nil)
         } else {
             
