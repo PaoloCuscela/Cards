@@ -61,7 +61,7 @@ import UIKit
         initialize()
     }
     
-    override  func initialize() {
+    override func initialize() {
         super.initialize()
         
         vibrancyV = UIVisualEffectView(effect: UIVibrancyEffect(blurEffect: UIBlurEffect(style: blurEffect)))
@@ -123,13 +123,7 @@ import UIKit
                                 height: gimme.Y(20))
         titleLbl.sizeToFit()
     }
-    
-    
-    override  func cardTapped() {
-        super.cardTapped()
-        delegate?.cardDidTapInside?(card: self)
-        
-    }
+
 }
 
 

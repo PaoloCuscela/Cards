@@ -99,7 +99,9 @@ import UIKit
         if let content = contentViewController {
             self.superVC = superVC
             detailVC.addChildViewController(content)
-            self.detailView = content.view
+            detailVC.detailView = content.view
+            detailVC.card = self
+            detailVC.delegate = self.delegate
         }
     }
     /**
@@ -119,7 +121,6 @@ import UIKit
     //Private Vars
     fileprivate var tap = UITapGestureRecognizer()
     fileprivate var detailVC = DetailViewController()
-    fileprivate var detailView: UIView?
     var superVC: UIViewController?
     var originalFrame = CGRect.zero
     var backgroundIV = UIImageView()
@@ -145,9 +146,6 @@ import UIKit
         tap.delegate = self
         tap.cancelsTouchesInView = false
        
-        if let detail = detailView {
-             detailVC.detailView = detail
-        }
         detailVC.transitioningDelegate = self
         
         // Adding Subviews
@@ -189,12 +187,10 @@ import UIKit
     
     //MARK: - Actions
     
-    @objc  func cardTapped(){
+    @objc func cardTapped() {
         self.delegate?.cardDidTapInside?(card: self)
         
         if let vc = superVC {
-            
-            detailVC.detailView = detailView
             vc.present(self.detailVC, animated: true, completion: nil)
         } else {
             

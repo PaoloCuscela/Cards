@@ -14,11 +14,8 @@ internal class DetailViewController: UIViewController {
     var scrollView = UIScrollView()
     var originalFrame = CGRect.zero
     var snap = UIView()
-    var card: Card! {
-        didSet{
-            scrollView.addSubview(card.backgroundIV)
-        }
-    }
+    var card: Card!
+    var delegate: CardDelegate?
     
     
     //MARK: - View Lifecycle
@@ -46,7 +43,12 @@ internal class DetailViewController: UIViewController {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        scrollView.addSubview(card.backgroundIV)
+        self.delegate?.cardWillShowDetailView?(card: self.card)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         self.view.insertSubview(snap, belowSubview: blurView)
         originalFrame = scrollView.frame
@@ -62,12 +64,17 @@ internal class DetailViewController: UIViewController {
             scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: detail.frame.maxY)
         }
         
+        self.delegate?.cardDidShowDetailView?(card: self.card)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        self.delegate?.cardWillCloseDetailView?(card: self.card)
         snap.removeFromSuperview()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        self.delegate?.cardDidCloseDetailView?(card: self.card)
+    }
     
     //MARK: - Layout & Animations for the content ( rect = Scrollview + card + detail )
     
