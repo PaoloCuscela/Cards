@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VB5-vT-PKk">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +16,7 @@
             <objects>
                 <viewController id="i4e-e4-FqZ" customClass="GroupViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5jG-it-e2N">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wa1-qf-6YE" customClass="CardGroupSliding" customModule="Cards">
@@ -62,7 +63,7 @@
             <objects>
                 <viewController id="k06-gf-ALo" customClass="ArticleViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iMc-2y-m37">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPq-Jv-zdb" customClass="CardArticle" customModule="Cards">
@@ -96,7 +97,7 @@
             <objects>
                 <viewController id="LjN-1V-n2c" customClass="PlayerViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lMa-H4-g6c">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRe-yW-fBP" customClass="CardPlayer" customModule="Cards">
@@ -129,7 +130,7 @@
             <objects>
                 <viewController id="R2f-57-GXv" customClass="HighlightViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3tT-js-yj4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gON-Ab-tsu" customClass="CardHighlight" customModule="Cards">
@@ -198,54 +199,80 @@
             <objects>
                 <viewController storyboardIdentifier="CardContent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E9y-vp-odE" customClass="CardContentViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="tif-Mz-Tb0">
-                        <rect key="frame" x="0.0" y="0.0" width="325" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to Demo !!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpR-bQ-f5O">
-                                <rect key="frame" x="14" y="21" width="261" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfG-b8-HXd">
-                                <rect key="frame" x="16" y="50" width="293" height="89"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfG-b8-HXd">
+                                <rect key="frame" x="16" y="66" width="382" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="CTf-oC-n22"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="flBackground" translatesAutoresizingMaskIntoConstraints="NO" id="VbH-UR-ElD">
-                                <rect key="frame" x="0.0" y="147" width="325" height="110"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flBackground" translatesAutoresizingMaskIntoConstraints="NO" id="VbH-UR-ElD">
+                                <rect key="frame" x="0.0" y="146" width="414" height="120.33333333333331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VbH-UR-ElD" secondAttribute="height" multiplier="31:9" id="O79-xO-Pm3"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACX-JK-hQX">
-                                <rect key="frame" x="16" y="265" width="293" height="197"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACX-JK-hQX">
+                                <rect key="frame" x="16" y="281.66666666666669" width="382" height="165"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="165" id="ZUU-qo-q7r"/>
+                                </constraints>
                                 <string key="text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utd-w6-9A3">
-                                <rect key="frame" x="84" y="465" width="157" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utd-w6-9A3">
+                                <rect key="frame" x="0.0" y="471.66666666666669" width="414" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="cNP-rD-1oe"/>
+                                </constraints>
                                 <state key="normal" title="Do some magic ✨✨ "/>
                                 <connections>
                                     <action selector="doMagic:" destination="E9y-vp-odE" eventType="touchUpInside" id="56l-Dz-k92"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Demo !!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpR-bQ-f5O">
+                                <rect key="frame" x="16" y="26" width="382" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="JlL-ep-lKm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VbH-UR-ElD" firstAttribute="leading" secondItem="6gC-dO-B8i" secondAttribute="leading" id="1Ap-Hg-0Ye"/>
+                            <constraint firstItem="6gC-dO-B8i" firstAttribute="trailing" secondItem="LfG-b8-HXd" secondAttribute="trailing" constant="16" id="6Wb-zJ-zaI"/>
+                            <constraint firstItem="6gC-dO-B8i" firstAttribute="trailing" secondItem="cpR-bQ-f5O" secondAttribute="trailing" constant="16" id="KGM-Dm-wqI"/>
+                            <constraint firstItem="cpR-bQ-f5O" firstAttribute="leading" secondItem="6gC-dO-B8i" secondAttribute="leading" constant="16" id="M0h-2h-6i9"/>
+                            <constraint firstItem="6gC-dO-B8i" firstAttribute="trailing" secondItem="ACX-JK-hQX" secondAttribute="trailing" constant="16" id="Na2-E4-m7I"/>
+                            <constraint firstItem="cpR-bQ-f5O" firstAttribute="top" secondItem="6gC-dO-B8i" secondAttribute="top" constant="6" id="NpL-2K-2c0"/>
+                            <constraint firstItem="Utd-w6-9A3" firstAttribute="leading" secondItem="6gC-dO-B8i" secondAttribute="leading" id="Q8y-vv-V2t"/>
+                            <constraint firstItem="ACX-JK-hQX" firstAttribute="top" secondItem="VbH-UR-ElD" secondAttribute="bottom" constant="16" id="QEy-Bj-ara"/>
+                            <constraint firstItem="LfG-b8-HXd" firstAttribute="leading" secondItem="6gC-dO-B8i" secondAttribute="leading" constant="16" id="QYz-h6-jrF"/>
+                            <constraint firstItem="Utd-w6-9A3" firstAttribute="top" secondItem="ACX-JK-hQX" secondAttribute="bottom" constant="25" id="TQi-le-QgU"/>
+                            <constraint firstItem="ACX-JK-hQX" firstAttribute="leading" secondItem="6gC-dO-B8i" secondAttribute="leading" constant="16" id="VK1-ya-OOj"/>
+                            <constraint firstItem="6gC-dO-B8i" firstAttribute="trailing" secondItem="Utd-w6-9A3" secondAttribute="trailing" id="YYi-yp-Iz7"/>
+                            <constraint firstItem="VbH-UR-ElD" firstAttribute="trailing" secondItem="6gC-dO-B8i" secondAttribute="trailing" id="eHd-Ug-P92"/>
+                            <constraint firstItem="VbH-UR-ElD" firstAttribute="top" secondItem="LfG-b8-HXd" secondAttribute="bottom" constant="15" id="oIS-0K-iH5"/>
+                            <constraint firstItem="LfG-b8-HXd" firstAttribute="top" secondItem="cpR-bQ-f5O" secondAttribute="bottom" constant="5" id="sUR-pI-Dhz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6gC-dO-B8i"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <size key="freeformSize" width="325" height="500"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJ9-HG-hE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5223" y="-584"/>
+            <point key="canvasLocation" x="-4903.6231884057979" y="-216.03260869565219"/>
         </scene>
     </scenes>
     <resources>

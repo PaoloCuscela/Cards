@@ -36,7 +36,7 @@ class HighlightViewController: UIViewController {
         
         second.delegate = self
         let cardContent = storyboard?.instantiateViewController(withIdentifier: "CardContent")
-        second.shouldPresent(cardContent, from: self)
+        second.shouldPresent(cardContent, from: self, fullscreen: true)
         
         
     }

@@ -95,13 +95,14 @@ import UIKit
      contentViewController  -> The view controller to present when the card is tapped
      from                   -> Your current ViewController (self)
      */
-    public func shouldPresent( _ contentViewController: UIViewController? = nil, from superVC: UIViewController? = nil) {
+    public func shouldPresent( _ contentViewController: UIViewController?, from superVC: UIViewController?, fullscreen: Bool = false) {
         if let content = contentViewController {
             self.superVC = superVC
             detailVC.addChildViewController(content)
             detailVC.detailView = content.view
             detailVC.card = self
             detailVC.delegate = self.delegate
+            detailVC.isFullscreen = fullscreen
         }
     }
     /**

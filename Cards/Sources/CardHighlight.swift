@@ -156,7 +156,7 @@ import UIKit
         let btnTitle = NSAttributedString(string: buttonText.uppercased(), attributes: [ NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16, weight: .black), NSAttributedStringKey.foregroundColor : self.tintColor])
         actionBtn.setAttributedTitle(btnTitle, for: .normal)
         
-        btnWidth = CGFloat((buttonText.characters.count + 2) * 10)
+        btnWidth = CGFloat((buttonText.count + 2) * 10)
         
         layout()
         

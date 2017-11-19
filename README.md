@@ -50,7 +50,7 @@ card.textColor = UIColor.white
 card.hasParallax = true
     
 let cardContentVC = storyboard!.instantiateViewController(withIdentifier: "CardContent")
-card.shouldPresent(cardContentVC, from: self)
+card.shouldPresent(cardContentVC, from: self, fullscreen: false)
     
 view.addSubview(card)
 ```
