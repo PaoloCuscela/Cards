@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VB5-vT-PKk">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,7 +16,7 @@
             <objects>
                 <viewController id="i4e-e4-FqZ" customClass="GroupViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5jG-it-e2N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wa1-qf-6YE" customClass="CardGroupSliding" customModule="Cards">
@@ -63,7 +63,7 @@
             <objects>
                 <viewController id="k06-gf-ALo" customClass="ArticleViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iMc-2y-m37">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPq-Jv-zdb" customClass="CardArticle" customModule="Cards">
@@ -97,7 +97,7 @@
             <objects>
                 <viewController id="LjN-1V-n2c" customClass="PlayerViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lMa-H4-g6c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRe-yW-fBP" customClass="CardPlayer" customModule="Cards">
@@ -130,7 +130,7 @@
             <objects>
                 <viewController id="R2f-57-GXv" customClass="HighlightViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3tT-js-yj4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gON-Ab-tsu" customClass="CardHighlight" customModule="Cards">
@@ -146,11 +146,14 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="flBackground"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhT-Cy-Kvg" customClass="CardHighlight" customModule="Cards">
-                                <rect key="frame" x="67" y="30" width="240" height="291"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhT-Cy-Kvg" customClass="CardHighlight" customModule="Cards">
+                                <rect key="frame" x="67" y="44" width="240" height="288"/>
                                 <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="a20-ls-Mga"/>
+                                    <constraint firstAttribute="width" secondItem="uhT-Cy-Kvg" secondAttribute="height" multiplier="5:6" id="s5a-1u-2IT"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -160,6 +163,10 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uhT-Cy-Kvg" firstAttribute="centerX" secondItem="Lys-bS-jq3" secondAttribute="centerX" id="P4y-6C-f8E"/>
+                            <constraint firstItem="uhT-Cy-Kvg" firstAttribute="top" secondItem="3tT-js-yj4" secondAttribute="top" constant="44" id="ego-m5-A9N"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Lys-bS-jq3"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Highlight" id="ecJ-Y5-JKF"/>
@@ -199,11 +206,11 @@
             <objects>
                 <viewController storyboardIdentifier="CardContent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E9y-vp-odE" customClass="CardContentViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="tif-Mz-Tb0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfG-b8-HXd">
-                                <rect key="frame" x="16" y="66" width="382" height="65"/>
+                                <rect key="frame" x="16" y="90" width="343" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="CTf-oC-n22"/>
                                 </constraints>
@@ -212,13 +219,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flBackground" translatesAutoresizingMaskIntoConstraints="NO" id="VbH-UR-ElD">
-                                <rect key="frame" x="0.0" y="146" width="414" height="120.33333333333331"/>
+                                <rect key="frame" x="0.0" y="170" width="375" height="109"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VbH-UR-ElD" secondAttribute="height" multiplier="31:9" id="O79-xO-Pm3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACX-JK-hQX">
-                                <rect key="frame" x="16" y="281.66666666666669" width="382" height="165"/>
+                                <rect key="frame" x="16" y="294.33333333333331" width="343" height="165"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="165" id="ZUU-qo-q7r"/>
                                 </constraints>
@@ -228,7 +235,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utd-w6-9A3">
-                                <rect key="frame" x="0.0" y="471.66666666666669" width="414" height="35"/>
+                                <rect key="frame" x="0.0" y="484.33333333333331" width="375" height="34.999999999999943"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="cNP-rD-1oe"/>
                                 </constraints>
@@ -238,7 +245,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Demo !!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpR-bQ-f5O">
-                                <rect key="frame" x="16" y="26" width="382" height="35"/>
+                                <rect key="frame" x="16" y="50" width="343" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="JlL-ep-lKm"/>
                                 </constraints>

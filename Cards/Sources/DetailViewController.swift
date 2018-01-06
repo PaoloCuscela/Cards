@@ -20,10 +20,19 @@ internal class DetailViewController: UIViewController {
     
     fileprivate var xButton = XButton()
     
+    override var prefersStatusBarHidden: Bool {
+        if isFullscreen { return true }
+        else { return false }
+    }
+    
     //MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } 
 
         self.snap = UIScreen.main.snapshotView(afterScreenUpdates: true)
         self.view.addSubview(blurView)
@@ -117,7 +126,10 @@ internal class DetailViewController: UIViewController {
         }
         
         if isFullscreen {
-            scrollView.frame = view.frame
+           
+            scrollView.frame = view.bounds
+            scrollView.frame.origin.y = 0
+            print(scrollView.frame)
             
         } else {
             scrollView.frame.size = CGSize(width: LayoutHelper.XScreen(85), height: LayoutHelper.YScreen(100) - 20)
@@ -162,7 +174,7 @@ extension DetailViewController: UIScrollViewDelegate {
             scrollView.contentOffset.y = 0
         }
         
-        //card.delegate?.cardDetailIsScrolling?(card: card)
+        card.delegate?.cardDetailIsScrolling?(card: card)
     }
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
