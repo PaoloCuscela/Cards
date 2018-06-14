@@ -13,7 +13,7 @@ open class LayoutHelper {
 
     let rect: CGRect
 
-    init(rect: CGRect) {
+    public init(rect: CGRect) {
         self.rect = rect
     }
 
