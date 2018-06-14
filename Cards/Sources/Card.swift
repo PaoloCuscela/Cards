@@ -124,8 +124,8 @@ import UIKit
     fileprivate var detailVC = DetailViewController()
     var superVC: UIViewController?
     var originalFrame = CGRect.zero
-    var backgroundIV = UIImageView()
-    var insets = CGFloat()
+    public var backgroundIV = UIImageView()
+    public var insets = CGFloat()
     var isPresenting = false
     
     //MARK: - View Life Cycle
@@ -140,7 +140,7 @@ import UIKit
         initialize()
     }
     
-    func initialize() {
+    open func initialize() {
         
         // Tap gesture init
         self.addGestureRecognizer(tap)
@@ -183,7 +183,7 @@ import UIKit
     
     //MARK: - Layout
     
-    func layout(animating: Bool = true){ }
+    open func layout(animating: Bool = true){ }
     
     
     //MARK: - Actions
