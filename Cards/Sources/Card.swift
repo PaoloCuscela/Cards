@@ -258,7 +258,8 @@ extension Card: UIGestureRecognizerDelegate {
         if let superview = self.superview {
             originalFrame = superview.convert(self.frame, to: nil)
         }
-        pushBackAnimated()
+        // Jie - Temporarily disable Push Back animation as it sometimes conflict with Auto Layout
+//        pushBackAnimated()
     }
 }
 
