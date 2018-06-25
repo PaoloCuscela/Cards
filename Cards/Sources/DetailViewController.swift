@@ -10,12 +10,12 @@ import UIKit
 internal class DetailViewController: UIViewController {
     
     var blurView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight ))
-    var detailView: UIView?
+    weak var detailView: UIView?
     var scrollView = UIScrollView()
     var originalFrame = CGRect.zero
     var snap = UIView()
-    var card: Card!
-    var delegate: CardDelegate?
+    weak var card: Card!
+    weak var delegate: CardDelegate?
     var isFullscreen = false
     
     fileprivate var xButton = XButton()
