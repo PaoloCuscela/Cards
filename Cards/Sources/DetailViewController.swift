@@ -99,6 +99,7 @@ internal class DetailViewController: UIViewController {
         }
         
         self.delegate?.cardDidShowDetailView?(card: self.card)
+        self.scrollView.contentOffset.y = 0 // Jie - Sometimes backgroundIV is pushed down. This make sure it is pinned to top of scrollView
     }
     
     override func viewWillDisappear(_ animated: Bool) {
