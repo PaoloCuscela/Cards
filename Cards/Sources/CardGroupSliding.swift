@@ -49,7 +49,7 @@ import UIKit
         initialize()
     }
     
-    override  func initialize() {
+    override open func initialize() {
         super.initialize()
         
         self.delegate = self
@@ -79,7 +79,7 @@ import UIKit
         layout(animating: false)
     }
     
-    override func layout(animating: Bool) {
+    override open func layout(animating: Bool) {
         super.layout(animating: animating)
         
         let gimme = LayoutHelper(rect: backgroundIV.bounds)

@@ -96,7 +96,7 @@ import UIKit
         initialize()
     }
     
-    override  func initialize() {
+    override open func initialize() {
         super.initialize()
         
         actionBtn.addTarget(self, action: #selector(buttonTapped), for: UIControlEvents.touchUpInside)
@@ -162,7 +162,7 @@ import UIKit
         
     }
     
-    override func layout(animating: Bool = true) {
+    override open func layout(animating: Bool = true) {
         super.layout(animating: animating)
         
         let gimme = LayoutHelper(rect: backgroundIV.frame)

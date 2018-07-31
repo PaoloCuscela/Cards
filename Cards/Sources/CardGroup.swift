@@ -61,7 +61,7 @@ import UIKit
         initialize()
     }
     
-    override func initialize() {
+    override open func initialize() {
         super.initialize()
         
         vibrancyV = UIVisualEffectView(effect: UIVibrancyEffect(blurEffect: UIBlurEffect(style: blurEffect)))
@@ -99,7 +99,7 @@ import UIKit
         layout()
     }
     
-    override func layout(animating: Bool = true) {
+    override open func layout(animating: Bool = true) {
         super.layout(animating: animating)
         
         let gimme = LayoutHelper(rect: backgroundIV.bounds)

@@ -10,12 +10,12 @@ import UIKit
 internal class DetailViewController: UIViewController {
     
     var blurView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight ))
-    var detailView: UIView?
+    weak var detailView: UIView?
     var scrollView = UIScrollView()
     var originalFrame = CGRect.zero
     var snap = UIView()
-    var card: Card!
-    var delegate: CardDelegate?
+    weak var card: Card!
+    weak var delegate: CardDelegate?
     var isFullscreen = false
     
     fileprivate var xButton = XButton()
@@ -99,6 +99,7 @@ internal class DetailViewController: UIViewController {
         }
         
         self.delegate?.cardDidShowDetailView?(card: self.card)
+        self.scrollView.contentOffset.y = 0 // Jie - Sometimes backgroundIV is pushed down. This make sure it is pinned to top of scrollView
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -166,7 +167,7 @@ extension DetailViewController: UIScrollViewDelegate {
         let origin = originalFrame.origin.y
         let currentOrigin = originalFrame.origin.y
         
-        xButton.alpha = y - (card.backgroundIV.bounds.height * 0.6)
+        //xButton.alpha = y - (card.backgroundIV.bounds.height * 0.6)
         
         if (y<0  || currentOrigin > origin) {
             scrollView.frame.origin.y -= y/2

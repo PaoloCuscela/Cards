@@ -112,7 +112,7 @@ import Player
         initialize()
     }
     
-    override  func initialize() {
+    override open func initialize() {
         super.initialize()
         self.delegate = self
         
@@ -194,7 +194,7 @@ import Player
         self.layout()
     }
     
-    override func layout(animating: Bool = true) {
+    override open func layout(animating: Bool = true) {
         super.layout(animating: animating)
         
         let gimme = LayoutHelper(rect: backgroundIV.bounds)
