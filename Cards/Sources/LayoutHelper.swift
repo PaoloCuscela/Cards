@@ -54,11 +54,21 @@ open class LayoutHelper {
     }
 
     static open func XScreen(_ percentage: CGFloat) -> CGFloat {
-        return percentage * UIScreen.main.bounds.width / 100
+        
+        if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+            return percentage * UIScreen.main.bounds.height / 100
+        } else {
+            return percentage * UIScreen.main.bounds.width / 100
+        }
     }
 
     static open func YScreen(_ percentage: CGFloat) -> CGFloat {
-        return percentage * UIScreen.main.bounds.height / 100
+        
+        if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+            return percentage * UIScreen.main.bounds.width / 100
+        } else {
+            return percentage * UIScreen.main.bounds.height / 100
+        }
     }
 
 }

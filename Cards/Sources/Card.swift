@@ -253,13 +253,17 @@ extension Card: UIGestureRecognizerDelegate {
         cardTapped()
     }
     
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resetAnimated()
+    }
+    
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if let superview = self.superview {
             originalFrame = superview.convert(self.frame, to: nil)
         }
-        // Jie - Temporarily disable Push Back animation as it sometimes conflict with Auto Layout
-//        pushBackAnimated()
+        
+        pushBackAnimated()
     }
 }
 
