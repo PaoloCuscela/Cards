@@ -9,7 +9,6 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/PaoloCuscela/Cards.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
-  s.source_files = 'Cards/*'
+  s.source_files = 'Cards/**/*'
   s.frameworks = 'UIKit'
-  s.dependency "Player"
 end
