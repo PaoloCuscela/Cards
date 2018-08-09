@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Cards
 
 @IBDesignable open class CardPlayer: Card {
 
