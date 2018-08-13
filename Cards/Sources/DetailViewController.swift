@@ -12,6 +12,7 @@ internal class DetailViewController: UIViewController {
     var blurView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight ))
     weak var detailView: UIView?
     var scrollView = UIScrollView()
+    var originalFrame = CGRect.zero
     var snap = UIView()
     weak var card: Card!
     weak var delegate: CardDelegate?
@@ -73,7 +74,7 @@ internal class DetailViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         
-        //originalFrame = scrollView.frame
+        originalFrame = scrollView.frame
         
         if isFullscreen {
             view.addSubview(xButton)
@@ -205,6 +206,11 @@ extension DetailViewController: UIScrollViewDelegate {
             scrollView.frame.origin.y = self.scrollViewOriginalYPosition
             self.scrollView.contentOffset.y = 0
         })
+    }
+    
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        UIView.animate(withDuration: 0.1) { scrollView.frame.origin.y = self.originalFrame.origin.y }
     }
     
 }
