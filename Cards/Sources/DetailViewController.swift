@@ -182,7 +182,8 @@ extension DetailViewController: UIScrollViewDelegate {
             scrollView.frame.origin.y -= y/2
         }
         
-        guard offset < 60 else { dismissVC(); return }
+        // Jie - Disable dismissing as it causes weird side effect, i.e., Card jumps out off original position before going back
+//        guard offset < 60 else { dismissVC(); return }
         card.delegate?.cardDetailIsScrolling?(card: card)
     }
     
