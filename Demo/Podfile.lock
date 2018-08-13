@@ -1,19 +1,23 @@
 PODS:
-  - Cards (1.2.3):
+  - Cards (1.3.1):
     - Player
-  - Player (0.8.4)
+  - Player (0.9.1)
 
 DEPENDENCIES:
   - Cards (from `../`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Player
+
 EXTERNAL SOURCES:
   Cards:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Cards: 30f4eb310f4b57fddbbb24bb07d9ac3e222d7478
-  Player: e45514e9e5fb8ff18f50eb2ba6f84dac9b6a0024
+  Cards: 8d4e2021c5419932b8642f50e4d282df16af44d0
+  Player: 939f9432361bfa944d9eaf3df1c783a1e3d6df81
 
-PODFILE CHECKSUM: 32c3efb86c20af17fbf79e8803edcf19a1e5bec6
+PODFILE CHECKSUM: 1c52c57701e5a2124294248068eef20a103c5b0e
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3
