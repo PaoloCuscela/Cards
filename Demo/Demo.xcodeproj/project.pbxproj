@@ -16,6 +16,7 @@
 		6D965BA21FA7974100705AAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D965BA01FA7974100705AAA /* Main.storyboard */; };
 		6D965BA41FA79A6300705AAA /* HighlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D965BA31FA79A6300705AAA /* HighlightViewController.swift */; };
 		6D965BA81FA7B6DD00705AAA /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D965BA71FA7B6DD00705AAA /* PlayerViewController.swift */; };
+		6DEE676E2115989400FF2EB4 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE676D2115989400FF2EB4 /* ListTableViewController.swift */; };
 		6FDABBFFC80A25A8DEEFE3E3 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB13C5E8ADDE29D425A8FEC /* Pods_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		6D965BA11FA7974100705AAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D965BA31FA79A6300705AAA /* HighlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightViewController.swift; sourceTree = "<group>"; };
 		6D965BA71FA7B6DD00705AAA /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		6DEE676D2115989400FF2EB4 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		8DB13C5E8ADDE29D425A8FEC /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67AFDB912F87244FCB0C745 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 				6D37D92B1FA8852C00B33EA0 /* GroupViewController.swift */,
 				6D0C91581FA8BF350073554B /* ArticleViewController.swift */,
 				6D1F24511FACC2E6002E41FF /* CardContentViewController.swift */,
+				6DEE676D2115989400FF2EB4 /* ListTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DEE676E2115989400FF2EB4 /* ListTableViewController.swift in Sources */,
 				6D37D92C1FA8852C00B33EA0 /* GroupViewController.swift in Sources */,
 				6D436D571F9BD34600B05FA6 /* AppDelegate.swift in Sources */,
 				6D0C91591FA8BF350073554B /* ArticleViewController.swift in Sources */,
@@ -398,7 +402,7 @@
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = paolocuscela.Cards;
+				PRODUCT_BUNDLE_IDENTIFIER = it.paolocuscela.Cards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -417,7 +421,7 @@
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = paolocuscela.Cards;
+				PRODUCT_BUNDLE_IDENTIFIER = it.paolocuscela.Cards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

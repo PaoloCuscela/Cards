@@ -253,6 +253,10 @@ extension Card: UIGestureRecognizerDelegate {
         cardTapped()
     }
     
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resetAnimated()
+    }
+    
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if let superview = self.superview {
