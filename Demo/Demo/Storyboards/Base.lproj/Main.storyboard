@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VB5-vT-PKk">
-    <device id="retina5_9" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VB5-vT-PKk">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +17,7 @@
             <objects>
                 <viewController id="i4e-e4-FqZ" customClass="GroupViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5jG-it-e2N">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wa1-qf-6YE" customClass="CardGroupSliding" customModule="Cards">
@@ -63,7 +64,7 @@
             <objects>
                 <viewController id="k06-gf-ALo" customClass="ArticleViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iMc-2y-m37">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPq-Jv-zdb" customClass="CardArticle" customModule="Cards">
@@ -97,7 +98,7 @@
             <objects>
                 <viewController id="LjN-1V-n2c" customClass="PlayerViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lMa-H4-g6c">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRe-yW-fBP" customClass="CardPlayer" customModule="Cards">
@@ -130,7 +131,7 @@
             <objects>
                 <viewController id="R2f-57-GXv" customClass="HighlightViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3tT-js-yj4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gON-Ab-tsu" customClass="CardHighlight" customModule="Cards">
@@ -147,7 +148,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhT-Cy-Kvg" customClass="CardHighlight" customModule="Cards">
-                                <rect key="frame" x="67" y="44" width="240" height="288"/>
+                                <rect key="frame" x="40" y="44" width="240" height="288"/>
                                 <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -179,6 +180,55 @@
             </objects>
             <point key="canvasLocation" x="-3034" y="-473"/>
         </scene>
+        <!--List-->
+        <scene sceneID="nR5-Qs-sg9">
+            <objects>
+                <tableViewController title="List" id="IUb-Gj-k2N" customClass="ListTableViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nQX-JS-cSD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="427" id="Qch-cG-QWc">
+                                <rect key="frame" x="0.0" y="28" width="320" height="427"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qch-cG-QWc" id="JYm-0n-ThD">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="427"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view tag="1000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nze-Yw-u7c" customClass="CardArticle" customModule="Cards">
+                                            <rect key="frame" x="40" y="21" width="240" height="320"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="320" id="I2m-4P-KfG"/>
+                                                <constraint firstAttribute="width" constant="240" id="why-s0-0W0"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Lorem Ipsum"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Dolor sit amet"/>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="mvBackground"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Nze-Yw-u7c" firstAttribute="centerX" secondItem="JYm-0n-ThD" secondAttribute="centerX" id="Jfo-xq-ntL"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Nze-Yw-u7c" secondAttribute="bottom" constant="75" id="NoU-bl-kmk"/>
+                                        <constraint firstItem="Nze-Yw-u7c" firstAttribute="top" secondItem="JYm-0n-ThD" secondAttribute="topMargin" constant="10" id="hj8-DO-GFz"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="IUb-Gj-k2N" id="51i-zy-TCW"/>
+                            <outlet property="delegate" destination="IUb-Gj-k2N" id="IoR-7i-bb2"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="ZfM-0g-d9U"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CPL-16-3uC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2208.75" y="-32.74647887323944"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kZ5-7y-hIp">
             <objects>
@@ -195,6 +245,7 @@
                         <segue destination="i4e-e4-FqZ" kind="relationship" relationship="viewControllers" id="aHX-bc-Tdx"/>
                         <segue destination="LjN-1V-n2c" kind="relationship" relationship="viewControllers" id="0Hi-Ky-FiZ"/>
                         <segue destination="k06-gf-ALo" kind="relationship" relationship="viewControllers" id="XeE-N6-pVX"/>
+                        <segue destination="IUb-Gj-k2N" kind="relationship" relationship="viewControllers" id="JCs-DX-uSB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4H-G2-5ta" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -206,11 +257,11 @@
             <objects>
                 <viewController storyboardIdentifier="CardContent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E9y-vp-odE" customClass="CardContentViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="tif-Mz-Tb0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfG-b8-HXd">
-                                <rect key="frame" x="16" y="90" width="343" height="65"/>
+                                <rect key="frame" x="16" y="66" width="288" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="CTf-oC-n22"/>
                                 </constraints>
@@ -219,13 +270,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flBackground" translatesAutoresizingMaskIntoConstraints="NO" id="VbH-UR-ElD">
-                                <rect key="frame" x="0.0" y="170" width="375" height="109"/>
+                                <rect key="frame" x="0.0" y="146" width="320" height="93"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VbH-UR-ElD" secondAttribute="height" multiplier="31:9" id="O79-xO-Pm3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACX-JK-hQX">
-                                <rect key="frame" x="16" y="294.33333333333331" width="343" height="165"/>
+                                <rect key="frame" x="16" y="254.5" width="288" height="165"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="165" id="ZUU-qo-q7r"/>
                                 </constraints>
@@ -235,7 +286,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utd-w6-9A3">
-                                <rect key="frame" x="0.0" y="484.33333333333331" width="375" height="34.999999999999943"/>
+                                <rect key="frame" x="0.0" y="444.5" width="320" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="cNP-rD-1oe"/>
                                 </constraints>
@@ -245,7 +296,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Demo !!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpR-bQ-f5O">
-                                <rect key="frame" x="16" y="50" width="343" height="35"/>
+                                <rect key="frame" x="16" y="26" width="288" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="JlL-ep-lKm"/>
                                 </constraints>
