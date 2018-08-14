@@ -1,0 +1,10 @@
+framework module Player {
+  umbrella header "Player-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module Player.__Swift {
+    exclude header "Player-Swift.h"
+}

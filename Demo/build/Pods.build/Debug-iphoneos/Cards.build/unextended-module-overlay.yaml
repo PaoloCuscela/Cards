@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/fares-ben/Documents/Projects/iOS/Cards/Demo/build/Debug-iphoneos/Cards/Cards.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/fares-ben/Documents/Projects/iOS/Cards/Demo/build/Pods.build/Debug-iphoneos/Cards.build/unextended-module.modulemap',
+    }]
+  }]
+}

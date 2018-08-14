@@ -1,0 +1,13 @@
+version: "Apple Swift version 4.1.2 (swiftlang-902.0.54 clang-902.0.39.2)"
+options: "6f6b4898c8b4b4776c78bc3a0766f988"
+build_time: [1534256218, 66590000]
+inputs:
+  "/Users/fares-ben/Documents/Projects/iOS/Cards/Cards/Sources/Animator.swift": [1534256053, 0]
+  "/Users/fares-ben/Documents/Projects/iOS/Cards/Cards/Sources/Card.swift": [1534256053, 0]
+  "/Users/fares-ben/Documents/Projects/iOS/Cards/Cards/Sources/CardArticle.swift": [1534256053, 0]
+  "/Users/fares-ben/Documents/Projects/iOS/Cards/Cards/Sources/CardGroup.swift": [1534256053, 0]
+  "/Users/fares-ben/Documents/Projects/iOS/Cards/Cards/Sources/CardGroupSliding.swift": [1534256053, 0]
+  "/Users/fares-ben/Documents/Projects/iOS/Cards/Cards/Sources/CardHighlight.swift": [1534256053, 0]
+  "/Users/fares-ben/Documents/Projects/iOS/Cards/Cards/Sources/CardPlayer.swift": [1534256053, 0]
+  "/Users/fares-ben/Documents/Projects/iOS/Cards/Cards/Sources/DetailViewController.swift": [1534256053, 0]
+  "/Users/fares-ben/Documents/Projects/iOS/Cards/Cards/Sources/LayoutHelper.swift": [1534256053, 0]

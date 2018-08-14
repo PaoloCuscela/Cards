@@ -1,0 +1,10 @@
+framework module Cards {
+  umbrella header "Cards-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module Cards.__Swift {
+    exclude header "Cards-Swift.h"
+}
