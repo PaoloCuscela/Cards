@@ -1,5 +1,0 @@
-version: "Apple Swift version 4.1.2 (swiftlang-902.0.54 clang-902.0.39.2)"
-options: "bf51f2a170ed85f8f8725b8627a53446"
-build_time: [1534256215, 162312000]
-inputs:
-  "/Users/fares-ben/Documents/Projects/iOS/Cards/Demo/Pods/Player/Sources/Player.swift": [1534256053, 0]
