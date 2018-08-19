@@ -154,8 +154,11 @@ internal class DetailViewController: UIViewController {
     //MARK: - Actions
     
     @objc func dismissVC(){
-        scrollView.contentOffset.y = 0
-        dismiss(animated: true, completion: nil)
+        UIView.animate(withDuration: 0.22, delay: 0, usingSpringWithDamping: 0.95, initialSpringVelocity: 0.07, options: .curveEaseOut, animations: {
+            self.scrollView.contentOffset.y = 0
+        }) { (_) in
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 
