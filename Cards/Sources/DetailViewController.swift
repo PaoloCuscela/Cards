@@ -136,7 +136,7 @@ internal class DetailViewController: UIViewController {
             
         // Layout for present in non-fullscreen
         } else {
-            scrollView.frame.size = CGSize(width: LayoutHelper.XScreen(85), height: LayoutHelper.YScreen(100) - 20)
+            scrollView.frame.size = CGSize(width: LayoutHelper.YScreen(90), height: LayoutHelper.XScreen(100) - 20)
             scrollView.center = blurView.center
             scrollView.frame.origin.y = 40
         }
