@@ -7,11 +7,12 @@
 
 import UIKit
 
-internal class DetailViewController: UIViewController {
+open class DetailViewController: UIViewController {
     
     var blurView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight ))
     weak var detailView: UIView?
     var scrollView = UIScrollView()
+    var originalFrame = CGRect.zero
     var snap = UIView()
     weak var card: Card!
     weak var delegate: CardDelegate?
@@ -23,14 +24,14 @@ internal class DetailViewController: UIViewController {
     fileprivate var scrollPosition = CGFloat()
     fileprivate var scrollViewOriginalYPosition = CGFloat()
     
-    override var prefersStatusBarHidden: Bool {
+    override open var prefersStatusBarHidden: Bool {
         if isFullscreen { return true }
         else { return false }
     }
     
     //MARK: - View Lifecycle
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
@@ -66,14 +67,14 @@ internal class DetailViewController: UIViewController {
     }
     
 
-    override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         scrollView.addSubview(card.backgroundIV)
         self.delegate?.cardWillShowDetailView?(card: self.card)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         
-        //originalFrame = scrollView.frame
+        originalFrame = scrollView.frame
         
         if isFullscreen {
             view.addSubview(xButton)
@@ -102,19 +103,23 @@ internal class DetailViewController: UIViewController {
         self.scrollView.contentOffset.y = 0 // Jie - Sometimes backgroundIV is pushed down. This make sure it is pinned to top of scrollView
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         self.delegate?.cardWillCloseDetailView?(card: self.card)
         detailView?.alpha = 0
         snap.removeFromSuperview()
         xButton.removeFromSuperview()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override open func viewDidDisappear(_ animated: Bool) {
         self.delegate?.cardDidCloseDetailView?(card: self.card)
     }
     
     
     //MARK: - Layout & Animations for the content ( rect = Scrollview + card + detail )
+    
+    open func enableScrolling(_ enabled: Bool) {
+        scrollView.isScrollEnabled = enabled
+    }
     
     func layout(_ rect: CGRect, isPresenting: Bool, isAnimating: Bool = true, transform: CGAffineTransform = CGAffineTransform.identity){
         
@@ -181,7 +186,8 @@ extension DetailViewController: UIScrollViewDelegate {
             scrollView.frame.origin.y -= y/2
         }
         
-        guard offset < 60 else { dismissVC(); return }
+        // Jie - Disable dismissing as it causes weird side effect, i.e., Card jumps out off original position before going back
+//        guard offset < 60 else { dismissVC(); return }
         card.delegate?.cardDetailIsScrolling?(card: card)
     }
     
@@ -205,6 +211,11 @@ extension DetailViewController: UIScrollViewDelegate {
             scrollView.frame.origin.y = self.scrollViewOriginalYPosition
             self.scrollView.contentOffset.y = 0
         })
+    }
+    
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        UIView.animate(withDuration: 0.1) { scrollView.frame.origin.y = self.originalFrame.origin.y }
     }
     
 }

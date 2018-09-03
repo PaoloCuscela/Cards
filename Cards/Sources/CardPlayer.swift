@@ -124,7 +124,7 @@ import Player
         // Player Init
         player.playerDelegate = self
         player.playbackDelegate = self
-        player.fillMode = PlayerFillMode.resizeAspectFill.avFoundationType
+        player.fillMode = PlayerFillMode.resizeAspectFill
         if let url = videoSource { player.url = url }
         else { print("CARDS: Something wrong with the video source URL") }
        
@@ -305,6 +305,7 @@ extension CardPlayer: PlayerDelegate {
     public func playerPlaybackStateDidChange(_ player: Player) { }
     public func playerBufferingStateDidChange(_ player: Player) { }
     public func playerBufferTimeDidChange(_ bufferTime: Double) { }
+    public func player(_ player: Player, didFailWithError error: Error?) {}
 }
 
 extension CardPlayer: PlayerPlaybackDelegate {
