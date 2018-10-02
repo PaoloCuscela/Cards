@@ -98,7 +98,7 @@ import UIKit
     public func shouldPresent( _ contentViewController: UIViewController?, from superVC: UIViewController?, fullscreen: Bool = false) {
         if let content = contentViewController {
             self.superVC = superVC
-            detailVC.addChildViewController(content)
+            detailVC.addChild(content)
             detailVC.detailView = content.view
             detailVC.card = self
             detailVC.delegate = self.delegate
@@ -277,7 +277,7 @@ extension UILabel {
         let attributedString = NSMutableAttributedString(string: self.text!)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = height
-        attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
         self.attributedText = attributedString
     }
     

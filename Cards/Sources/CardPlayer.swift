@@ -89,7 +89,7 @@ import Player
      Required. View controller that should display the player.
      */
     public func shouldDisplayPlayer( from vc: UIViewController ) {
-        vc.addChildViewController(player)
+        vc.addChild(player)
     }
     
     private var player = Player() // Player provided by Patrik Piemonte
@@ -130,7 +130,7 @@ import Player
        
         backgroundIV.addSubview(self.player.view)
         playPauseV.contentView.addSubview(playIV)
-        playPauseV.contentView.bringSubview(toFront: playIV)
+        playPauseV.contentView.bringSubviewToFront(playIV)
         
         // Gestures
         player.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(playerTapped)))
