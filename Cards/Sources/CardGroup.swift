@@ -38,7 +38,7 @@ import UIKit
     /**
      Style for the blur effect.
      */
-    @IBInspectable public var blurEffect: UIBlurEffectStyle = .extraLight {
+    @IBInspectable public var blurEffect: UIBlurEffect.Style = .extraLight {
         didSet{
             blurV.effect = UIBlurEffect(style: blurEffect)
         }
