@@ -45,22 +45,22 @@ open class LayoutHelper {
         return from.frame.minY - Y(percentage) - height
     }
     
-    static open func Width(_ percentage: CGFloat, of view: UIView) -> CGFloat {
+    static public func Width(_ percentage: CGFloat, of view: UIView) -> CGFloat {
         return view.frame.width * (percentage / 100)
     }
     
-    static open func Height(_ percentage: CGFloat, of view: UIView) -> CGFloat {
+    static public func Height(_ percentage: CGFloat, of view: UIView) -> CGFloat {
         return view.frame.height * (percentage / 100)
     }
 
-    static open func XScreen(_ percentage: CGFloat) -> CGFloat {
+    static public func XScreen(_ percentage: CGFloat) -> CGFloat {
         
         
             return percentage * UIScreen.main.bounds.height / 100
         
     }
 
-    static open func YScreen(_ percentage: CGFloat) -> CGFloat {
+    static public func YScreen(_ percentage: CGFloat) -> CGFloat {
         
         
             return percentage * UIScreen.main.bounds.width / 100
