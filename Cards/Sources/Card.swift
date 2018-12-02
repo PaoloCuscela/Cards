@@ -98,7 +98,7 @@ import UIKit
     public func shouldPresent( _ contentViewController: UIViewController?, from superVC: UIViewController?, fullscreen: Bool = false) {
         if let content = contentViewController {
             self.superVC = superVC
-            detailVC.addChild(content)
+            detailVC.addChildViewController(content)
             detailVC.detailView = content.view
             detailVC.card = self
             detailVC.delegate = self.delegate
