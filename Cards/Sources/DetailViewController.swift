@@ -32,6 +32,7 @@ internal class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        card.log("DetailVC: Loaded")
         
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
@@ -117,6 +118,7 @@ internal class DetailViewController: UIViewController {
     //MARK: - Layout & Animations for the content ( rect = Scrollview + card + detail )
     
     func layout(_ rect: CGRect, isPresenting: Bool, isAnimating: Bool = true, transform: CGAffineTransform = CGAffineTransform.identity){
+        self.card.log("DetailVC>> Will layout to: ---> \(rect)")
         
         // Layout for dismiss
         guard isPresenting else {
@@ -130,9 +132,11 @@ internal class DetailViewController: UIViewController {
         
         // Layout for present in fullscreen
         if isFullscreen {
+            
             scrollView.layer.cornerRadius = 0
             scrollView.frame = view.bounds
             scrollView.frame.origin.y = 0
+            self.card.backgroundIV.layer.cornerRadius = 0
             
         // Layout for present in non-fullscreen
         } else {

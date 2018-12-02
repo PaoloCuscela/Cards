@@ -30,10 +30,9 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         container.addSubview(to.view)
         container.addSubview(from.view)
         
-        
         guard presenting else {
-            
             // Detail View Controller Dismiss Animations
+            card.log("ANIMATOR>> Begin dismiss transition.")
             card.isPresenting = false
             
             let detailVC = from as! DetailViewController
@@ -72,42 +71,37 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         }
         
         // Detail View Controller Present Animations
+        card.log("ANIMATOR>> Begin present transition.")
         card.isPresenting = true
         
         let detailVC = to as! DetailViewController
-        let bounce = self.bounceTransform(card.originalFrame, to: card.backgroundIV.frame)
-        
-        container.bringSubviewToFront(detailVC.view)
+        let bounceOffset = self.bounceTransform(card.originalFrame, to: card.backgroundIV.frame)
+        container.bringSubview(toFront: detailVC.view)
         detailVC.card = card
-        detailVC.layout(card.originalFrame, isPresenting: false)
         
-        // Blur and fade with completion
-        UIView.animate(withDuration: velocity, delay: 0, options: .curveEaseOut, animations: {
+        self.card.delegate?.cardIsShowingDetail?(card: self.card)
+        
+        // This code should actually be executed outside the animation but idk why this first animation is executed and skipped ( even with 'duration' setted up )
+        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: {
+            // Setting detail VC in dismissed mode (VC frame = card frame)
+            detailVC.layout(self.card.originalFrame, isPresenting: false)
             
-            self.card.transform = CGAffineTransform.identity    // Reset card identity after push back on tap
-            detailVC.blurView.alpha = 1
-            detailVC.snap.alpha = 1
-            self.card.backgroundIV.layer.cornerRadius = 0
-            
-        }, completion: { _ in
-            
-            detailVC.layout(self.card.originalFrame, isPresenting: true, isAnimating: false, transform: .identity)
-            transitionContext.completeTransition(true)
+        }, completion: { finished in UIView.animate(withDuration: self.velocity/2, delay: 0, options: .curveEaseIn, animations: {
+                detailVC.blurView.alpha = 1
+                detailVC.snap.alpha = 1
+                detailVC.layout(detailVC.view.frame, isPresenting: true, transform: bounceOffset)
+                
+            }, completion: { (_) in UIView.animate(withDuration: self.velocity/2, delay: 0, options: .curveEaseIn, animations: {
+                    detailVC.layout(detailVC.view.frame, isPresenting: true)
+                    
+                }, completion: { (_) in
+                    detailVC.layout(detailVC.view.frame, isPresenting: true)
+                    transitionContext.completeTransition(true)
+                    
+                })
+            })
         })
         
-        // Layout with bounce effect
-        UIView.animate(withDuration: velocity/2, delay: 0, options: .curveEaseOut, animations: {
-            
-            detailVC.layout(detailVC.view.frame, isPresenting: true, transform: bounce)
-            self.card.delegate?.cardIsShowingDetail?(card: self.card)
-            
-        }) { _ in UIView.animate(withDuration: self.velocity/2, delay: 0, options: .curveEaseOut, animations: {
-                
-            detailVC.layout(detailVC.view.frame, isPresenting: true)
-            self.card.delegate?.cardIsShowingDetail?(card: self.card)
-                
-            })
-        }
         
     }
     
