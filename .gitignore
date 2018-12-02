@@ -5,3 +5,9 @@ Pod/
 Images/\.DS_Store
 
 \.DS_Store
+
+Demo/Demo\.xcodeproj/xcuserdata/paolocuscela\.xcuserdatad/xcschemes/
+
+Demo/Demo\.xcworkspace/xcuserdata/paolocuscela\.xcuserdatad/xcdebugger/
+
+Demo/Demo\.xcodeproj/xcuserdata/
