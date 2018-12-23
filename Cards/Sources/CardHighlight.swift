@@ -67,9 +67,11 @@ import UIKit
     }
     /**
      Text for the card's button.
+     Set to [nil] or "" to hide the button.
      */
-    @IBInspectable public var buttonText: String = "view" {
+    @IBInspectable public var buttonText: String? = "view" {
         didSet{
+            self.actionBtn.isHidden = (buttonText == nil || buttonText!.isEmpty)
             self.setNeedsDisplay()
         }
     }
@@ -153,10 +155,12 @@ import UIKit
         actionBtn.backgroundColor = UIColor.clear
         actionBtn.layer.backgroundColor = lightColor.cgColor
         actionBtn.clipsToBounds = true
-        let btnTitle = NSAttributedString(string: buttonText.uppercased(), attributes: [ NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .black), NSAttributedString.Key.foregroundColor : self.tintColor])
-        actionBtn.setAttributedTitle(btnTitle, for: .normal)
+        if self.buttonText != nil {
+            let btnTitle = NSAttributedString(string: buttonText!.uppercased(), attributes: [ NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .black), NSAttributedString.Key.foregroundColor : self.tintColor])
+            actionBtn.setAttributedTitle(btnTitle, for: .normal)
+            btnWidth = CGFloat((buttonText!.count + 2) * 10)
+        }
         
-        btnWidth = CGFloat((buttonText.count + 2) * 10)
         
         layout()
         
