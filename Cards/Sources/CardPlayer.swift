@@ -124,7 +124,7 @@ import Player
         // Player Init
         player.playerDelegate = self
         player.playbackDelegate = self
-        player.fillMode = PlayerFillMode.resizeAspectFill.avFoundationType
+        player.fillMode = PlayerFillMode.resizeAspectFill
         if let url = videoSource { player.url = url }
         else { print("CARDS: Something wrong with the video source URL") }
        
@@ -284,6 +284,12 @@ import Player
 
 // Player Delegates
 extension CardPlayer: PlayerDelegate {
+    public func player(_ player: Player, didFailWithError error: Error?) {
+        if let errorMessage = error {
+            print(errorMessage.localizedDescription)
+        }
+    }
+
     public func playerReady(_ player: Player) {
         
         player.view.addSubview(playPauseV)
