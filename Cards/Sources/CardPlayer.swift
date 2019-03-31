@@ -89,7 +89,7 @@ import Player
      Required. View controller that should display the player.
      */
     public func shouldDisplayPlayer( from vc: UIViewController ) {
-        vc.addChildViewController(player)
+        vc.addChild(player)
     }
     
     private var player = Player() // Player provided by Patrik Piemonte
@@ -130,7 +130,7 @@ import Player
        
         backgroundIV.addSubview(self.player.view)
         playPauseV.contentView.addSubview(playIV)
-        playPauseV.contentView.bringSubview(toFront: playIV)
+        playPauseV.contentView.bringSubviewToFront(playIV)
         
         // Gestures
         player.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(playerTapped)))
@@ -204,7 +204,12 @@ import Player
         let move = ( aspect1016 - aspect921 ) * 2
         
         subtitleLbl.transform = isPresenting ? CGAffineTransform(translationX: 0, y: move) : CGAffineTransform.identity
+        let currentHeight = backgroundIV.frame.size.height
         backgroundIV.frame.size.height = originalFrame.height + ( isPresenting ? move/2 : 0 )
+        
+        if backgroundIV.frame.size.height <= 0 {
+            backgroundIV.frame.size.height = currentHeight
+        }
         
         player.view.frame.origin = CGPoint.zero
         player.view.frame.size = CGSize(width: backgroundIV.bounds.width, height: isPresenting ? aspect1016 : aspect921 )

@@ -10,10 +10,10 @@ import UIKit
 internal class DetailViewController: UIViewController {
     
     var blurView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight ))
-    weak var detailView: UIView?
+    var detailView: UIView?
     var scrollView = UIScrollView()
     var snap = UIView()
-    weak var card: Card!
+    var card: Card!
     weak var delegate: CardDelegate?
     var isFullscreen = false {
         didSet { scrollViewOriginalYPosition = isFullscreen ? 0 : 40 }
@@ -27,17 +27,21 @@ internal class DetailViewController: UIViewController {
         if isFullscreen { return true }
         else { return false }
     }
+    var isViewAdded = false
     
     //MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         card.log("DetailVC: Loaded")
-        
+        self.setupView()
+    }
+    
+    func setupView() {
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
-        } 
-
+        }
+        
         self.snap = UIScreen.main.snapshotView(afterScreenUpdates: true)
         self.view.addSubview(blurView)
         self.view.addSubview(scrollView)
@@ -63,17 +67,20 @@ internal class DetailViewController: UIViewController {
         blurView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissVC)))
         xButton.isUserInteractionEnabled = true
         view.isUserInteractionEnabled = true
-        
+        isViewAdded = true
     }
-    
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isViewAdded == false {
+            self.setupView()
+        }
         scrollView.addSubview(card.backgroundIV)
         self.delegate?.cardWillShowDetailView?(card: self.card)
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        
+        super.viewDidAppear(animated)
         //originalFrame = scrollView.frame
         
         if isFullscreen {
@@ -108,10 +115,12 @@ internal class DetailViewController: UIViewController {
         detailView?.alpha = 0
         snap.removeFromSuperview()
         xButton.removeFromSuperview()
+        super.viewWillDisappear(animated)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         self.delegate?.cardDidCloseDetailView?(card: self.card)
+        super.viewDidDisappear(animated)
     }
     
     
@@ -140,7 +149,7 @@ internal class DetailViewController: UIViewController {
             
         // Layout for present in non-fullscreen
         } else {
-            scrollView.frame.size = CGSize(width: LayoutHelper.YScreen(90), height: LayoutHelper.XScreen(100) - 20)
+            scrollView.frame.size = CGSize(width: LayoutHelper.XScreen(90), height: LayoutHelper.YScreen(100) - 20)
             scrollView.center = blurView.center
             scrollView.frame.origin.y = 40
         }
@@ -185,7 +194,6 @@ extension DetailViewController: UIScrollViewDelegate {
             scrollView.frame.origin.y -= y/2
         }
         
-        guard offset < 60 else { dismissVC(); return }
         card.delegate?.cardDetailIsScrolling?(card: card)
     }
     
@@ -206,6 +214,18 @@ extension DetailViewController: UIScrollViewDelegate {
         
         // Come back after pull animation
         UIView.animate(withDuration: speed, animations: {
+            scrollView.frame.origin.y = self.scrollViewOriginalYPosition
+            self.scrollView.contentOffset.y = 0
+        })
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        let offset = scrollView.frame.origin.y - scrollViewOriginalYPosition
+        guard offset > 0 else { return }
+        
+        // Come back after pull animation
+        UIView.animate(withDuration: 0.1, animations: {
             scrollView.frame.origin.y = self.scrollViewOriginalYPosition
             self.scrollView.contentOffset.y = 0
         })

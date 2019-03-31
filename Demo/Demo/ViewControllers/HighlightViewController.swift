@@ -61,7 +61,11 @@ extension HighlightViewController: CardDelegate {
     
     func cardHighlightDidTapButton(card: CardHighlight, button: UIButton) {
         
-        card.buttonText = "HEY!"
+        card.buttonText = "OPEN!"
+        
+        if card == self.second {
+            card.open()
+        }
     }
     
 }

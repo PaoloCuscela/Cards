@@ -96,9 +96,18 @@ import UIKit
      from                   -> Your current ViewController (self)
      */
     public func shouldPresent( _ contentViewController: UIViewController?, from superVC: UIViewController?, fullscreen: Bool = false) {
-        if let content = contentViewController {
+        if detailVC.children.count > 0{
+            let viewControllers:[UIViewController] = detailVC.children
+            for viewContoller in viewControllers{
+                viewContoller.willMove(toParent: nil)
+                viewContoller.view.removeFromSuperview()
+                viewContoller.removeFromParent()
+            }
+        }
+        detailVC.isViewAdded = false
+        if let content = contentViewController{
             self.superVC = superVC
-            detailVC.addChildViewController(content)
+            detailVC.addChild(content)
             detailVC.detailView = content.view
             detailVC.card = self
             detailVC.delegate = self.delegate
@@ -125,7 +134,7 @@ import UIKit
     
     //Private Vars
     fileprivate var tap = UITapGestureRecognizer()
-    fileprivate var detailVC = DetailViewController()
+    var detailVC = DetailViewController()
     weak var superVC: UIViewController?
     var originalFrame = CGRect.zero
     public var backgroundIV = UIImageView()
@@ -184,6 +193,17 @@ import UIKit
         contentInset = 6
     }
     
+    /**
+     Opens the card if detail view is set.
+     */
+    open func open(){
+        if let superview = self.superview {
+            originalFrame = superview.convert(self.frame, to: nil)
+            log("CARD: open() called, setting original frame to ---> \(originalFrame)" )
+        }
+        shrinkAnimated()
+        self.cardTapped()
+    }
     
     //MARK: - Layout
     

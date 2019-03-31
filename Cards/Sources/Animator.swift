@@ -76,7 +76,7 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         
         let detailVC = to as! DetailViewController
         let bounceOffset = self.bounceTransform(card.originalFrame, to: card.backgroundIV.frame)
-        container.bringSubview(toFront: detailVC.view)
+        container.bringSubviewToFront(detailVC.view)
         detailVC.card = card
         
         self.card.delegate?.cardIsShowingDetail?(card: self.card)

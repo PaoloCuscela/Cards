@@ -505,6 +505,8 @@ extension Player {
                 case .failed:
                     fallthrough
                 case .cancelled:
+                    fallthrough
+                @unknown default:
                     DispatchQueue.main.async {
                         completionHandler?(nil, nil)
                     }
@@ -727,19 +729,21 @@ extension Player {
             }
 
             switch object.status {
+            case .failed:
+                self?.playbackState = PlaybackState.failed
+                break
             case .unknown:
                 fallthrough
             case .readyToPlay:
+                fallthrough
+            @unknown default:
                 self?._playerView.player = self?._avplayer
-                break
-            case .failed:
-                self?.playbackState = PlaybackState.failed
                 break
             }
         })
 
-        //        self._playerItemObservers.append(playerItem.observe(\.status, options: [.new, .old]) { (object, change) in
-        //        })
+//        self._playerItemObservers.append(playerItem.observe(\.status, options: [.new, .old]) { (object, change) in
+//        })
 
         self._playerItemObservers.append(playerItem.observe(\.loadedTimeRanges, options: [.new, .old]) { [weak self] (object, change) in
             guard let strongSelf = self else {
@@ -813,6 +817,8 @@ extension Player {
                 case .playing:
                     self?.playbackState = .playing
                 case .waitingToPlayAtSpecifiedRate:
+                    fallthrough
+                @unknown default:
                     break
                 }
             })

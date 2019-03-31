@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Cards'
-  s.version          = '1.3.5'
-  s.summary          = 'Awesome iOS 11 appstore cards in swift 4.'
+  s.version          = '1.3.6'
+  s.summary          = 'Awesome iOS 11 appstore cards in swift 5.'
   s.homepage         = 'https://github.com/PaoloCuscela/Cards'
   s.screenshots      = 'https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/Header.png', 'https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/DetailView.gif'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.source_files = 'Cards/Sources/*'
   s.frameworks = 'UIKit'
-  s.dependency 'Player', '0.12.0'
+  s.dependency 'Player', '0.13.0'
 end

@@ -59,8 +59,8 @@ view.addSubview(card)
 
 ## Prerequisites
 
-- **Xcode 9.0** or newer
-- **Swift 4.0**
+- **Xcode 10.2** or newer
+- **Swift 5.0**
 
 ## Installation
 
