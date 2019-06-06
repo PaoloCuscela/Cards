@@ -78,9 +78,9 @@ pod 'Cards'
 ## Overview
 
 <p float="left">
-    <img src="https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardPlayer.gif" width="300">
-    <img src="https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardGroupSliding.gif" width="300">
-    <img src="https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/DetailView.gif" width="300">
+    <img src="https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardPlayer.gif" width="290">
+    <img src="https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardGroupSliding.gif" width="290">
+    <img src="https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/DetailView.gif" width="290">
 </p>
 
 ## Customization
