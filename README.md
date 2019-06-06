@@ -65,7 +65,7 @@ view.addSubview(card)
 ## Installation
 
 ### Cocoapods
-```
+```ruby
 use_frameworks!
 pod 'Cards'
 ```
