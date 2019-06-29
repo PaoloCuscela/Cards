@@ -65,7 +65,7 @@ view.addSubview(card)
 ## Installation
 
 ### Cocoapods
-```
+```ruby
 use_frameworks!
 pod 'Cards'
 ```
@@ -77,10 +77,11 @@ pod 'Cards'
 
 ## Overview
 
-
-![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardPlayer.gif)
-![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardGroupSliding.gif)
-![Overview](https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/DetailView.gif)
+<p float="left">
+    <img src="https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardPlayer.gif" width="290">
+    <img src="https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/CardGroupSliding.gif" width="290">
+    <img src="https://raw.githubusercontent.com/PaoloCuscela/Cards/master/Images/DetailView.gif" width="290">
+</p>
 
 ## Customization
 
